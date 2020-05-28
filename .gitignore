@@ -9,3 +9,4 @@ config.yml
 Atomic_Threat_Coverage_test
 detection_rules/sigma
 triggers/atomic-red-team
+.vscode

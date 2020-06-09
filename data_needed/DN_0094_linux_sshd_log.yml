@@ -1,4 +1,5 @@
 title: DN_0094_linux_sshd_log
+author: '@atc_project'
 description: >
   OpenSSH SSH daemon (sshd) log
 loggingpolicy:

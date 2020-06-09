@@ -1,4 +1,5 @@
 title: DN_0015_11_windows_sysmon_FileCreate
+author: '@atc_project'
 description: >
   File create operations are logged when a file is created or overwritten. This 
   event is useful for monitoring autostart locations, like the Startup folder, 

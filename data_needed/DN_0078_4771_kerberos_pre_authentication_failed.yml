@@ -1,4 +1,5 @@
 title: DN_0078_4771_kerberos_pre_authentication_failed
+author: '@atc_project'
 description: >
   This event generates every time the Key Distribution Center fails 
   to issue a Kerberos Ticket Granting Ticket (TGT). This can occur 

@@ -1,4 +1,5 @@
 title: DN_0045_1001_windows_error_reporting
+author: '@atc_project'
 description: >
   When application fails, the result is recorded as an informational event in the Application log by Windows Error Reporting as event 1001.
 loggingpolicy:

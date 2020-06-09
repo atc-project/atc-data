@@ -1,4 +1,5 @@
 title: DN_0036_150_dns_server_could_not_load_dll
+author: '@atc_project'
 description: >
   Windows DNS server could not load or initialize the plug-in DLL
 loggingpolicy:

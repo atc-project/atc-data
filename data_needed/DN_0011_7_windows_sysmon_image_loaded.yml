@@ -1,4 +1,5 @@
 title: DN_0011_7_windows_sysmon_image_loaded
+author: '@atc_project'
 description: >
   The image loaded event logs when a module is loaded in a specific process
 loggingpolicy: 

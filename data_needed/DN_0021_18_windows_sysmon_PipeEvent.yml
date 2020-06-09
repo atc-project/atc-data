@@ -1,4 +1,5 @@
 title: DN_0021_18_windows_sysmon_PipeEvent
+author: '@atc_project'
 description: >
   This event logs when a named pipe connection is made between a client and a 
   server

@@ -1,4 +1,5 @@
 title: DN_0069_4732_member_was_added_to_security_enabled_local_group
+author: '@atc_project'
 description: >
   This event generates every time a new member was added to a 
   security-enabled (security) local group. This event generates 

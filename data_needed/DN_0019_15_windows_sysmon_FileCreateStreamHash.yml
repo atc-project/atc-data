@@ -1,4 +1,5 @@
 title: DN_0019_15_windows_sysmon_FileCreateStreamHash
+author: '@atc_project'
 description: >
   This event logs when a named file stream is created, and it generates events 
   that log the hash of the contents of the file to which the stream is assigned 

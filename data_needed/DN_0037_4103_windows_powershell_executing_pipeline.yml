@@ -1,4 +1,5 @@
 title: DN_0037_4103_windows_powershell_executing_pipeline
+author: '@atc_project'
 description: >
   This event records pipeline execution, including variable initialization and command command invocations.
 loggingpolicy: 

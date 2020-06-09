@@ -1,4 +1,5 @@
 title: DN_0092_unix_generic_syslog
+author: '@atc_project'
 description: >
   Unix generic syslog
 loggingpolicy:

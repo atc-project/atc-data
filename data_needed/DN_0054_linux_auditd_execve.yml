@@ -1,4 +1,5 @@
 title: DN_0054_linux_auditd_execve
+author: '@atc_project'
 description: >
   Linux auditd log of process (binary) execution (execeve syscall)
   with command line arguments

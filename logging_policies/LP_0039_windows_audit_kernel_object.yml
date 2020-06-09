@@ -1,4 +1,5 @@
 title: LP_0039_windows_audit_kernel_object
+author: '@atc_project'
 default: Not configured
 volume: High # if auditing access of global system objects is enabled.
 description: >

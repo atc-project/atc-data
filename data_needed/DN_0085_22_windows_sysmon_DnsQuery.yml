@@ -1,4 +1,5 @@
 title: DN_0085_22_windows_sysmon_DnsQuery
+author: '@atc_project'
 description: >
   This event generates when a process executes a DNS query, whether the result is 
   successful or fails, cached or not

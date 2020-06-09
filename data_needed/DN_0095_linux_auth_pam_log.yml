@@ -1,4 +1,5 @@
 title: DN_0095_linux_auth_pam_log
+author: '@atc_project'
 description: >
   Linux Pluggable Authentication Modules (PAM) authentication log
 loggingpolicy:

@@ -1,4 +1,5 @@
 title: DN_0062_4663_attempt_was_made_to_access_an_object
+author: '@atc_project'
 description: >
   This event indicates that a specific operation was performed on an object. 
   The object could be a file system, kernel, or registry object, or a file 

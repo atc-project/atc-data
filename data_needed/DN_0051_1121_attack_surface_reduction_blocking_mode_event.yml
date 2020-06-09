@@ -1,4 +1,5 @@
 title: DN_0051_1121_attack_surface_reduction_blocking_mode_event
+author: '@atc_project'
 description: Event generated when an attack surface reduction rule fires in block mode
 loggingpolicy:
   - None

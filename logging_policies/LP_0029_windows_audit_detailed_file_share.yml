@@ -1,4 +1,5 @@
 title: LP_0029_windows_audit_detailed_file_share
+author: '@atc_project'
 default: Not configured
 volume: High # on file servers and domain controllers
 description: >

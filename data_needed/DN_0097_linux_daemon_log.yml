@@ -1,4 +1,5 @@
 title: DN_0097_linux_daemon_log
+author: '@atc_project'
 description: >
   The daemons log at /var/log/daemon.log and contains information about running 
   system and application daemons

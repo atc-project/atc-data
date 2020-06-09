@@ -1,4 +1,5 @@
 title: DN_0054_2102_pnp_or_power_operation_for_usb_device
+author: '@atc_project'
 description: Finished PnP or Power operation for USB device
 loggingpolicy: 
   - None

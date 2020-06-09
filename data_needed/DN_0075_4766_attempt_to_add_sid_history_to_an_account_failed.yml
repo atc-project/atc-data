@@ -1,4 +1,5 @@
 title: DN_0075_4766_attempt_to_add_sid_history_to_an_account_failed
+author: '@atc_project'
 description: An attempt to add SID History to an account failed
 loggingpolicy: 
   - LP_0026_windows_audit_user_account_management

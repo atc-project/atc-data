@@ -1,4 +1,5 @@
 title: LP_0103_windows_audit_registry
+author: '@atc_project'
 default: Not configured
 volume: Medium     # depending on how SACLs are configured
 description: >

@@ -1,4 +1,5 @@
 title: DN_0072_4755_security_enabled_universal_group_was_changed
+author: '@atc_project'
 description: Security-enabled universal group was changed
 loggingpolicy: 
   - LP_0101_windows_audit_security_group_management

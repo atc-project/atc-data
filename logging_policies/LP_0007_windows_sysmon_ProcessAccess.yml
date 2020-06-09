@@ -1,4 +1,5 @@
 title: LP_0007_windows_sysmon_ProcessAccess
+author: '@atc_project'
 default: Not configured
 volume: High
 description: >

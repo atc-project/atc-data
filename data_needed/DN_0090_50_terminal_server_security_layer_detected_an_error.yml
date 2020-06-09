@@ -1,4 +1,5 @@
 title: DN_0090_50_terminal_server_security_layer_detected_an_error
+author: '@atc_project'
 description: >
   The RDP protocol component <component> detected an error in the 
   protocol stream and has disconnected the client

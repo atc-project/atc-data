@@ -1,4 +1,5 @@
 title: LP_0000_some_name_here
+author: your name/nickname/twitter
 default: Not configured # Not configured | Partially (Success) | Partially (Failure) | Partially (Other) | Configured
 volume: Low             # Low | Medium | High | Extremely High
 description: >

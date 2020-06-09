@@ -1,4 +1,5 @@
 title: DN_0086_4720_user_account_was_created
+author: '@atc_project'
 description: A user account was created
 loggingpolicy: 
   - LP_0026_windows_audit_user_account_management

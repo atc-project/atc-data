@@ -1,4 +1,5 @@
 title: DN_0016_12_windows_sysmon_RegistryEvent
+author: '@atc_project'
 description: >
   Registry key and value create and delete operations map to this event type, 
   which can be useful for monitoring for changes to Registry autostart 

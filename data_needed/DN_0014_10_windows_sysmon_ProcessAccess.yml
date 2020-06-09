@@ -1,4 +1,5 @@
 title: DN_0014_10_windows_sysmon_ProcessAccess
+author: '@atc_project'
 description: >
   The process accessed event reports when a process opens another process, an 
   operation that’s often followed by information queries or reading and writing 

@@ -1,4 +1,5 @@
 title: DN_0083_16_access_history_in_hive_was_cleared
+author: '@atc_project'
 description: >
   The access history in hive was cleared updating X keys and creating Y modified pages
 loggingpolicy:

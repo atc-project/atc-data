@@ -1,4 +1,5 @@
 title: DN_0065_4701_scheduled_task_was_disabled
+author: '@atc_project'
 description: This event generates every time a scheduled task is disabled
 loggingpolicy: 
   - LP_0041_windows_audit_other_object_access_events

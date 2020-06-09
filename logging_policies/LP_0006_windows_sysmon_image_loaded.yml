@@ -1,4 +1,5 @@
 title: LP_0006_windows_sysmon_image_loaded
+author: '@atc_project'
 default: Not configured
 volume: High
 description: >

@@ -1,4 +1,5 @@
 title: LP_0009_windows_sysmon_PipeEvent
+author: '@atc_project'
 default: Not configured
 volume: Low
 description: >

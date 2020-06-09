@@ -1,4 +1,5 @@
 title: DN_0031_7036_service_started_stopped
+author: '@atc_project'
 description: >
   Service entered the running/stopped state
 loggingpolicy: 

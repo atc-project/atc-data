@@ -1,4 +1,5 @@
 title: DN_0008_4_windows_sysmon_sysmon_service_state_changed
+author: '@atc_project'
 description: >
   Sysmon service changed status
 loggingpolicy: 

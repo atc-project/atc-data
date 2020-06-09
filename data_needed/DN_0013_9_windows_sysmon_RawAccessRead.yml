@@ -1,4 +1,5 @@
 title: DN_0013_9_windows_sysmon_RawAccessRead
+author: '@atc_project'
 description: >
   The RawAccessRead event detects when a process conducts reading operations 
   from the drive using the \\.\ denotation

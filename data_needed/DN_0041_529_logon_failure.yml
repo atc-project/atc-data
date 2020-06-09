@@ -1,4 +1,5 @@
 title: DN_0041_529_logon_failure
+author: '@atc_project'
 description: Logon Failure - Unknown user name or bad password
 loggingpolicy: 
   - LP_0004_windows_audit_logon

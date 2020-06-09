@@ -1,4 +1,5 @@
 title: LP_0032_linux_auditd_read_access_to_file
+author: '@atc_project'
 default: Not configured
 volume: Medium # Low to high, depend on files tracked
 description: >

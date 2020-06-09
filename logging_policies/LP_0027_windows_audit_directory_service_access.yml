@@ -1,4 +1,5 @@
 title: LP_0027_windows_audit_directory_service_access
+author: '@atc_project'
 default: Not configured
 volume: High # on domain controllers
 description: >

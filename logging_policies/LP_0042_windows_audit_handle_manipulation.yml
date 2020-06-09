@@ -1,4 +1,5 @@
 title: LP_0042_windows_audit_handle_manipulation
+author: '@atc_project'
 default: Not configured
 volume: High     # depending on how SACLs are configured
 description: >

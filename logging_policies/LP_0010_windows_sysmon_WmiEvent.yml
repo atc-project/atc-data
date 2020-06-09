@@ -1,4 +1,5 @@
 title: LP_0010_windows_sysmon_WmiEvent
+author: '@atc_project'
 default: Not configured
 volume: Low
 description: >

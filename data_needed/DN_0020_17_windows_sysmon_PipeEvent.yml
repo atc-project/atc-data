@@ -1,4 +1,5 @@
 title: DN_0020_17_windows_sysmon_PipeEvent
+author: '@atc_project'
 description: >
   This event generates when a named pipe is created. Malware often uses named 
   pipes for interprocess communication

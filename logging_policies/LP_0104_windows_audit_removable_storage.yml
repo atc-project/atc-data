@@ -1,4 +1,5 @@
 title: LP_0104_windows_audit_removable_storage
+author: '@atc_project'
 default: Configured
 volume: Medium # depends on use
 description: >

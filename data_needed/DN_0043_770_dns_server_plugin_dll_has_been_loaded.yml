@@ -1,4 +1,5 @@
 title: DN_0043_770_dns_server_plugin_dll_has_been_loaded
+author: '@atc_project'
 description: Windows DNS server plug-in DLL has been loaded
 loggingpolicy:
   - None

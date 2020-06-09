@@ -1,4 +1,5 @@
 title: DN_0076_4768_kerberos_authentication_ticket_was_requested
+author: '@atc_project'
 description: >
   This event generates every time Key Distribution Center issues a 
   Kerberos Ticket Granting Ticket (TGT). This event generates only 

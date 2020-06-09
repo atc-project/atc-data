@@ -1,4 +1,5 @@
 title: DN_0087_5156_windows_filtering_platform_has_permitted_connection
+author: '@atc_project'
 description: The Windows Filtering Platform has permitted a connection
 loggingpolicy: 
   - LP_0045_windows_audit_filtering_platform_connection

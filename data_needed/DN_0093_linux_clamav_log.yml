@@ -1,4 +1,5 @@
 title: DN_0093_linux_clamav_log
+author: '@atc_project'
 description: >
   Linux ClamAV anti-virus logs
 loggingpolicy:

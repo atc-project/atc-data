@@ -1,4 +1,5 @@
 title: LP_0005_windows_sysmon_network_connection
+author: '@atc_project'
 default: Not configured
 volume: High
 description: >

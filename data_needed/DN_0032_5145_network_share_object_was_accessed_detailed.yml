@@ -1,4 +1,5 @@
 title: DN_0032_5145_network_share_object_was_accessed_detailed
+author: '@atc_project'
 description: >
   Network share object (file or folder) was accessed. Detailed log with 
   AccessReason and RelativeTargetName

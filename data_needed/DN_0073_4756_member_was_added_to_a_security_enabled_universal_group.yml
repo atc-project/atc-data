@@ -1,4 +1,5 @@
 title: DN_0073_4756_member_was_added_to_a_security_enabled_universal_group
+author: '@atc_project'
 description: Member was added to a security-enabled universal group
 loggingpolicy: 
   - LP_0101_windows_audit_security_group_management

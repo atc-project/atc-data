@@ -1,4 +1,5 @@
 title: DN_0034_104_log_file_was_cleared
+author: '@atc_project'
 description: >
   Windows log file was cleared
 loggingpolicy:

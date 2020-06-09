@@ -1,4 +1,5 @@
 title: DN_0042_675_kerberos_preauthentication_failed
+author: '@atc_project'
 description: Kerberos pre-authentication failed
 loggingpolicy: 
   - LP_0004_windows_audit_logon

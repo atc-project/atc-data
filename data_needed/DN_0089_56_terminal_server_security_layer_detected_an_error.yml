@@ -1,4 +1,5 @@
 title: DN_0089_56_terminal_server_security_layer_detected_an_error
+author: '@atc_project'
 description: >
   The Terminal Server security layer detected an error in the 
   protocol stream and has disconnected the client

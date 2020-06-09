@@ -1,4 +1,5 @@
 title: LP_0046_windows_audit_security_state_change
+author: '@atc_project'
 default: Configured
 volume: Low
 description: >

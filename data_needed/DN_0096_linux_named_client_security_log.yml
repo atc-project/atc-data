@@ -1,4 +1,5 @@
 title: DN_0096_linux_named_client_security_log
+author: '@atc_project'
 description: >
   Linux named (BIND) messages relating to client access and security
 loggingpolicy:

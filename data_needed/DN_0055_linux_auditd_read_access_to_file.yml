@@ -1,4 +1,5 @@
 title: DN_0055_linux_auditd_read_access_to_file
+author: '@atc_project'
 description: >
   Linux auditd log of read access to file
 loggingpolicy:

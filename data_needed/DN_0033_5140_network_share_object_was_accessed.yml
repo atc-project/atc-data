@@ -1,4 +1,5 @@
 title: DN_0033_5140_network_share_object_was_accessed
+author: '@atc_project'
 description: >
   Network share object (file or folder) was accessed
 loggingpolicy: 

@@ -1,4 +1,5 @@
 title: DN_0050_1102_audit_log_was_cleared
+author: '@atc_project'
 description: >
   Event 1102 is created whenever the Security log is cleared, 
   REGARDLESS of the status of the Audit System Events audit policy

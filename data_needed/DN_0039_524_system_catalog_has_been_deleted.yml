@@ -1,4 +1,5 @@
 title: DN_0039_524_system_catalog_has_been_deleted
+author: '@atc_project'
 description: The System Catalog has been deleted
 loggingpolicy: 
   - None

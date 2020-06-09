@@ -1,4 +1,5 @@
 title: DN_0044_1000_application_crashed
+author: '@atc_project'
 description: >
   This is a very generic error and it doesn't tell much about what caused it. Some applications may fail with this error when the system is left unstable by another faulty program.
 loggingpolicy:

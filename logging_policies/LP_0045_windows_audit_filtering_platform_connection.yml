@@ -1,4 +1,5 @@
 title: LP_0045_windows_audit_filtering_platform_connection
+author: '@atc_project'
 default: Not configured
 volume: Extremely High # be careful with this policy, it requires extra filtering. take a look into list of events ("S" for succuss and "F" for failure) to make sure you are enabling only what is needed
 description: >

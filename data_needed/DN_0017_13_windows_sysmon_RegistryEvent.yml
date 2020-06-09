@@ -1,4 +1,5 @@
 title: DN_0017_13_windows_sysmon_RegistryEvent
+author: '@atc_project'
 description: >
   This Registry event type identifies Registry value modifications. The event 
   records the value written for Registry values of type DWORD and QWORD

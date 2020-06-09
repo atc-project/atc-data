@@ -1,4 +1,5 @@
 title: DN_0023_20_windows_sysmon_WmiEvent
+author: '@atc_project'
 description: >
   This event logs the registration of WMI consumers, recording the consumer 
   name, log, and destination

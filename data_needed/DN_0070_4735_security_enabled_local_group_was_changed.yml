@@ -1,4 +1,5 @@
 title: DN_0070_4735_security_enabled_local_group_was_changed
+author: '@atc_project'
 description: >
   This event generates every time a security-enabled (security) local group is changed.
   This event generates on domain controllers, member servers, and workstations

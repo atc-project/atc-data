@@ -1,4 +1,5 @@
 title: DN_0067_4719_system_audit_policy_was_changed
+author: '@atc_project'
 description: >
   This event generates when the computer's audit policy changes.
   This event is always logged regardless of the "Audit Policy Change" 

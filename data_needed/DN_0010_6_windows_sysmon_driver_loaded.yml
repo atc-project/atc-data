@@ -1,4 +1,5 @@
 title: DN_0010_6_windows_sysmon_driver_loaded
+author: '@atc_project'
 description: >
   The driver loaded events provides information about a driver being loaded on 
   the system. The configured hashes are provided as well as signature 

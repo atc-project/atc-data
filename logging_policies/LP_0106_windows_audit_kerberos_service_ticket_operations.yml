@@ -1,4 +1,5 @@
 title: LP_0106_windows_audit_kerberos_service_ticket_operations
+author: '@atc_project'
 default: Partially (Other) # Success on Servers. Not enabled on clients
 volume: Extremely High # on Kerberos Key Distribution Center servers
 description: >

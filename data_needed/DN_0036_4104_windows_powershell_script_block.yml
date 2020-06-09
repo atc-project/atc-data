@@ -1,4 +1,5 @@
 title: DN_0036_4104_windows_powershell_script_block
+author: '@atc_project'
 description: >
   This event records script
 loggingpolicy: 

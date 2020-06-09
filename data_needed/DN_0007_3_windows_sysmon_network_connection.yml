@@ -1,4 +1,5 @@
 title: DN_0007_3_windows_sysmon_network_connection
+author: '@atc_project'
 description: >
   TCP/UDP connections made by a process
 loggingpolicy: 

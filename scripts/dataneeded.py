@@ -21,6 +21,7 @@ class DataNeeded:
 
         # Init vars (unnecessary?)
         self.title = None
+        self.author = None
         self.description = None
         self.loggingpolicy = None
         self.platform = None
@@ -51,6 +52,7 @@ class DataNeeded:
 
         """Fill the fields with values. Put None if key not found"""
         self.title = self.dn_fields.get("title")
+        self.author = self.dn_fields.get("author")
         self.description = self.dn_fields.get("description")
         self.loggingpolicy = self.dn_fields.get("loggingpolicy")
         self.mitigation_policy = self.dn_fields.get("mitigation_policy")

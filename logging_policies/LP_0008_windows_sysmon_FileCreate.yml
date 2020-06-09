@@ -1,4 +1,5 @@
 title: LP_0008_windows_sysmon_FileCreate
+author: '@atc_project'
 default: Partially (Other)
 volume: High
 description: >

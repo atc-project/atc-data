@@ -1,4 +1,5 @@
 title: DN_0012_8_windows_sysmon_CreateRemoteThread
+author: '@atc_project'
 description: >
   The CreateRemoteThread event detects when a process creates a thread in 
   another process

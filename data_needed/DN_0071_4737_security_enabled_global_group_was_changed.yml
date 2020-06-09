@@ -1,4 +1,5 @@
 title: DN_0071_4737_security_enabled_global_group_was_changed
+author: '@atc_project'
 description: Security-enabled global group was changed
 loggingpolicy: 
   - LP_0101_windows_audit_security_group_management

@@ -1,4 +1,5 @@
 title: DN_0081_5861_wmi_activity
+author: '@atc_project'
 description: >
   WMI Event which provide ability to catch Timer-based WMI Events and provide 
   usefult information for identification of suspicious WMI activity

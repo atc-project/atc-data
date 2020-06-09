@@ -1,4 +1,5 @@
 title: DN_0053_2100_pnp_or_power_operation_for_usb_device
+author: '@atc_project'
 description: Received a Pnp or Power operation for USB device
 loggingpolicy: 
   - None

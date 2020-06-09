@@ -1,4 +1,5 @@
 title: DN_0056_linux_auditd_syscall
+author: '@atc_project'
 description: >
   Linux auditd log of specific system call (syscall)
 loggingpolicy:

@@ -1,4 +1,5 @@
 title: LP_0044_windows_ntlm_audit
+author: '@atc_project'
 default: Not configured
 volume: High # depends on configuration and NTLM use in domain
 description: >

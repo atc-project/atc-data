@@ -1,4 +1,5 @@
 title: DN_0082_8002_ntlm_server_blocked_audit
+author: '@atc_project'
 description: >
   NTLM server blocked audit: Audit Incoming NTLM Traffic that would be blocked. Actually it's just event about NTLM authentication, it doesn't necessary supposed to be blocked. Blocked NTLM auth is the same provider but Event ID 4002
 loggingpolicy:

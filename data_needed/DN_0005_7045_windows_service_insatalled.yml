@@ -1,4 +1,5 @@
 title: DN_0005_7045_windows_service_insatalled
+author: '@atc_project'
 description: >
   A service was installed in the system
 loggingpolicy: 

@@ -1,4 +1,5 @@
 title: DN_0068_4728_member_was_added_to_security_enabled_global_group
+author: '@atc_project'
 description: Member was added to a security-enabled global group
 loggingpolicy: 
   - LP_0101_windows_audit_security_group_management

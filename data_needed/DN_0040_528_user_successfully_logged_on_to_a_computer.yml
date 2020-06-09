@@ -1,4 +1,5 @@
 title: DN_0040_528_user_successfully_logged_on_to_a_computer
+author: '@atc_project'
 description: User successfully logged on to a computer
 loggingpolicy: 
   - LP_0004_windows_audit_logon

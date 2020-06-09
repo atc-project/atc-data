@@ -1,4 +1,5 @@
 title: LP_0034_linux_named_client_security_log
+author: '@atc_project'
 default: Not configured
 volume: Low
 description: >

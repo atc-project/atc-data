@@ -4,7 +4,7 @@ from scripts.atcutils import ATCutils
 
 from scripts.populatemarkdown import DataPopulateMarkdown
 from scripts.populateconfluence import DataPopulateConfluence
-#from scripts.yamls2csv import GenerateCSV
+from scripts.yamls2csv import GenerateCSV
 
 # For confluence
 from requests.auth import HTTPBasicAuth
@@ -32,6 +32,8 @@ if __name__ == '__main__':
                        help='Export analytics to Confluence')
     group.add_argument('-M', '--markdown', action='store_true',
                        help='Export analytics to Markdown repository')
+    group.add_argument('-Y2C', '--yaml-to-csv', action='store_true',
+                       help='Generate a CSV file out of yaml files')
 
 
     # Mutually exclusive group for chosing type of data
@@ -68,3 +70,6 @@ if __name__ == '__main__':
         DataPopulateConfluence(auth=auth, auto=args.auto, lp=args.loggingpolicy,
                            dn=args.dataneeded,en=args.enrichment,
                            init=args.init)
+
+    elif args.yaml_to_csv:
+        GenerateCSV()

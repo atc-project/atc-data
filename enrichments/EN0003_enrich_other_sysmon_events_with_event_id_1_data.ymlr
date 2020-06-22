@@ -1,4 +1,4 @@
-title: EN0003_enrich_other_sysmon_events_with_event_id_1_data
+title: EN_0003_enrich_other_sysmon_events_with_event_id_1_data
 description: >
   Enrich other Sysmon Events with data from Events ID 1 (Process Create) 
   — Integrity Level, User, Parent Image and CommandLine fields.
@@ -21,7 +21,7 @@ references:
   - https://www.slideshare.net/heirhabarov/hunting-for-privilege-escalation-in-windows-environment
 author: Teymur Kheirkhabarov
 requirements:
-  - EN0001_cache_sysmon_event_id_1_info
+  - EN_0001_cache_sysmon_event_id_1_info
 new_fields:
   - event_data.IntegrityLevel  # redundant
   - event_data.User            # redundant

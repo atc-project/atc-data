@@ -1,4 +1,4 @@
-title: EN0004_enrich_sysmon_event_id_11_with_TargetFilePathFingerprint
+title: EN_0004_enrich_sysmon_event_id_11_with_TargetFilePathFingerprint
 description: >
   Enrich Sysmon Event ID 11 (File Create) calculating TargetFilePathFingerprint 
 data_needed:

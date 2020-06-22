@@ -1,4 +1,4 @@
-title: EN0001_cache_sysmon_event_id_1_info
+title: EN_0001_cache_sysmon_event_id_1_info
 description: >
   Cache Sysmon Event ID 1 (Process Create) data for further enrichments.
 data_needed:

@@ -1,4 +1,4 @@
-title: EN0005_cache_TargetFilePathFingerprint_from_enriched_sysmon_event_id_11
+title: EN_0005_cache_TargetFilePathFingerprint_from_enriched_sysmon_event_id_11
 description: >
   Cache field "TargetFilePathFingerprint" from enriched Sysmon Event ID 11 (File Create).
 data_needed:
@@ -7,7 +7,7 @@ references:
   - https://www.slideshare.net/heirhabarov/hunting-for-privilege-escalation-in-windows-environment
 author: Teymur Kheirkhabarov
 requirements:
-  - EN0004_enrich_sysmon_event_id_11_with_TargetFilePathFingerprint
+  - EN_0004_enrich_sysmon_event_id_11_with_TargetFilePathFingerprint
 config: |
   We can use Logstash to cache data in Memcached. 
   Here is the config example:

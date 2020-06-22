@@ -34,7 +34,7 @@ nav:
 {%- if logging_policy_list is not none and logging_policy_list|length -%}
     {{'\n'}}        - Logging Policy:
     {%- for logging_policy_title, logging_policy_path in logging_policy_list -%}
-        {{'\n'}}            - "{{logging_policy_title}}": ./Logging_Policy/{{logging_policy_path}}.md
+        {{'\n'}}            - "{{logging_policy_title}}": ./Logging_Policies/{{logging_policy_path}}.md
     {%- endfor -%}
 {%- endif -%}
 {%- if enrichment_list is not none and enrichment_list|length -%}

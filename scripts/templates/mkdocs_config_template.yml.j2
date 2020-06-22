@@ -26,20 +26,20 @@ nav:
         - ATC DATA (RU): index_RU.md
     - ATC DATA:
 {%- if data_needed_list is not none and data_needed_list|length -%}
-    {{'\n'}}    - Data Needed:
+    {{'\n'}}        - Data Needed:
     {%- for data_needed_title, data_needed_path in data_needed_list -%}
-        {{'\n'}}        - "{{data_needed_title}}": ./Data_Needed/{{data_needed_path}}.md
+        {{'\n'}}            - "{{data_needed_title}}": ./Data_Needed/{{data_needed_path}}.md
     {%- endfor -%}
 {%- endif -%}
 {%- if logging_policy_list is not none and logging_policy_list|length -%}
-    {{'\n'}}    - Logging Policy:
+    {{'\n'}}        - Logging Policy:
     {%- for logging_policy_title, logging_policy_path in logging_policy_list -%}
-        {{'\n'}}        - "{{logging_policy_title}}": ./Logging_Policy/{{logging_policy_path}}.md
+        {{'\n'}}            - "{{logging_policy_title}}": ./Logging_Policy/{{logging_policy_path}}.md
     {%- endfor -%}
 {%- endif -%}
 {%- if enrichment_list is not none and enrichment_list|length -%}
-    {{'\n'}}    - Enrichments:
+    {{'\n'}}        - Enrichments:
     {%- for enrichment_title, enrichment_path in enrichment_list -%}
-        {{'\n'}}        - "{{enrichment_title}}": ./Enrichments/{{enrichment_path}}.md
+        {{'\n'}}            - "{{enrichment_title}}": ./Enrichments/{{enrichment_path}}.md
     {%- endfor -%}
 {%- endif -%}

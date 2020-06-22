@@ -117,7 +117,7 @@ class DataPopulateMarkdown:
         if en_path:
             en_list = glob.glob(en_path + '*.yml')
         else:
-            en_dir = ATCconfig.get('enrichments_directory')
+            en_dir = ATCconfig.get('enrichments_dir')
             en_list = glob.glob(en_dir + '/*.yml')
 
         for en_file in en_list:

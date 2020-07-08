@@ -13,9 +13,9 @@ from pdb import set_trace as bp
 ATCconfig = ATCutils.load_config("config.yml")
 
 try:
-    env = Environment(loader=FileSystemLoader('scripts/templates'))
-except:
     env = Environment(loader=FileSystemLoader('data/atc_data/scripts/templates'))
+except:
+    env = Environment(loader=FileSystemLoader('scripts/templates'))
 
 class LoggingPolicy:
     """Class for the Logging Policy entity"""

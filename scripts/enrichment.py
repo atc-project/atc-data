@@ -11,7 +11,11 @@ import os
 
 ATCconfig = ATCutils.load_config("config.yml")
 
-env = Environment(loader=FileSystemLoader('scripts/templates'))
+try:
+    env = Environment(loader=FileSystemLoader('scripts/templates'))
+except:
+    env = Environment(loader=FileSystemLoader('data/atc_data/scripts/templates'))
+
 
 class Enrichment:
     """Class for the Enrichments entity"""

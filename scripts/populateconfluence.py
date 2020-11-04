@@ -5,14 +5,14 @@ try:
     from scripts.dataneeded import DataNeeded
     from scripts.loggingpolicy import LoggingPolicy
     from scripts.enrichment import Enrichment
+    from scripts.datautils import DATAutils
+    from scripts.init_confluence import main as init_main
 except:
     from data.atc_data.scripts.dataneeded import DataNeeded
     from data.atc_data.scripts.loggingpolicy import LoggingPolicy
     from data.atc_data.scripts.enrichment import Enrichment
-
-# Import ATC Utils
-from scripts.atcutils import ATCutils
-from scripts.init_confluence import main as init_main
+    from data.atc_data.scripts.datautils import DATAutils
+    from data.atc_data.scripts.init_confluence import main as init_main
 
 # Others
 import glob
@@ -20,7 +20,7 @@ import sys
 import traceback
 import os
 
-ATCconfig = ATCutils.load_config("config.yml")
+ATCconfig = DATAutils.load_config("config.yml")
 
 
 class DataPopulateConfluence:
@@ -84,13 +84,13 @@ class DataPopulateConfluence:
                 confluence_data = {
                     "title": lp.fields["title"],
                     "spacekey": self.space,
-                    "parentid": str(ATCutils.confluence_get_page_id(
+                    "parentid": str(DATAutils.confluence_get_page_id(
                         self.apipath, self.auth, self.space,
                         "Logging Policies")),
                     "confluencecontent": lp.content,
                 }
 
-                res = ATCutils.push_to_confluence(confluence_data, self.apipath,
+                res = DATAutils.push_to_confluence(confluence_data, self.apipath,
                                             self.auth)
                 if res == 'Page updated':
             	    print("==> updated page: LP '" + lp.fields['title'] + "'")
@@ -121,12 +121,12 @@ class DataPopulateConfluence:
                 confluence_data = {
                     "title": dn.dn_fields["title"],
                     "spacekey": self.space,
-                    "parentid": str(ATCutils.confluence_get_page_id(
+                    "parentid": str(DATAutils.confluence_get_page_id(
                         self.apipath, self.auth, self.space, "Data Needed")),
                     "confluencecontent": dn.content,
                 }
 
-                res = ATCutils.push_to_confluence(confluence_data, self.apipath,
+                res = DATAutils.push_to_confluence(confluence_data, self.apipath,
                                             self.auth)
                 if res == 'Page updated':
             	    print("==> updated page: DN '" + dn.dn_fields['title'] + "'")
@@ -146,7 +146,7 @@ class DataPopulateConfluence:
         if en_path:
             en_list = glob.glob(en_path + '*.yml')
         else:
-            en_dir = ATCconfig.get('enrichments_directory')
+            en_dir = ATCconfig.get('enrichments_dir')
             en_list = glob.glob(en_dir + '/*.yml')
 
         for en_file in en_list:
@@ -158,12 +158,12 @@ class DataPopulateConfluence:
                 confluence_data = {
                     "title": en.en_parsed_file['title'],
                     "spacekey": self.space,
-                    "parentid": str(ATCutils.confluence_get_page_id(
+                    "parentid": str(DATAutils.confluence_get_page_id(
                         self.apipath, self.auth, self.space,
                         "Enrichments")), "confluencecontent": en.content,
                 }
 
-                res = ATCutils.push_to_confluence(confluence_data, self.apipath,
+                res = DATAutils.push_to_confluence(confluence_data, self.apipath,
                                             self.auth)
                 if res == 'Page updated':
             	    print("==> updated page: EN '" + en.en_parsed_file['title'] + "'")

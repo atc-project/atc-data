@@ -5,8 +5,8 @@ from scripts.dataneeded import DataNeeded
 from scripts.loggingpolicy import LoggingPolicy
 from scripts.enrichment import Enrichment
 
-# Import ATC Utils
-from scripts.atcutils import ATCutils
+# Import ATC Data Utils
+from scripts.datautils import DATAutils
 
 # Others
 import glob
@@ -15,7 +15,7 @@ import sys
 from jinja2 import Environment, FileSystemLoader
 
 
-ATCconfig = ATCutils.load_config("config.yml")
+ATCconfig = DATAutils.load_config("config.yml")
 
 class GenerateMkdocs:
     """Class for populating mkdocs config file (navigation)"""
@@ -33,19 +33,19 @@ class GenerateMkdocs:
         # Main logic
 
         if dn_path:
-            dns, dn_paths = ATCutils.load_yamls_with_paths(dn_path)
+            dns, dn_paths = DATAutils.load_yamls_with_paths(dn_path)
         else:
-            dns, dn_paths = ATCutils.load_yamls_with_paths(ATCconfig.get('data_needed_dir'))
+            dns, dn_paths = DATAutils.load_yamls_with_paths(ATCconfig.get('data_needed_dir'))
 
         if lp_path:
-            lps, lp_paths = ATCutils.load_yamls_with_paths(lp_path)
+            lps, lp_paths = DATAutils.load_yamls_with_paths(lp_path)
         else:
-            lps, lp_paths = ATCutils.load_yamls_with_paths(ATCconfig.get('logging_policies_dir'))
+            lps, lp_paths = DATAutils.load_yamls_with_paths(ATCconfig.get('logging_policies_dir'))
 
         if en_path:
-            ens, en_paths = ATCutils.load_yamls_with_paths(en_path)
+            ens, en_paths = DATAutils.load_yamls_with_paths(en_path)
         else:
-            ens, en_paths = ATCutils.load_yamls_with_paths(ATCconfig.get('enrichments_dir'))
+            ens, en_paths = DATAutils.load_yamls_with_paths(ATCconfig.get('enrichments_dir'))
 
 
         dn_filenames = [dn_path.split('/')[-1].replace('.yml', '') for dn_path in dn_paths]
@@ -90,7 +90,7 @@ class GenerateMkdocs:
         
         content = template.render(data_to_render)
         try:
-            ATCutils.write_file('mkdocs.yml', content)
+            DATAutils.write_file('mkdocs.yml', content)
             print("[+] Created mkdocs.yml")
         except:
             print("[-] Failed to create mkdocs.yml")

@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
 
-from scripts.atcutils import ATCutils
-
 from jinja2 import Environment, FileSystemLoader
 import os
+
+
+try:
+    from scripts.datautils import DATAutils
+    env = Environment(loader=FileSystemLoader('scripts/templates'))
+except:
+    from data.atc_data.scripts.datautils import DATAutils
+    env = Environment(loader=FileSystemLoader('data/atc_data/scripts/templates'))
+
 
 ###############################################################################
 ############################# Data Needed #####################################
 ###############################################################################
 
-ATCconfig = ATCutils.load_config("config.yml")
-
-try:
-    env = Environment(loader=FileSystemLoader('data/atc_data/scripts/templates'))
-except:
-    env = Environment(loader=FileSystemLoader('scripts/templates'))
-
+ATCconfig = DATAutils.load_config("config.yml")
 
 class DataNeeded:
     """Class for the Data Needed entity"""
@@ -52,7 +53,7 @@ class DataNeeded:
         """Description"""
 
         # self.dn_fields contains parsed fields obtained from yaml file
-        self.dn_fields = ATCutils.read_yaml_file(yaml_file)
+        self.dn_fields = DATAutils.read_yaml_file(yaml_file)
 
         """Fill the fields with values. Put None if key not found"""
         self.title = self.dn_fields.get("title")
@@ -125,7 +126,7 @@ class DataNeeded:
 
             for lp in logging_policies:
                 if lp != "None" and self.apipath and self.auth and self.space:
-                    logging_policies_id = str(ATCutils.confluence_get_page_id(
+                    logging_policies_id = str(DATAutils.confluence_get_page_id(
                         self.apipath, self.auth, self.space, lp))
                 else:
                     logging_policies_id = ""
@@ -144,7 +145,7 @@ class DataNeeded:
 
             for mp in mitigation_policies:
                 if mp != "None" and self.apipath and self.auth and self.space:
-                    mitigation_policies_id = str(ATCutils.confluence_get_page_id(
+                    mitigation_policies_id = str(DATAutils.confluence_get_page_id(
                         self.apipath, self.auth, self.space, mp))
                 else:
                     mitigation_policies_id = ""
@@ -173,4 +174,4 @@ class DataNeeded:
         file_path = atc_dir + self.parent_title + "/" + \
             title + ".md"
 
-        return ATCutils.write_file(file_path, self.content)
+        return DATAutils.write_file(file_path, self.content)

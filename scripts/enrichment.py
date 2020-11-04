@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
 
-from scripts.atcutils import ATCutils
-
 from jinja2 import Environment, FileSystemLoader
 import os
+
+try:
+    from scripts.datautils import DATAutils
+    env = Environment(loader=FileSystemLoader('scripts/templates'))
+except:
+    from data.atc_data.scripts.datautils import DATAutils
+    env = Environment(loader=FileSystemLoader('data/atc_data/scripts/templates'))
+
 
 # ########################################################################### #
 # ########################### Enrichments ################################### #
 # ########################################################################### #
 
-ATCconfig = ATCutils.load_config("config.yml")
+ATCconfig = DATAutils.load_config("config.yml")
 
-try:
-    env = Environment(loader=FileSystemLoader('data/atc_data/scripts/templates'))
-except:
-    env = Environment(loader=FileSystemLoader('scripts/templates'))
 
 class Enrichment:
     """Class for the Enrichments entity"""
@@ -37,7 +39,7 @@ class Enrichment:
     def parse_into_fields(self, yaml_file):
         """Description"""
 
-        self.en_parsed_file = ATCutils.read_yaml_file(yaml_file)
+        self.en_parsed_file = DATAutils.read_yaml_file(yaml_file)
 
     def render_template(self, template_type):
         """Description
@@ -71,7 +73,7 @@ class Enrichment:
             if data_needed:
                 data_needed_with_id = []
                 for dn in data_needed:
-                    data_needed_id = str(ATCutils.confluence_get_page_id(
+                    data_needed_id = str(DATAutils.confluence_get_page_id(
                         self.apipath, self.auth, self.space, dn)
                     )
                     dn = (dn, data_needed_id)
@@ -85,7 +87,7 @@ class Enrichment:
             if data_to_enrich:
                 data_to_enrich_with_id = []
                 for de in data_to_enrich:
-                    data_to_enrich_id = str(ATCutils.confluence_get_page_id(
+                    data_to_enrich_id = str(DATAutils.confluence_get_page_id(
                         self.apipath, self.auth, self.space, de)
                     )
                     de = (de, data_to_enrich_id)
@@ -99,7 +101,7 @@ class Enrichment:
             if requirements:
                 requirements_with_id = []
                 for req in requirements:
-                    requirements_id = str(ATCutils.confluence_get_page_id(
+                    requirements_id = str(DATAutils.confluence_get_page_id(
                         self.apipath, self.auth, self.space, req)
                     )
                     req = (req, requirements_id)
@@ -125,4 +127,4 @@ class Enrichment:
         file_path = atc_dir + self.parent_title + "/" + \
             title + ".md"
 
-        return ATCutils.write_file(file_path, self.content)
+        return DATAutils.write_file(file_path, self.content)

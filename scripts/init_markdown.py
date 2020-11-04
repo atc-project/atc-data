@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-from scripts.atcutils import ATCutils
+from scripts.datautils import DATAutils
 
 from pathlib import Path
 
 
 def create_markdown_dirs():
-    config = ATCutils.load_config('config.yml')
+    config = DATAutils.load_config('config.yml')
     base_dir = Path(config.get(
         'md_name_of_root_directory',
         '../Atomic_Threat_Coverage'

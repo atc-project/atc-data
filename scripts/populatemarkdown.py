@@ -5,15 +5,14 @@ try:
     from scripts.dataneeded import DataNeeded
     from scripts.loggingpolicy import LoggingPolicy
     from scripts.enrichment import Enrichment
+    from scripts.datautils import DATAutils
+    from scripts.init_markdown import create_markdown_dirs
 except:
     from data.atc_data.scripts.dataneeded import DataNeeded
     from data.atc_data.scripts.loggingpolicy import LoggingPolicy
     from data.atc_data.scripts.enrichment import Enrichment
-
-
-# Import ATC Utils
-from scripts.atcutils import ATCutils
-from scripts.init_markdown import create_markdown_dirs
+    from data.atc_data.scripts.datautils import DATAutils
+    from data.atc_data.scripts.init_markdown import create_markdown_dirs
 
 # Others
 import glob
@@ -21,7 +20,7 @@ import traceback
 import sys
 import subprocess
 
-ATCconfig = ATCutils.load_config("config.yml")
+ATCconfig = DATAutils.load_config("config.yml")
 
 
 class DataPopulateMarkdown:

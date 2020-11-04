@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
 
-from scripts.atcutils import ATCutils
-
 from jinja2 import Environment, FileSystemLoader
 import os
 from pdb import set_trace as bp
+
+# Import ATC classes
+try:
+    from scripts.datautils import DATAutils
+    env = Environment(loader=FileSystemLoader('scripts/templates'))
+except:
+    from data.atc_data.scripts.datautils import DATAutils
+    env = Environment(loader=FileSystemLoader('data/atc_data/scripts/templates'))
+
 
 # ########################################################################### #
 # ########################### Logging Policy ################################ #
 # ########################################################################### #
 
-ATCconfig = ATCutils.load_config("config.yml")
+ATCconfig = DATAutils.load_config("config.yml")
 
-try:
-    env = Environment(loader=FileSystemLoader('data/atc_data/scripts/templates'))
-except:
-    env = Environment(loader=FileSystemLoader('scripts/templates'))
 
 class LoggingPolicy:
     """Class for the Logging Policy entity"""
@@ -35,7 +38,7 @@ class LoggingPolicy:
         """Description"""
 
         # self.fields contains parsed fields obtained from yaml file
-        self.fields = ATCutils.read_yaml_file(self.yaml_file)
+        self.fields = DATAutils.read_yaml_file(self.yaml_file)
 
     def render_template(self, template_type):
         """Description
@@ -77,4 +80,4 @@ class LoggingPolicy:
         file_path = atc_dir + self.parent_title + "/" + \
             title + ".md"
 
-        return ATCutils.write_file(file_path, self.content)
+        return DATAutils.write_file(file_path, self.content)

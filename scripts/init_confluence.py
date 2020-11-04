@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from scripts.atcutils import ATCutils
+from scripts.datautils import DATAutils
 
 from requests.auth import HTTPBasicAuth
 import getpass
@@ -9,7 +9,7 @@ import getpass
 def main(c_auth=None):
 
     try:
-        ATCconfig = ATCutils.load_config("config.yml")
+        ATCconfig = DATAutils.load_config("config.yml")
         confluence_space_name = ATCconfig.get('confluence_space_name')
         confluence_space_home_page_name = ATCconfig.get(
             'confluence_space_home_page_name')
@@ -36,13 +36,13 @@ def main(c_auth=None):
     data = {
         "title": confluence_name_of_root_directory,
         "spacekey": confluence_space_name,
-        "parentid": str(ATCutils.confluence_get_page_id(
+        "parentid": str(DATAutils.confluence_get_page_id(
             url, auth, confluence_space_name,
             confluence_space_home_page_name)),
         "confluencecontent": content,
     }
 
-    if not ATCutils.push_to_confluence(data, url, auth):
+    if not DATAutils.push_to_confluence(data, url, auth):
         raise Exception("[-] Could not create or update the page. " +
                         "Is the parent name correct?")
 
@@ -53,13 +53,13 @@ def main(c_auth=None):
         data = {
             "title": page,
             "spacekey": confluence_space_name,
-            "parentid": str(ATCutils.confluence_get_page_id(
+            "parentid": str(DATAutils.confluence_get_page_id(
                 url, auth, confluence_space_name,
                 confluence_name_of_root_directory)),
             "confluencecontent": content,
         }
 
-        if not ATCutils.push_to_confluence(data, url, auth):
+        if not DATAutils.push_to_confluence(data, url, auth):
             raise Exception("[-] Could not create or update the page. " +
                             "Is the parent name correct?")
     print("[+] Initial Confluence page structure created!")

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from scripts.atcutils import ATCutils
+from scripts.datautils import DATAutils
 from scripts.attack_mapping import te_mapping, ta_mapping
 from pathlib import Path
 
@@ -11,8 +11,7 @@ from os import listdir
 from os.path import isfile, join
 from yaml.scanner import ScannerError
 
-ATCconfig = ATCutils.read_yaml_file("config.yml")
-
+ATCconfig = DATAutils.load_config("config.yml")
 
 HELP_MESSAGE = """Usage: python3 yamls2csv.py [OPTIONS]\n\n\n
 \t\tPossible options are --detectionrules_path, --dataneeded_path
@@ -27,11 +26,11 @@ class GenerateCSV:
 
         dn_path = ATCconfig.get('data_needed_dir')
         lp_path = ATCconfig.get('logging_policies_dir')
-        en_path = ATCconfig.get('enrichments_directory')
+        en_path = ATCconfig.get('enrichments_dir')
 
-        dn_list = ATCutils.load_yamls(dn_path)
-        lp_list = ATCutils.load_yamls(lp_path)
-        enrichments_list = ATCutils.load_yamls(en_path)
+        dn_list = DATAutils.load_yamls(dn_path)
+        lp_list = DATAutils.load_yamls(lp_path)
+        enrichments_list = DATAutils.load_yamls(en_path)
 
         pivoting = []
         analytics = []

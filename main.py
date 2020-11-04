@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 
-from scripts.atcutils import ATCutils
+# Import ATC classes
+try:
+    from scripts.populatemarkdown import DataPopulateMarkdown
+    from scripts.populateconfluence import DataPopulateConfluence
+    from scripts.yamls2csv import GenerateCSV
+    from scripts.generate_mkdocs_config import GenerateMkdocs
+except:
+    from data.atc_data.scripts.populatemarkdown import DataPopulateMarkdown
+    from data.atc_data.scripts.populateconfluence import DataPopulateConfluence
+    from data.atc_data.scripts.yamls2csv import GenerateCSV
+    from data.atc_data.scripts.generate_mkdocs_config import GenerateMkdocs
 
-from scripts.populatemarkdown import DataPopulateMarkdown
-from scripts.populateconfluence import DataPopulateConfluence
-from scripts.yamls2csv import GenerateCSV
-from scripts.generate_mkdocs_config import GenerateMkdocs
 
 # For confluence
 from requests.auth import HTTPBasicAuth

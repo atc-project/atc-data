@@ -41,7 +41,7 @@ class DataPopulateMarkdown:
         # Check if init switch is used
         if init:
             if self.init_export():
-                print("[+] Created initial markdown directories successfully")
+                print("[+] Created initial DATA markdown directories successfully")
             else:
                 print("[-] Failed to create initial markdown directories")
                 raise Exception("Failed to markdown directories")

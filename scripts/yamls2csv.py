@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 
-from scripts.datautils import DATAutils
-from scripts.attack_mapping import te_mapping, ta_mapping
+# Import ATC classes
+try:
+    from scripts.datautils import DATAutils
+    from scripts.attack_mapping import te_mapping, ta_mapping
+except:
+    from data.atc_data.scripts.datautils import DATAutils
+    from data.atc_data.scripts.attack_mapping import te_mapping, ta_mapping
+
 from pathlib import Path
 
 import csv

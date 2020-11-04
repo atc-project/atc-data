@@ -9,7 +9,7 @@ description: >
   has expired, or the wrong password was provided. This event 
   generates only on domain controllers
 loggingpolicy: 
-  - LP0038_windows_audit_kerberos_authentication_service
+  - LP_0038_windows_audit_kerberos_authentication_service
 references: 
   - https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4771.md
 category: OS Logs

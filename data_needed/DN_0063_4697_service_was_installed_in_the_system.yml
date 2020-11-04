@@ -3,7 +3,7 @@ author: '@atc_project'
 description: >
   A service was installed in the system
 loggingpolicy: 
-  - LP0100_windows_audit_security_system_extension
+  - LP_0100_windows_audit_security_system_extension
 references: 
   - https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4697
 category: OS Logs

@@ -3,7 +3,7 @@ author: '@atc_project'
 description: >
   TCP/UDP connections made by a process
 loggingpolicy: 
-  - LP0005_windows_sysmon_network_connection
+  - LP_0005_windows_sysmon_network_connection
 references:
   - https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=90003
   - https://github.com/Cyb3rWard0g/OSSEM/blob/master/data_dictionaries/windows/sysmon/event-3.md

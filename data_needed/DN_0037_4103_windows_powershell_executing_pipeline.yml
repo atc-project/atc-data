@@ -3,7 +3,7 @@ author: '@atc_project'
 description: >
   This event records pipeline execution, including variable initialization and command command invocations.
 loggingpolicy: 
-  - LP0108_windows_powershell_module_logging
+  - LP_0108_windows_powershell_module_logging
 references:
   - https://github.com/Cyb3rWard0g/OSSEM/blob/master/data_dictionaries/windows/powershell/events/event-4103.md
 category: OS Logs

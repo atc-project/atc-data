@@ -9,10 +9,10 @@ description: >
   event is that 4663 shows that access right was used instead of just 
   requested and 4663 doesn’t have Failure events
 loggingpolicy: 
-  - LP0102_windows_audit_file_system
-  - LP0039_windows_audit_kernel_object
-  - LP0103_windows_audit_registry
-  - LP0104_windows_audit_removable_storage
+  - LP_0102_windows_audit_file_system
+  - LP_0039_windows_audit_kernel_object
+  - LP_0103_windows_audit_registry
+  - LP_0104_windows_audit_removable_storage
 references: 
   - https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4663.md
 category: OS Logs

@@ -2,7 +2,7 @@ title: DN_0088_4616_system_time_was_changed
 author: '@atc_project'
 description: The system time was changed
 loggingpolicy: 
-  - LP0046_windows_audit_security_state_change
+  - LP_0046_windows_audit_security_state_change
 references: 
   - https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4616
 category: OS Logs

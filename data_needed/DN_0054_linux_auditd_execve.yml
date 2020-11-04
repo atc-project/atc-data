@@ -4,7 +4,7 @@ description: >
   Linux auditd log of process (binary) execution (execeve syscall)
   with command line arguments
 loggingpolicy:
-  - LP0031_linux_auditd_execve
+  - LP_0031_linux_auditd_execve
 references:
   - https://github.com/linux-audit/audit-documentation
   - https://github.com/linux-audit/audit-documentation/blob/master/specs/fields/field-dictionary.csv

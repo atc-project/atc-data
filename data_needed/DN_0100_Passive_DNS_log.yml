@@ -3,7 +3,7 @@ author: '@atc_project'
 description: >
   Log from Passive DNS
 loggingpolicy:
-  - LP0048_Passive_DNS_logging
+  - LP_0048_Passive_DNS_logging
 references:
   - None
 category: DNS Logs

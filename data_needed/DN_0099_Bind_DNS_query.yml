@@ -3,7 +3,7 @@ author: '@atc_project'
 description: >
   DNS Query from BIND Server
 loggingpolicy:
-  - LP0047_BIND_DNS_queries
+  - LP_0047_BIND_DNS_queries
 references:
   - None
 category: DNS Logs

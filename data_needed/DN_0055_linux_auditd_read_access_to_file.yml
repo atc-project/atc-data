@@ -3,7 +3,7 @@ author: '@atc_project'
 description: >
   Linux auditd log of read access to file
 loggingpolicy:
-  - LP0034_linux_auditd_read_access_to_file
+  - LP_0034_linux_auditd_read_access_to_file
 references:
   - https://github.com/linux-audit/audit-documentation
   - https://github.com/linux-audit/audit-documentation/blob/master/specs/fields/field-dictionary.csv

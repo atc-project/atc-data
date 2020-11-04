@@ -7,10 +7,10 @@ description: >
   a Failure event is generated. This event generates only if the object’s 
   SACL has the required ACE to handle the use of specific access rights
 loggingpolicy: 
-  - LP0104_windows_audit_removable_storage
-  - LP0039_windows_audit_kernel_object
-  - LP0102_windows_audit_file_system
-  - LP0103_windows_audit_registry
+  - LP_0104_windows_audit_removable_storage
+  - LP_0039_windows_audit_kernel_object
+  - LP_0102_windows_audit_file_system
+  - LP_0103_windows_audit_registry
 references: 
   - https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4656.md
 category: OS Logs

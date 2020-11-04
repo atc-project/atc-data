@@ -3,7 +3,7 @@ author: '@atc_project'
 description: >
   An account failed to log on
 loggingpolicy:
-  - LP0004_windows_audit_logon
+  - LP_0004_windows_audit_logon
 references:
   - https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4625.md
 category: OS Logs

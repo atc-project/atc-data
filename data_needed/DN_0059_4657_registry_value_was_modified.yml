@@ -5,7 +5,7 @@ description: >
   when a registry key was modified. This event generates only if "Set Value" auditing 
   is set in registry key’s SACL
 loggingpolicy: 
-  - LP0103_windows_audit_registry
+  - LP_0103_windows_audit_registry
 references: 
   - https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4657.md
 category: OS Logs

@@ -2,7 +2,7 @@ title: DN_0086_4720_user_account_was_created
 author: '@atc_project'
 description: A user account was created
 loggingpolicy: 
-  - LP0026_windows_audit_user_account_management
+  - LP_0026_windows_audit_user_account_management
 references: 
   - https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4720.md
 category: OS Logs

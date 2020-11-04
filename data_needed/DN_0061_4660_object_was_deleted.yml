@@ -11,9 +11,9 @@ description: >
   "4663(S): An attempt was made to access an object" also generates 
   during other actions, such as object renaming
 loggingpolicy: 
-  - LP0102_windows_audit_file_system
-  - LP0039_windows_audit_kernel_object
-  - LP0103_windows_audit_registry
+  - LP_0102_windows_audit_file_system
+  - LP_0039_windows_audit_kernel_object
+  - LP_0103_windows_audit_registry
 references: 
   - https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4660.md
 category: OS Logs

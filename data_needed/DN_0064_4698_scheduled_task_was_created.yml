@@ -3,7 +3,7 @@ author: '@atc_project'
 description: >
   This event generates every time a new scheduled task is created
 loggingpolicy: 
-  - LP0041_windows_audit_other_object_access_events
+  - LP_0041_windows_audit_other_object_access_events
 references: 
   - https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4698.md
 category: OS Logs

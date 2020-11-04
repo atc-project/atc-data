@@ -5,7 +5,7 @@ description: >
   user right was assigned to an account. You will see unique event for 
   every user
 loggingpolicy: 
-  - LP0105_windows_audit_authorization_policy_change
+  - LP_0105_windows_audit_authorization_policy_change
 references: 
   - https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4704.md
 category: OS Logs

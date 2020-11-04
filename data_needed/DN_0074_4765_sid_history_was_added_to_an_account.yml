@@ -2,7 +2,7 @@ title: DN_0074_4765_sid_history_was_added_to_an_account
 author: '@atc_project'
 description: SID History was added to an account
 loggingpolicy: 
-  - LP0026_windows_audit_user_account_management
+  - LP_0026_windows_audit_user_account_management
 references: 
   - https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4765
 category: OS Logs

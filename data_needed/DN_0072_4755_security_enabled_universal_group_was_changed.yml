@@ -2,7 +2,7 @@ title: DN_0072_4755_security_enabled_universal_group_was_changed
 author: '@atc_project'
 description: Security-enabled universal group was changed
 loggingpolicy: 
-  - LP0101_windows_audit_security_group_management
+  - LP_0101_windows_audit_security_group_management
 references: 
   - https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=4755
 category: OS Logs

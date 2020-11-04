@@ -6,7 +6,7 @@ description: >
   as well as temporary and download directories, which are common places 
   malware drops during initial infection
 loggingpolicy: 
-  - LP0008_windows_sysmon_FileCreate
+  - LP_0008_windows_sysmon_FileCreate
 references:
   - https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=90011
   - https://github.com/Cyb3rWard0g/OSSEM/blob/master/data_dictionaries/windows/sysmon/event-11.md

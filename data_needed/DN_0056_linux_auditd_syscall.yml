@@ -3,7 +3,7 @@ author: '@atc_project'
 description: >
   Linux auditd log of specific system call (syscall)
 loggingpolicy:
-  - LP0033_linux_auditd_syscall
+  - LP_0033_linux_auditd_syscall
 references:
   - https://github.com/linux-audit/audit-documentation
   - https://github.com/linux-audit/audit-documentation/blob/master/specs/fields/field-dictionary.csv

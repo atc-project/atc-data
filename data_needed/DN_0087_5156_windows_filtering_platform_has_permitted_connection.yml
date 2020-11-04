@@ -2,7 +2,7 @@ title: DN_0087_5156_windows_filtering_platform_has_permitted_connection
 author: '@atc_project'
 description: The Windows Filtering Platform has permitted a connection
 loggingpolicy: 
-  - LP0045_windows_audit_filtering_platform_connection
+  - LP_0045_windows_audit_filtering_platform_connection
 references: 
   - https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-5156
 category: OS Logs

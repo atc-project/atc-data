@@ -3,7 +3,7 @@ author: '@atc_project'
 description: >
   NTLM server blocked audit: Audit Incoming NTLM Traffic that would be blocked. Actually it's just event about NTLM authentication, it doesn't necessary supposed to be blocked. Blocked NTLM auth is the same provider but Event ID 4002
 loggingpolicy:
-  - LP0044_windows_ntlm_audit
+  - LP_0044_windows_ntlm_audit
 references:
   - https://twitter.com/JohnLaTwC/status/1004895902010507266
 category: OS Logs

@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 
 # Import ATC classes
-from scripts.dataneeded import DataNeeded
-from scripts.loggingpolicy import LoggingPolicy
-from scripts.enrichment import Enrichment
+try:
+    from scripts.datautils import DATAutils
+    from scripts.dataneeded import DataNeeded
+    from scripts.loggingpolicy import LoggingPolicy
+    from scripts.enrichment import Enrichment
+except:
+    from data.atc_data.scripts.datautils import DATAutils
+    from data.atc_data.scripts.dataneeded import DataNeeded
+    from data.atc_data.scripts.loggingpolicy import LoggingPolicy
+    from data.atc_data.scripts.enrichment import Enrichment
 
-# Import ATC Data Utils
-from scripts.datautils import DATAutils
 
 # Others
 import glob

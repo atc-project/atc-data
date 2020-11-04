@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 
-from scripts.datautils import DATAutils
+try:
+    from scripts.datautils import DATAutils
+except:
+    from data.atc_data.scripts.datautils import DATAutils
+
 
 from pathlib import Path
 

@@ -1,0 +1,159 @@
+title: Google Santa EXEC
+description: Google Santa process execution log (action=EXEC)
+attack_data_source: process
+attack_data_component: process creation
+platform: macos
+provider: santa
+atc_id: DN000X
+contributors:
+  - '@atc_project'
+references:
+  - text: 'GitHub: Google Santa'
+    link: 'https://github.com/google/santa'
+  - text: 'ReadTheDocs: Santa Docs'
+    link: 'https://santa.readthedocs.io/en/latest/'
+  - text: 'July 2019 MacAdmins@Penn State: Santa In The Summer'
+    link: 'https://macadmins.psu.edu/files/2019/07/psumac2019-366-Santa-in-the-Summer-Getting-Started-with-Google-Santa.pdf'
+fields:
+
+  - original_name: exec_timestamp
+    description: Time of the process execution.
+    sample_value: '2020-10-30T13:52:30.714Z'
+    elastic_ecs_name: process.start
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: log_level
+    description: Log level of the log event.
+    sample_value: 'I'
+    elastic_ecs_name: log.level
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: action
+    description: Action that santad took.
+    sample_value: 'EXEC'
+    elastic_ecs_name: santa.action
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: decision
+    description: Decision that santad took.
+    sample_value: 'ALLOW'
+    elastic_ecs_name: santa.decision
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: reason
+    description: Reason for the decsision.
+    sample_value: 'CERT'
+    elastic_ecs_name: santa.reason
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: explain
+    description: Explanation of the decsision.
+    sample_value: 'critical system binary'
+    elastic_ecs_name: santa.explain
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: sha256
+    description: Sha256 checksum of the executed binary.
+    sample_value: '885e0d01df5fbf38262bfeea3bee953d7ed10977406a96656758d6b06c62e175'
+    elastic_ecs_name: process.hash.sha256
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: cert_sha256
+    description: SHA256 hash of code signing leaf certificate.
+    sample_value: '2aa4b9973b7ba07add447ee4da8b5337c3ee2c3a991911e80e7282e8a751fc32'
+    elastic_ecs_name: santa.certificate.sha256
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: cert_cn
+    description: Common name from code signing certificate of the executed binary.
+    sample_value: 'Software Signing'
+    elastic_ecs_name: file.x509.issuer.common_name
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: pid
+    description: Process ID.
+    sample_value: '40990'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: N/A
+    otr_ossem_name: process_id
+
+  - original_name: ppid
+    description: Parent process ID.
+    sample_value: '1'
+    elastic_ecs_name: process.ppid
+    splunk_cim_name: N/A
+    otr_ossem_name: process_parent_id
+
+  - original_name: uid
+    description: ID of the User that executed the process.
+    sample_value: '89'
+    elastic_ecs_name: user.id
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: user
+    description: Name of the User that executed the process.
+    sample_value: '_spotlight'
+    elastic_ecs_name: user.name
+    splunk_cim_name: N/A
+    otr_ossem_name: user_name
+
+  - original_name: gid
+    description: Group ID of the User that executed the process.
+    sample_value: '89'
+    elastic_ecs_name: group.id
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: group
+    description: Group name of the User that executed the process.
+    sample_value: '_spotlight'
+    elastic_ecs_name: group.name
+    splunk_cim_name: N/A
+    otr_ossem_name: group_name
+
+  - original_name: mode
+    description: Santa Client Mode, could be M (MONITOR) and L (LOCKDOWN)
+    sample_value: 'M'
+    elastic_ecs_name: santa.mode
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: path
+    description: Absolute path and the name of the executable for the process.
+    sample_value: '/bin/bash'
+    elastic_ecs_name: process.executable
+    splunk_cim_name: N/A
+    otr_ossem_name: process_path
+
+    description: Process arguments.
+    sample_value: 'bash -c exec -la zsh /bin/zsh'
+  - original_name: args
+    elastic_ecs_name: process.args
+    splunk_cim_name: N/A
+
+  - original_name: tag
+    description: Custom tag added by log shipper
+    sample_value: 'santa'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: source_host
+    description: Computer name of the endpoint where the log was created. 
+    sample_value: 'mac'
+    elastic_ecs_name: host.name
+    splunk_cim_name: N/A
+    otr_ossem_name: host_name
+
+sample: |
+  [2020-10-30T13:52:30.714Z] I santad: action=EXEC|decision=ALLOW|reason=CERT|sha256=885e0d01df5fbf38262bfeea3bee953d7ed10977406a96656758d6b06c62e175|cert_sha256=2aa4b9973b7ba07add447ee4da8b5337c3ee2c3a991911e80e7282e8a751fc32|cert_cn=Software Signing|pid=40990|ppid=1|uid=89|user=_spotlight|gid=89|group=_spotlight|mode=M|path=/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdworker|args=/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker -s mdworker-bundle -c MDSImporterBundleFinder -m com.apple.mdworker.bundles

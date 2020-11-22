@@ -1,0 +1,65 @@
+description: Pipeline for parsing Google Santa logs.
+processors:
+- set:
+    field: event.ingested
+    value: {% raw %}"{{_ingest.timestamp}}"{% endraw %}
+- grok:
+    field: message
+    patterns:
+    - '\[%{TIMESTAMP_ISO8601:{{ exec_timestamp }}}\] %{NOT_SEPARATOR{% if log_level is defined and log_level is not none and log_level|length %}:{{ log_level }}{% endif %}} santad: action=%{NOT_SEPARATOR:{{ action }}}\|decision=%{NOT_SEPARATOR:{{ decision }}}\|reason=%{NOT_SEPARATOR:{{ reason }}}(\|explain=%{NOT_SEPARATOR:{{ explain }}})?\|sha256=%{NOT_SEPARATOR:{{ sha256 }}}(\|cert_sha256=%{NOT_SEPARATOR:{{ cert_sha256 }}})?(\|cert_cn=%{NOT_SEPARATOR:{{ cert_cn }}})?\|pid=%{NUMBER:{{ pid }}}\|ppid=%{NUMBER:{{ ppid }}}\|uid=%{NUMBER:{{ uid }}}\|user=%{NOT_SEPARATOR:{{ user }}}\|gid=%{NUMBER:{{ gid }}}\|group=%{NOT_SEPARATOR:{{ group }}}\|mode=%{WORD:{{ mode }}}\|path=%{NOT_SEPARATOR:{{ path }}}(\|args=%{NOT_SEPARATOR:{{ args }}})?'
+    - '\[%{TIMESTAMP_ISO8601:{{ disk_timestamp }}}\] %{NOT_SEPARATOR{% if log_level is defined and log_level is not none and log_level|length %}:{{ log_level }}{% endif %}} santad: action=%{NOT_SEPARATOR:{{ action }}}\|mount=(%{NOT_SEPARATOR:{{ mount }}})?\|volume=%{NOT_SEPARATOR:{{ volume }}}\|bsdname=(%{NOT_SEPARATOR:{{ bsdname }}})?(\|fs=%{NOT_SEPARATOR:{{ fs }}})?(\|model=(%{NOT_SEPARATOR:{{ model }}})?)?(\|serial=(%{NOT_SEPARATOR:{{ serial }}})?)?(\|bus=(%{NOT_SEPARATOR:{{ bus }}})?)?(\|dmgpath=(%{NOT_SEPARATOR:{{ dmgpath }}})?)?(\|appearance=%{GREEDYDATA:{{ appearance }}})?'
+    pattern_definitions:
+      NOT_SEPARATOR: "[^\\|]+"
+    on_failure:
+    - set:
+        field: grok.error.message
+        value: {% raw %}"{{ _ingest.on_failure_message }}"{% endraw %}
+- date:
+    field: {{ exec_timestamp }}
+    target_field: {{ exec_timestamp }}
+    formats:
+    - ISO8601
+    ignore_failure: true
+- set:
+    field: "@timestamp"
+    value: "{% raw %}{{{% endraw %} {{ exec_timestamp }} {% raw %}}}{% endraw %}"
+    ignore_failure: true
+- date:
+    field: {{ disk_timestamp }}
+    target_field: "@timestamp"
+    formats:
+    - ISO8601
+    ignore_failure: true
+- remove:
+    field:
+    - {{ disk_timestamp }}
+    ignore_missing: true
+- remove:
+    if: "!ctx.containsKey('grok.error.message')"
+    field:
+    - message
+    ignore_missing: true
+- rename:
+    field: message
+    target_field: log.original
+    ignore_missing: true
+{% if remove_fields is defined and remove_fields is not none and remove_fields|length -%}
+- remove:
+    field:
+{%- for remove_field in remove_fields -%}
+{{'\n'}}    - {{ remove_field }}
+{%- endfor -%}
+{{'\n'}}    ignore_missing: true
+{% endif -%}
+{% if rename_fields is defined and rename_fields is not none and rename_fields|length -%}
+{%- for field, target_field in rename_fields -%}
+- rename:
+    field: {{ field }}
+    target_field: {{ target_field }}
+    ignore_missing: true
+{%- endfor %}
+{% endif -%}
+on_failure:
+- set:
+    field: error.message
+    value: {% raw %}"{{ _ingest.on_failure_message }}"{% endraw %}

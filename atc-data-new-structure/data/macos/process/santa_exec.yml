@@ -20,8 +20,8 @@ fields:
     description: Time of the process execution.
     sample_value: '2020-10-30T13:52:30.714Z'
     elastic_ecs_name: process.start
-    splunk_cim_name: N/A
-    otr_ossem_name: N/A
+    splunk_cim_name: timestamp
+    otr_ossem_name: timestamp
 
   - original_name: log_level
     description: Log level of the log event.
@@ -62,7 +62,7 @@ fields:
     description: Sha256 checksum of the executed binary.
     sample_value: '885e0d01df5fbf38262bfeea3bee953d7ed10977406a96656758d6b06c62e175'
     elastic_ecs_name: process.hash.sha256
-    splunk_cim_name: N/A
+    splunk_cim_name: process_hash
     otr_ossem_name: N/A
 
   - original_name: cert_sha256
@@ -83,28 +83,28 @@ fields:
     description: Process ID.
     sample_value: '40990'
     elastic_ecs_name: process.pid
-    splunk_cim_name: N/A
+    splunk_cim_name: process_id
     otr_ossem_name: process_id
 
   - original_name: ppid
     description: Parent process ID.
     sample_value: '1'
     elastic_ecs_name: process.ppid
-    splunk_cim_name: N/A
+    splunk_cim_name: parent_process_id
     otr_ossem_name: process_parent_id
 
   - original_name: uid
     description: ID of the User that executed the process.
     sample_value: '89'
     elastic_ecs_name: user.id
-    splunk_cim_name: N/A
-    otr_ossem_name: N/A
+    splunk_cim_name: user_id
+    otr_ossem_name: user_id
 
   - original_name: user
     description: Name of the User that executed the process.
     sample_value: '_spotlight'
     elastic_ecs_name: user.name
-    splunk_cim_name: N/A
+    splunk_cim_name: user
     otr_ossem_name: user_name
 
   - original_name: gid
@@ -132,7 +132,7 @@ fields:
     description: Absolute path and the name of the executable for the process.
     sample_value: '/bin/bash'
     elastic_ecs_name: process.executable
-    splunk_cim_name: N/A
+    splunk_cim_name: process_exec
     otr_ossem_name: process_path
 
     description: Process arguments.
@@ -140,13 +140,6 @@ fields:
   - original_name: args
     elastic_ecs_name: process.args
     splunk_cim_name: N/A
-
-  - original_name: tag
-    description: Custom tag added by log shipper
-    sample_value: 'santa'
-    elastic_ecs_name: N/A
-    splunk_cim_name: N/A
-    otr_ossem_name: N/A
 
   - original_name: source_host
     description: Computer name of the endpoint where the log was created. 

@@ -1,33 +1,118 @@
-title: DN_0014_10_windows_sysmon_ProcessAccess
-author: '@atc_project'
+title: ProcessAccess
 description: >
   The process accessed event reports when a process opens another process, an 
   operation that’s often followed by information queries or reading and writing 
   the address space of the target process
-loggingpolicy: 
-  - LP_0007_windows_sysmon_ProcessAccess
-references:
-  - https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=90010
-  - https://github.com/Cyb3rWard0g/OSSEM/blob/master/data_dictionaries/windows/sysmon/event-10.md
-category: OS Logs
-platform: Windows
-type: Applications and Services Logs
-channel: Microsoft-Windows-Sysmon/Operational
+event_id: 10
+attack_data_source: process
+attack_data_component: process access
+platform: windows
 provider: Microsoft-Windows-Sysmon
+channel: 'Microsoft-Windows-Sysmon/Operational'
+atc_id: DN0014
+loggingpolicy:
+  - LP0007
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: Sysinternals: Sysmon'
+    link: 'https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-10-processaccess'
+  - text: 'OSSEM DD: event-10.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/sysmon/events/event-10.yml'
 fields:
-  - EventID
-  - Computer
-  - Hostname # redundant
-  - UtcTime
-  - SourceProcessGUID
-  - SourceProcessId
-  - SourceThreadId
-  - SourceImage
-  - TargetProcessGUID
-  - TargetProcessId
-  - TargetImage
-  - GrantedAccess
-  - CallTrace
+
+  - original_name: RuleName
+    description: custom tag mapped to event. i.e ATT&CK technique ID
+    sample_value: T1114
+    elastic_ecs_name: rule.name
+    splunk_cim_name: tag
+    otr_ossem_name: tag
+
+  - original_name: UtcTime
+    description: Time in UTC when event was created
+    sample_value: 4/11/18 5:25
+    elastic_ecs_name: process.start
+    splunk_cim_name: timestamp
+    otr_ossem_name: event_date_creation
+
+  - original_name: SourceProcessGUID
+    description: >
+      Process Guid of the source process that opened another process. It
+      is derived from a truncated part of the machine GUID, the process start-time and
+      the process token ID.
+    sample_value: '{A98268C1-9C2E-5ACD-0000-0010396CAB00}'
+    elastic_ecs_name: process.entity_id
+    splunk_cim_name: process_guid
+    otr_ossem_name: process_guid
+
+  - original_name: SourceProcessId
+    description: >
+      Process ID used by the os to identify the source process that opened
+      another process. Derived partially from the EPROCESS kernel structure
+    sample_value: '4756'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: process_id
+    otr_ossem_name: process_id
+
+  - original_name: SourceThreadId
+    description: >
+      ID of the specific thread inside of the source process that opened
+      another process
+    sample_value: '2804'
+    elastic_ecs_name: process.thread.id
+    splunk_cim_name: N/A
+    otr_ossem_name: thread_id
+
+  - original_name: SourceImage
+    description: >
+      File path of the source process that created a thread in another process
+    sample_value: C:\Users\user1\Desktop\mimi\x64\mimikatz.exe
+    elastic_ecs_name: process.executable
+    splunk_cim_name: process_path
+    otr_ossem_name: process_path
+
+  - original_name: TargetProcessGuid
+    description: Process Guid of the target process
+    sample_value: '{A98268C1-9C2E-5ACD-0000-0010396CAB00}'
+    elastic_ecs_name: winlog.event_data.TargetProcessGuid
+    splunk_cim_name: N/A
+    otr_ossem_name: target_process_guid
+  
+  - original_name: TargetProcessId
+    description: >
+      Process ID used by the os to identify the source process that opened
+      another process. Derived partially from the EPROCESS kernel structure
+    sample_value: '4756'
+    elastic_ecs_name: winlog.event_data.TargetProcessId
+    splunk_cim_name: N/A
+    otr_ossem_name: target_process_id
+
+  - original_name: TargetImage
+    description: File path of the target process
+    sample_value: 'C:\Windows\System32\cmd.exe'
+    elastic_ecs_name: winlog.event_data.TargetImage
+    splunk_cim_name: N/A
+    otr_ossem_name: target_process_path
+
+  - original_name: GrantedAccess
+    description: >
+      The access flags (bitmask) associated with the process rights requested
+      for the target process
+    sample_value: '0x1000'
+    elastic_ecs_name: winlog.event_data.GrantedAccess
+    splunk_cim_name: N/A
+    otr_ossem_name: process_granted_access
+
+  - original_name: CallTrace
+    description: >
+      Stack trace of where open process is called. Included is the DLL and
+      the relative virtual address of the functions in the call stack right before the
+      open process call
+    sample_value: 'C:\windows\SYSTEM32\ntdll.dll+9a3c4|C:\windows\System32\KERNELBASE.dll+2fd5d'
+    elastic_ecs_name: winlog.event_data.CallTrace
+    splunk_cim_name: N/A
+    otr_ossem_name: process_call_trace
+
 sample: |
   - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
     - <System>

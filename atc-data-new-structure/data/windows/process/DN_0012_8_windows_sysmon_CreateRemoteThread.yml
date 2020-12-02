@@ -1,33 +1,108 @@
-title: DN_0012_8_windows_sysmon_CreateRemoteThread
-author: '@atc_project'
+title: CreateRemoteThread
 description: >
-  The CreateRemoteThread event detects when a process creates a thread in 
-  another process
-loggingpolicy: 
-  - None
-references:
-  - https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=90008
-  - https://github.com/Cyb3rWard0g/OSSEM/blob/master/data_dictionaries/windows/sysmon/event-8.md
-category: OS Logs
-platform: Windows
-type: Applications and Services Logs
-channel: Microsoft-Windows-Sysmon/Operational
+  The CreateRemoteThread event detects when a process creates a thread in another process
+event_id: 8
+attack_data_source: process
+attack_data_component: process access
+platform: windows
 provider: Microsoft-Windows-Sysmon
+channel: 'Microsoft-Windows-Sysmon/Operational'
+atc_id: DN0012
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: Sysinternals: Sysmon'
+    link: 'https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-8-createremotethread'
+  - text: 'OSSEM DD: event-8.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/sysmon/events/event-8.yml'
 fields:
-  - EventID
-  - Computer
-  - Hostname # redundant
-  - UtcTime
-  - SourceProcessGuid
-  - SourceProcessId
-  - SourceImage
-  - TargetProcessGuid
-  - TargetProcessId
-  - TargetImage
-  - NewThreadId
-  - StartAddress
-  - StartModule
-  - StartFunction
+
+  - original_name: RuleName
+    description: custom tag mapped to event. i.e ATT&CK technique ID
+    sample_value: T1114
+    elastic_ecs_name: rule.name
+    splunk_cim_name: tag
+    otr_ossem_name: tag
+
+  - original_name: UtcTime
+    description: Time in UTC when event was created
+    sample_value: 4/11/18 5:25
+    elastic_ecs_name: process.start
+    splunk_cim_name: timestamp
+    otr_ossem_name: event_date_creation
+
+  - original_name: SourceProcessGUID
+    description: Process Guid of the source process that created a thread in another process
+    sample_value: '{A98268C1-9C2E-5ACD-0000-0010396CAB00}'
+    elastic_ecs_name: process.entity_id
+    splunk_cim_name: process_guid
+    otr_ossem_name: process_guid
+
+  - original_name: SourceProcessId
+    description: >
+      Process ID used by the os to identify the source process that created
+      a thread in another process
+    sample_value: '4756'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: process_id
+    otr_ossem_name: process_id
+
+  - original_name: SourceImage
+    description: File path of the source process that created a thread in another process
+    sample_value: C:\Users\user1\Desktop\mimi\x64\mimikatz.exe
+    elastic_ecs_name: process.executable
+    splunk_cim_name: process_path
+    otr_ossem_name: process_path
+
+  - original_name: TargetProcessGuid
+    description: Process Guid of the target process
+    sample_value: '{A98268C1-9C2E-5ACD-0000-0010396CAB00}'
+    elastic_ecs_name: winlog.event_data.TargetProcessGuid
+    splunk_cim_name: N/A
+    otr_ossem_name: target_process_guid
+
+  - original_name: TargetProcessId
+    description: Process ID used by the os to identify the target process
+    sample_value: '4756'
+    elastic_ecs_name: winlog.event_data.TargetProcessId
+    splunk_cim_name: N/A
+    otr_ossem_name: target_process_id
+
+  - original_name: TargetImage
+    description: File path of the target process
+    sample_value: 'C:\Windows\System32\cmd.exe'
+    elastic_ecs_name: winlog.event_data.TargetImage
+    splunk_cim_name: N/A
+    otr_ossem_name: target_process_path
+
+  - original_name: NewThreadId
+    description: ID of the new thread created in the target process
+    sample_value: '20532'
+    elastic_ecs_name: winlog.event_data.NewThreadId
+    splunk_cim_name: N/A
+    otr_ossem_name: thread_new_id
+
+  - original_name: StartAddress
+    description: The start address of the new thread in the target process
+    sample_value: '0x00007FFB09321970'
+    elastic_ecs_name: winlog.event_data.StartAddress
+    splunk_cim_name: N/A
+    otr_ossem_name: thread_start_address
+
+  - original_name: StartModule
+    description: Start module determined from thread start address mapping to PEB loaded module list
+    sample_value: 'C:\Windows\SYSTEM32\ntdll.dll'
+    elastic_ecs_name: winlog.event_data.StartModule
+    splunk_cim_name: N/A
+    otr_ossem_name: thread_start_module
+
+  - original_name: StartFunction
+    description: Start function is reported if exact match to function in image export table
+    sample_value: DbgUiRemoteBreakin
+    elastic_ecs_name: winlog.event_data.StartFunction
+    splunk_cim_name: N/A
+    otr_ossem_name: thread_start_function
+
 sample: |
   - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
     - <System>
@@ -47,6 +122,7 @@ sample: |
       <Security UserID="S-1-5-18" />
     </System>
     - <EventData>
+      <Data Name="RuleName" /> 
       <Data Name="UtcTime">2017-05-13 22:53:43.214</Data>
       <Data Name="SourceProcessGuid">{A23EAE89-8E6D-5917-0000-0010DFAF5004}</Data>
       <Data Name="SourceProcessId">8804</Data>

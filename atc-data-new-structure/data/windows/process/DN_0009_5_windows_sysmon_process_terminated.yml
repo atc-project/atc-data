@@ -14,7 +14,7 @@ contributors:
 references:
   - text: 'Microsoft Docs: Sysinternals: Sysmon'
     link: 'https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-5-process-terminated'
-  - text: 'OSSEM DD: event-8.yml'
+  - text: 'OSSEM DD: event-5.yml'
     link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/sysmon/events/event-5.yml'
 fields:
 

@@ -1,33 +1,114 @@
-title: DN_0087_5156_windows_filtering_platform_has_permitted_connection
-author: '@atc_project'
-description: The Windows Filtering Platform has permitted a connection
-loggingpolicy: 
-  - LP_0045_windows_audit_filtering_platform_connection
-references: 
-  - https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-5156
-category: OS Logs
-platform: Windows
-type: Windows Log
-channel: Security
+title: The Windows Filtering Platform has permitted a connection
+description: This event generates when Windows Filtering Platform has allowed a connection
+event_id: 5156
+attack_data_source: process
+attack_data_component: process network connection
+platform: windows
 provider: Microsoft-Windows-Security-Auditing
+channel: Security
+atc_id: DN0087
+loggingpolicy:
+  - LP0045: Success
+contributors:
+  - '@atc_project'
+references:
+  - text: 'MicrosoftDocs: 5156(S): The Windows Filtering Platform has permitted a connection.'
+    link: 'https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-5156'
+  - text: 'OSSEM DD: event-5156_v1.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/etw-providers/Microsoft-Windows-Security-Auditing/events/event-5156_v1.yml'
 fields:
-  - EventID
-  - ComputerName        # redundant
-  - Computer
-  - Hostname            # redundant
-  - ProcessID
-  - Application
-  - Direction
-  - SourceAddress
-  - SourcePort
-  - DestAddress
-  - DestPort
-  - Protocol
-  - FilterRTID
-  - LayerName
-  - LayerRTID
-  - RemoteUserID
-  - RemoteMachineID
+
+  - original_name: ProcessID
+    description: Hexadecimal Process ID of the process which received the connection
+    sample_value: '4156'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: process_id
+    otr_ossem_name: process_id
+
+  - original_name: Application
+    description: Full path and the name of the executable for the process
+    sample_value: \device\harddiskvolume2\documents\listener.exe
+    elastic_ecs_name: process.executable
+    splunk_cim_name: process_path
+    otr_ossem_name: process_path
+
+  - original_name: Direction
+    description: Direction of allowed connection
+    sample_value: Inbound
+    elastic_ecs_name: network.direction
+    splunk_cim_name: direction
+    otr_ossem_name: N/A
+
+  - original_name: SourceAddress
+    description: IP address from which the connection was initiated
+    sample_value: 10.0.0.10
+    elastic_ecs_name: source.ip
+    splunk_cim_name: src_ip
+    otr_ossem_name: src_ip_addr
+
+  - original_name: SourcePort
+    description: Port number from which the connection was initiated
+    sample_value: '3333'
+    elastic_ecs_name: source.port
+    splunk_cim_name: src_port
+    otr_ossem_name: src_port
+
+  - original_name: DestAddress
+    description: IP address where the connection was received
+    sample_value: 10.0.0.100
+    elastic_ecs_name: destination.ip
+    splunk_cim_name: dest_ip
+    otr_ossem_name: dst_ip_addr
+
+  - original_name: DestPort
+    description: Port number where the connection was received
+    sample_value: '49278'
+    elastic_ecs_name: destination.port
+    splunk_cim_name: dest_port
+    otr_ossem_name: dst_port
+
+  - original_name: Protocol
+    description: Protocol number.
+    sample_value: '6'
+    elastic_ecs_name: network.transport
+    splunk_cim_name: protocol
+    otr_ossem_name: network_protocol
+
+  - original_name: FilterRTID
+    description: Unique filter ID which allowed the connection
+    sample_value: '84576'
+    elastic_ecs_name: winlog.event_data.FilterRTID
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: LayerName
+    description: Application Layer Enforcement layer name
+    sample_value: '%%14609'
+    elastic_ecs_name: winlog.event_data.LayerName
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: LayerRTID
+    description: Windows Filtering Platform layer identifier
+    sample_value: '40'
+    elastic_ecs_name: winlog.event_data.LayerRTID
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: RemoteUserID
+    description: ''
+    sample_value: S-1-0-0
+    elastic_ecs_name: winlog.event_data.RemoteUserID
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: RemoteMachineID
+    description: ''
+    sample_value: S-1-0-0
+    elastic_ecs_name: winlog.event_data.RemoteMachineID
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
 sample: |
   - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
     - <System>

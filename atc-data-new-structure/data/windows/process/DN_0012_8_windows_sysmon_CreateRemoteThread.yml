@@ -18,7 +18,7 @@ references:
 fields:
 
   - original_name: RuleName
-    description: custom tag mapped to event. i.e ATT&CK technique ID
+    description: Custom tag mapped to event. i.e ATT&CK technique ID
     sample_value: T1114
     elastic_ecs_name: rule.name
     splunk_cim_name: tag

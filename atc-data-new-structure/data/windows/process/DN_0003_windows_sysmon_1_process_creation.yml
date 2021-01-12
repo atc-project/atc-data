@@ -31,7 +31,7 @@ fields:
 
   - original_name: UtcTime
     description: Time in UTC when event was created
-    sample_value: 4/11/18 5:25
+    sample_value: '2019-07-09 03:44:58.036'
     elastic_ecs_name: process.start
     splunk_cim_name: timestamp
     otr_ossem_name: event_date_creation

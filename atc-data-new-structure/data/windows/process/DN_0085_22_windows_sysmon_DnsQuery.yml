@@ -1,30 +1,82 @@
-title: DN_0085_22_windows_sysmon_DnsQuery
-author: '@atc_project'
+title: DNSEvent
 description: >
-  This event generates when a process executes a DNS query, whether the result is 
-  successful or fails, cached or not
-loggingpolicy: 
-  - LP_0011_windows_sysmon_DnsQuery
-references:
-  - https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-22-dnsevent-dns-query
-  - https://github.com/Cyb3rWard0g/OSSEM/blob/master/data_dictionaries/windows/sysmon/event-22.md
-category: OS Logs
-platform: Windows
-type: Applications and Services Logs
-channel: Microsoft-Windows-Sysmon/Operational
+  This event is generated when a process executes a DNS query, whether the 
+  result is successful or fails, cached or not. The telemetry for this event 
+  was added for Windows 8.1 so it is not available on Windows 7 and earlier.
+event_id: 22
+attack_data_source: process
+attack_data_component: process network connection
+platform: windows
 provider: Microsoft-Windows-Sysmon
+channel: 'Microsoft-Windows-Sysmon/Operational'
+atc_id: DN0085
+loggingpolicy:
+  - LP0011
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: Sysinternals: Sysmon'
+    link: 'https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-22-dnsevent-dns-query'
+  - text: 'OSSEM DD: event-22.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/sysmon/events/event-22.yml'
 fields:
-  - EventID
-  - Computer
-  - Hostname # redundant
-  - UtcTime
-  - RuleName
-  - ProcessGuid
-  - ProcessId
-  - QueryName
-  - QueryStatus
-  - QueryResults
-  - Image
+
+  - original_name: RuleName
+    description: Custom tag mapped to event. i.e ATT&CK technique ID
+    sample_value: T1114
+    elastic_ecs_name: rule.name
+    splunk_cim_name: tag
+    otr_ossem_name: tag
+
+  - original_name: UtcTime
+    description: Time in UTC when event was created
+    sample_value: '2019-06-24 00:56:50.125'
+    elastic_ecs_name: timestamp
+    splunk_cim_name: timestamp
+    otr_ossem_name: event_date_creation
+
+  - original_name: ProcessGuid
+    description: Process Guid of the process that executed the DNS query
+    sample_value: '{717CFEC0-1A16-5D10-0000-0010CDEA1F00}'
+    elastic_ecs_name: process.entity_id
+    splunk_cim_name: process_guid
+    otr_ossem_name: process_guid
+
+  - original_name: ProcessId
+    description: Process id of the process that executed the DNS query
+    sample_value: '3192'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: process_id
+    otr_ossem_name: process_id
+
+  - original_name: QueryName
+    description: DNS query name
+    sample_value: chrome.google.com
+    elastic_ecs_name: dns.question.name
+    splunk_cim_name: query
+    otr_ossem_name: dst_host_name
+
+  - original_name: QueryStatus
+    description: Windows error codes for DNS
+    sample_value: '0'
+    elastic_ecs_name: sysmon.dns.status
+    splunk_cim_name: reply_code
+    otr_ossem_name: dns_query_status
+
+  - original_name: QueryResults
+    description: DNS query results
+    sample_value: 'type: 5 www3.l.google.com;172.217.7.206;'
+    elastic_ecs_name: dns.answers
+    splunk_cim_name: answer
+    otr_ossem_name: dns_query_results
+
+  - original_name: Image
+    description: The full path related to the process that executed the DNS query
+    sample_value: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    elastic_ecs_name: process.executable
+    splunk_cim_name: process_path
+    otr_ossem_name: process_path
+
 sample: |
   - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
     - <System>

@@ -1,48 +1,275 @@
-title: DN_0004_4624_windows_account_logon
-author: '@atc_project'
+title: An account was successfully logged on
 description: >
-  An account was successfully logged on
-loggingpolicy:
-  - LP_0004_windows_audit_logon
-references:
-  - https://github.com/MicrosoftDocs/windows-itpro-docs/blob/95b9d7c01805839c067e352d1d16702604b15f11/windows/security/threat-protection/auditing/event-4624.md
-category: OS Logs
-platform: Windows
-type: Windows Log
-channel: Security
+  This event generates when a logon session is created (on destination machine). 
+  It generates on the computer that was accessed, where the session was created.
+event_id: 4624
+attack_data_source: logon session
+attack_data_component: logon session creation
+platform: windows
 provider: Microsoft-Windows-Security-Auditing
+channel: Security
+atc_id: DN0004
+loggingpolicy:
+  - LP0004: Success
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: event-4624.md'
+    link: 'https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/windows/security/threat-protection/auditing/event-4624.md'
+  - text: 'OSSEM DD: event-4624.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/etw-providers/Microsoft-Windows-Security-Auditing/events/event-4624_v2.yml'
 fields:
-  - EventID
-  - AccountName         # redundant
-  - Hostname            # redundant
-  - Computer
-  - SubjectUserSid
-  - SubjectUserName
-  - SubjectDomainName
-  - SubjectLogonId
-  - TargetUserSid
-  - TargetUserName
-  - TargetDomainName
-  - TargetLogonId
-  - LogonType
-  - LogonProcessName
-  - AuthenticationPackageName
-  - WorkstationName
-  - LogonGuid
-  - TransmittedServices
-  - LmPackageName
-  - KeyLength
-  - ProcessId
-  - ProcessName
-  - IpAddress
-  - IpPort
-  - ImpersonationLevel
-  - RestrictedAdminMode
-  - TargetOutboundUserName
-  - TargetOutboundDomainName
-  - VirtualAccount
-  - TargetLinkedLogonId
-  - ElevatedToken
+
+  - original_name: SubjectUserSid
+    description: >
+      SID of account that reported information about successful logon or
+      invokes it
+    sample_value: S-1-5-18
+    elastic_ecs_name: user.id
+    splunk_cim_name: user_id
+    otr_ossem_name: user_reporter_sid
+
+  - original_name: SubjectUserName
+    description: >
+      the name of the account that reported information about successful
+      logon
+    sample_value: 'WIN-GG82ULGC9GO$'
+    elastic_ecs_name: user.name
+    splunk_cim_name: user
+    otr_ossem_name: user_reporter_name
+
+  - original_name: SubjectDomainName
+    description: subject's domain or computer name
+    sample_value: WORKGROUP
+    elastic_ecs_name: user.domain
+    splunk_cim_name: src_nt_domain
+    otr_ossem_name: user_reporter_domain
+
+  - original_name: SubjectLogonId
+    description: >
+      hexadecimal value that can help you correlate this event with recent
+      events that might contain the same Logon ID
+    sample_value: '0x3e7'
+    elastic_ecs_name: winlog.logon.id
+    splunk_cim_name: N/A
+    otr_ossem_name: user_reporter_id
+
+  - original_name: TargetUserSid
+    description: SID of account for which logon was performed
+    sample_value: S-1-5-21-1377283216-344919071-3415362939-500
+    elastic_ecs_name: winlog.event_data.TargetUserSid
+    splunk_cim_name: N/A
+    otr_ossem_name: user_sid
+
+  - original_name: TargetUserName
+    description: the name of the account for which logon was performed
+    sample_value: Administrator
+    elastic_ecs_name: related.user
+    splunk_cim_name: N/A
+    otr_ossem_name: user_name
+
+  - original_name: TargetDomainName
+    description: subject's domain or computer name
+    sample_value: WIN-GG82ULGC9GO
+    elastic_ecs_name: winlog.event_data.TargetDomainName
+    splunk_cim_name: dest_nt_domain
+    otr_ossem_name: user_domain
+
+  - original_name: TargetLogonId
+    description: >
+      hexadecimal value that can help you correlate this event with recent
+      events that might contain the same Logon ID
+    sample_value: '0x8dcdc'
+    elastic_ecs_name: winlog.event_data.TargetLogonId
+    splunk_cim_name: N/A
+    otr_ossem_name: user_logon_id
+
+  - original_name: LogonType
+    description: the type of logon which was performed
+    sample_value: '2'
+    elastic_ecs_name: winlog.logon.type
+    splunk_cim_name: N/A
+    otr_ossem_name: logon_type
+
+  - original_name: LogonProcessName
+    description: >
+      'The name of the trusted logon process that was used for the logon.
+      See event "4611: A trusted logon process has been registered with the Local Security
+      Authority" description for more information.'
+    sample_value: User32
+    elastic_ecs_name: winlog.event_data.LogonProcessName
+    splunk_cim_name: N/A
+    otr_ossem_name: logon_process_name
+
+  - original_name: AuthenticationPackageName
+    description: >
+      'The name of the authentication package which was used for the logon
+      authentication process. Default packages loaded on LSA startup are located in
+      "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\OSConfig" registry key. Other packages
+      can be loaded at runtime. When a new package is loaded a "4610: An authentication
+      package has been loaded by the Local Security Authority" (typically for NTLM)
+      or "4622: A security package has been loaded by the Local Security Authority"
+      (typically for Kerberos) event is logged to indicate that a new package has been
+      loaded along with the package name.'
+    sample_value: Negotiate
+    elastic_ecs_name: winlog.event_data.AuthenticationPackageName
+    splunk_cim_name: N/A
+    otr_ossem_name: logon_authentication_package_name
+
+  - original_name: WorkstationName
+    description: machine name from which logon attempt was performed.
+    sample_value: WIN-GG82ULGC9GO
+    elastic_ecs_name: source.domain
+    splunk_cim_name: N/A
+    otr_ossem_name: src_host_name
+
+  - original_name: LogonGuid
+    description: >
+      'a GUID that can help you correlate this event with another event that
+      can contain the same Logon GUID, "4769(S, F): A Kerberos service ticket was requested
+      event on a domain controller. It also can be used for correlation between a 4624
+      event and several other events (on the same computer) that can contain the same
+      Logon GUID, "4648(S): A logon was attempted using explicit credentials" and "4964(S):
+      Special groups have been assigned to a new logon."'
+    sample_value: '{00000000-0000-0000-0000-000000000000}'
+    elastic_ecs_name: winlog.event_data.LogonGuid
+    splunk_cim_name: N/A
+    otr_ossem_name: user_logon_guid
+
+  - original_name: TransmittedServices
+    description: >
+      the list of transmitted services. Transmitted services are populated
+      if the logon was a result of a S4U (Service For User) logon process. S4U is a
+      Microsoft extension to the Kerberos Protocol to allow an application service to
+      obtain a Kerberos service ticket on behalf of a user - most commonly done by a
+      front-end website to access an internal resource on behalf of a user.
+    sample_value: '-'
+    elastic_ecs_name: winlog.event_data.TransmittedServices
+    splunk_cim_name: N/A
+    otr_ossem_name: logon_transmitted_services
+
+  - original_name: LmPackageName
+    description: >
+      'The name of the LAN Manager sub-package (NTLM-family protocol name)
+      that was used during logon. Possible values are: NTLM V1, NTLM V2, LM. Only populated
+      if Authentication Package = NTLM.'
+    sample_value: '-'
+    elastic_ecs_name: winlog.event_data.LmPackageName
+    splunk_cim_name: N/A
+    otr_ossem_name: logon_authentication_lan_package_name
+
+  - original_name: KeyLength
+    description: >
+      the length of NTLM Session Security key. Typically it has 128 bit or
+      56 bit length. This parameter is always 0 if "Authentication Package" = "Kerberos",
+      because it is not applicable for Kerberos protocol. This field will also have
+      "0" value if Kerberos was negotiated using Negotiate authentication package.
+    sample_value: '0'
+    elastic_ecs_name: winlog.event_data.KeyLength
+    splunk_cim_name: N/A
+    otr_ossem_name: logon_key_length
+
+  - original_name: ProcessId
+    description: >
+      hexadecimal Process ID of the process that attempted the logon. Process
+      ID (PID) is a number used by the operating system to uniquely identify an active
+      process.
+    sample_value: '0x44c'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: process_id
+    otr_ossem_name: process_id
+
+  - original_name: ProcessName
+    description: full path and the name of the executable for the process.
+    sample_value: C:\Windows\System32\svchost.exe
+    elastic_ecs_name: process.executable
+    splunk_cim_name: process_path
+    otr_ossem_name: process_name
+
+  - original_name: IpAddress
+    description: IP address of machine from which logon attempt was performed
+    sample_value: 127.0.0.1
+    elastic_ecs_name: source.ip
+    splunk_cim_name: src_ip
+    otr_ossem_name: src_ip_addr
+
+  - original_name: IpPort
+    description: >
+      source port which was used for logon attempt from remote machine. 0
+      for interactive logons
+    sample_value: '0'
+    elastic_ecs_name: source.port
+    splunk_cim_name: src_port
+    otr_ossem_name: src_port
+
+  - original_name: ImpersonationLevel
+    description: Impersonation level
+    sample_value: '%%1833'
+    elastic_ecs_name: winlog.event_data.ImpersonationLevel
+    splunk_cim_name: N/A
+    otr_ossem_name: logon_impersonation_level
+
+  - original_name: RestrictedAdminMode
+    description: >
+      Only populated for RemoteInteractive logon type sessions. This is a
+      Yes/No flag indicating if the credentials provided were passed using Restricted
+      Admin mode. Restricted Admin mode was added in Win8.1/2012R2 but this flag was
+      added to the event in Win10. If not a RemoteInteractive logon, then this will
+      be "-" string.
+    sample_value: '-'
+    elastic_ecs_name: winlog.event_data.RestrictedAdminMode
+    splunk_cim_name: N/A
+    otr_ossem_name: logon_restricted_admin_mode
+
+  - original_name: TargetOutboundUserName
+    description: >
+      User name that will be used for outbound (network) connections. Valid
+      only for NewCredentials logon type. If not NewCredentials logon, then this will
+      be a "-" string.
+    sample_value: '-'
+    elastic_ecs_name: winlog.event_data.TargetOutboundUserName
+    splunk_cim_name: N/A
+    otr_ossem_name: user_network_account_name
+
+  - original_name: TargetOutboundDomainName
+    description: >
+      Domain for the user that will be used for outbound (network) connections.
+      Valid only for NewCredentials logon type. If not NewCredentials logon, then this
+      will be a "-" string.
+    sample_value: '-'
+    elastic_ecs_name: winlog.event_data.TargetOutboundDomainName
+    splunk_cim_name: N/A
+    otr_ossem_name: user_network_account_domain
+
+  - original_name: VirtualAccount
+    description: >
+      a "Yes" or "No" flag, which indicates if the account is a virtual account
+      (e.g., "Managed Service Account"), which was introduced in Windows 7 and Windows
+      Server 2008 R2 to provide the ability to identify the account that a given Service
+      uses, instead of just using "NetworkService".
+    sample_value: '%%1843'
+    elastic_ecs_name: winlog.event_data.VirtualAccount
+    splunk_cim_name: N/A
+    otr_ossem_name: logon_virtual_account
+
+  - original_name: TargetLinkedLogonId
+    description: >
+      A hexadecimal value of the paired logon session. If there is no other
+      logon session associated with this logon session, then the value is "0x0".
+    sample_value: '0x0'
+    elastic_ecs_name: winlog.event_data.TargetLinkedLogonId
+    splunk_cim_name: N/A
+    otr_ossem_name: user_linked_logon_id
+
+  - original_name: ElevatedToken
+    description: >
+      a "Yes" or "No" flag. If "Yes" then the session this event represents
+      is elevated and has administrator privileges.
+    sample_value: '%%1842'
+    elastic_ecs_name: winlog.event_data.ElevatedToken
+    splunk_cim_name: N/A
+    otr_ossem_name: logon_elevated_token
+
 sample: |
   - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
     - <System>

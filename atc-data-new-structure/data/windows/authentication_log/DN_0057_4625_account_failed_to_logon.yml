@@ -16,7 +16,7 @@ loggingpolicy:
 contributors:
   - '@atc_project'
 references:
-  - text: 'Microsoft Docs: Sysinternals: event-4625.md'
+  - text: 'Microsoft Docs: event-4625.md'
     link: 'https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/windows/security/threat-protection/auditing/event-4625.md'
   - text: 'OSSEM DD: event-4625.yml'
     link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/etw-providers/Microsoft-Windows-Security-Auditing/events/event-4625.yml'

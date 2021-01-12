@@ -40,7 +40,10 @@ fields:
     otr_ossem_name: user_domain
 
   - original_name: SubjectLogonId
-    description: 'hexadecimal value that can help you correlate this event with recent events that might contain the same Logon ID, for example, "4624: An account was successfully logged on."'
+    description: >
+      'hexadecimal value that can help you correlate this event with recent 
+      events that might contain the same Logon ID, for example, "4624: An account 
+      was successfully logged on."'
     sample_value: '0x3e7'
     elastic_ecs_name: winlog.logon.id
     splunk_cim_name: N/A

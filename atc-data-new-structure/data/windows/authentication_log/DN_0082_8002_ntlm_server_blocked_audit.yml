@@ -1,26 +1,66 @@
-title: DN_0082_8002_ntlm_server_blocked_audit
-author: '@atc_project'
+title: NTLM server blocked audit
 description: >
-  NTLM server blocked audit: Audit Incoming NTLM Traffic that would be blocked. Actually it's just event about NTLM authentication, it doesn't necessary supposed to be blocked. Blocked NTLM auth is the same provider but Event ID 4002
-loggingpolicy:
-  - LP_0044_windows_ntlm_audit
-references:
-  - https://twitter.com/JohnLaTwC/status/1004895902010507266
-category: OS Logs
-platform: Windows
-type: Applications and Services Logs
-channel: Microsoft-Windows-NTLM/Operational
+  Audit Incoming NTLM Traffic that would be blocked. Actually it's just event 
+  about NTLM authentication, it doesn't necessary supposed to be blocked. 
+  Blocked NTLM auth is the same provider but Event ID 4002
+event_id: 8002
+attack_data_source: logon session
+attack_data_component: logon session creation
+platform: windows
 provider: Microsoft-Windows-NTLM
+channel: Microsoft-Windows-NTLM/Operational
+atc_id: DN0082
+loggingpolicy:
+  - LP0044
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: Restrict NTLM: Audit NTLM authentication in this domain'
+    link: 'https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-audit-ntlm-authentication-in-this-domain'
 fields:
-  - EventID
-  - Hostname # redundant
-  - Computer
-  - CallerPID
-  - ProcessName
-  - ClientLUID
-  - ClientUserName
-  - ClientDomainName
-  - MechanismOID
+
+  - original_name: CallerPID
+    description: None
+    sample_value: '4'
+    elastic_ecs_name: winlog.event_data.CallerPID
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: ProcessName
+    description: None
+    sample_value: ''
+    elastic_ecs_name: winlog.event_data.ProcessName
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: ClientLUID
+    description: None
+    sample_value: '0x3e7'
+    elastic_ecs_name: winlog.event_data.ClientLUID
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: ClientUserName
+    description: None
+    sample_value: 'DC$'
+    elastic_ecs_name: winlog.event_data.ClientUserName
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: ClientDomainName
+    description: None
+    sample_value: atc
+    elastic_ecs_name: winlog.event_data.ClientDomainName
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: MechanismOID
+    description: None
+    sample_value: '1.3.6.1.4.1.311.2.2.10'
+    elastic_ecs_name: winlog.event_data.MechanismOID
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
 sample: |
   - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
     - <System>

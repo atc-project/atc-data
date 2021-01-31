@@ -1,22 +1,91 @@
-title: DN_0054_2102_pnp_or_power_operation_for_usb_device
-author: '@atc_project'
-description: Finished PnP or Power operation for USB device
-loggingpolicy: 
-  - None
-references:
-  - https://www.techrepublic.com/article/how-to-track-down-usb-flash-drive-usage-in-windows-10s-event-viewer/
-category: OS Logs
-platform: Windows
-type: Applications and Services Logs
-channel: Microsoft-Windows-DriverFrameworks-UserMode/Operational
+title: Finished PnP or Power operation for USB device
+description: This event generates when a USB device ejecting from a USB port.
+event_id: 2102
+attack_data_source: N/A
+attack_data_component: N/A
+platform: windows
 provider: Microsoft-Windows-DriverFrameworks-UserMode
+channel: Microsoft-Windows-DriverFrameworks-UserMode/Operational
+atc_id: DN0054
+loggingpolicy:
+  - LP0111
+contributors:
+  - '@atc_project'
+references:
+  - text: 'techrepublic: How to track down USB flash drive usage with Windows 10's Event Viewer'
+    link: 'https://www.techrepublic.com/article/how-to-track-down-usb-flash-drive-usage-in-windows-10s-event-viewer/'
+  - text: 'forensixchange: USB storage forensics in Win10 #1 - Events'
+    link: 'https://forensixchange.com/posts/19_08_03_usb_storage_forensics_1/'
 fields:
-  - EventID
-  - ComputerName        # redundant
-  - Computer
-  - UMDFHostDeviceRequest
-  - lifetime
-  - instance            # serial number, name of device
+
+  - original_name: LifetimeId
+    description: >
+      A value that is unique for a connection. Can be used to correlate data between "connection" 
+      and "removal" events because the "removal" ones do not have an InstanceID in them. If you 
+      detach and reattach a system, then you will get a new LifetimeId.
+    sample_value: '{efe9111c-fbd4-4194-9899-bc2a375797e6}'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: InstanceId
+    description: >
+      Information about the attached drive. Can be used to correlate information between 
+      connections because this value is unique for the drive.
+    sample_value: 'SWD\WPDBUSENUM\_??_USBSTOR#DISK&VEN_GERFFINS&PROD_GT&REV_1100#0499040000000229&0#{53F56307-B6BF-11D0-94F2-00A0C91EFB8B}'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: RequestMajorCode
+    description: None
+    sample_value: '27'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: RequestMinorCode
+    description: None
+    sample_value: '2'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: Argument1
+    description: None
+    sample_value: '0x0'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: Argument2
+    description: None
+    sample_value: '0x0'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: Argument3
+    description: None
+    sample_value: '0x0'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: Argument4
+    description: None
+    sample_value: '0x0'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
+  - original_name: Status
+    description: None
+    sample_value: '0'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: N/A
+
 sample: |
   - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"> 
     - <System> 
@@ -27,23 +96,25 @@ sample: |
       <Task>37</Task> 
       <Opcode>2</Opcode> 
       <Keywords>0x8000000000000000</Keywords> 
-      <TimeCreated SystemTime="2010-08-26T17:53:04.155Z" /> 
-      <EventRecordID>201772</EventRecordID> 
+      <TimeCreated SystemTime="2021-01-31T23:08:16.272495900Z" /> 
+      <EventRecordID>84</EventRecordID> 
       <Correlation /> 
-      <Execution ProcessID="3176" ThreadID="3236" /> 
+      <Execution ProcessID="372" ThreadID="5624" /> 
       <Channel>Microsoft-Windows-DriverFrameworks-UserMode/Operational</Channel> 
-      <Computer>Sal</Computer> 
+      <Computer>DESKTOP-H9KB222</Computer> 
       <Security UserID="S-1-5-19" /> 
     </System> 
-      - <UserData> 
-        - <UMDFHostDeviceRequest lifetime="{0A5BFD5B-1FC3-4985-9A2B-955F2D65E42F}" instance="WPDBUSENUMROOT\UMB\2&37C186B&0&STORAGE#VOLUME#1&19F7E59C&0&_??_USBSTOR#DISK&VEN_GENERIC&PROD_USB_MS_READER&REV_1.03#920321111113&3#" xmlns:auto-ns2="http://schemas.microsoft.com/win/2004/08/events" xmlns="http://www.microsoft.com/DriverFrameworks/UserMode/Event"> 
-          - <Request major="22" minor="3"> 
-            <Argument>0x0</Argument> 
-            <Argument>0x6</Argument> 
-            <Argument>0x6</Argument> 
-            <Argument>0x0</Argument> 
-          </Request> 
-          <Status>3221225659</Status> 
-        </UMDFHostDeviceRequest> 
-      </UserData> 
-  </Event> 
+    - <UserData> 
+      - <UMDFHostDeviceRequest xmlns="http://www.microsoft.com/DriverFrameworks/UserMode/Event"> 
+        <LifetimeId>{efe9111c-fbd4-4194-9899-bc2a375797e6}</LifetimeId> 
+        <InstanceId>SWD\WPDBUSENUM\_??_USBSTOR#DISK&VEN_GERFFINS&PROD_GT&REV_1100#0499040000000229&0#{53F56307-B6BF-11D0-94F2-00A0C91EFB8B}</InstanceId> 
+        <RequestMajorCode>27</RequestMajorCode> 
+        <RequestMinorCode>2</RequestMinorCode> 
+        <Argument1>0x0</Argument1> 
+        <Argument2>0x0</Argument2> 
+        <Argument3>0x0</Argument3> 
+        <Argument4>0x0</Argument4> 
+        <Status>0</Status> 
+      </UMDFHostDeviceRequest> 
+    </UserData> 
+  </Event>

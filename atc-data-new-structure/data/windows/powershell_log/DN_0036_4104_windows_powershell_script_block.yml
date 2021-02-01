@@ -1,26 +1,68 @@
-title: DN_0036_4104_windows_powershell_script_block
-author: '@atc_project'
+title: Script Block Logging
 description: >
-  This event records script
-loggingpolicy: 
-  - LP_0109_windows_powershell_script_block_logging
-references:
-  - https://blogs.msdn.microsoft.com/powershell/2015/06/09/powershell-the-blue-team/
-  - https://github.com/Cyb3rWard0g/OSSEM/blob/master/data_dictionaries/windows/powershell/events/event-4104.md
-category: OS Logs
-platform: Windows
-type: Applications and Services Logs
-channel: Microsoft-Windows-PowerShell/Operational
+  Script block logging records blocks of code as they are executed by the
+  PowerShell engine, thereby capturing the full contents of code executed by an attacker,
+  including scripts and commands. Due to the nature of script block logging, it also
+  records de-obfuscated code as it is executed. For example, in addition to recording
+  the original obfuscated code, script block logging records the decoded commands
+  passed with PowerShell's -EncodedCommand argument, as well as those obfuscated with
+  XOR, Base64, ROT13, encryption, etc., in addition to the original obfuscated code.
+  Script block logging will not record output from the executed code.
+event_id: 4104
+attack_data:
+  - powershell log: powershell execution
+platform: windows
 provider: Microsoft-Windows-PowerShell
+channel: Microsoft-Windows-PowerShell/Operational
+atc_id: DN0036
+loggingpolicy:
+  - LP0109
+contributors:
+  - '@atc_project'
+references:
+  - text: 'OSSEM DD: event-4104.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/powershell/events/event-4104.yml'
+  - text: 'FireEye: Greater Visibility Through PowerShell Logging'
+    link: 'https://www.fireeye.com/blog/threat-research/2016/02/greater_visibilityt.html'
+  - text: 'Microsoft: PowerShell <3 the Blue Team'
+    link: 'https://blogs.msdn.microsoft.com/powershell/2015/06/09/powershell-the-blue-team/'
 fields:
-  - EventID
-  - Computer
-  - Hostname # redundant
-  - MessageNumber
-  - MessageTotal
-  - ScriptBlockText
-  - ScriptBlockId
-  - Path
+
+  - original_name: MessageNumber
+    description: ''
+    sample_value: '1'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_message_number
+
+  - original_name: MessageTotal
+    description: ''
+    sample_value: '1'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_parameter_binding
+
+  - original_name: ScriptBlockText
+    description: '$FilterArgs = @{name=AtomicRedTeam-WMIPersistence-Example...'
+    sample_value: ''
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_scriptblock_text
+
+  - original_name: ScriptBlockId
+    description: ''
+    sample_value: 414c1110-3b57-40bf-9502-e45053cce9dd
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_scriptblock_id
+
+  - original_name: Path
+    description: ''
+    sample_value: 'C:\Tools\Invoke-ATTACKAPI-master\Invoke-ATTACKAPI.ps1'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_Path
+
 sample: |
   - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
     - <System>

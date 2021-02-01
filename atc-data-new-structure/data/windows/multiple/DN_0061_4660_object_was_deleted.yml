@@ -1,5 +1,4 @@
-title: DN_0061_4660_object_was_deleted
-author: '@atc_project'
+title: An object was deleted
 description: >
   This event generates when an object was deleted. The object could be a 
   file system, kernel, or registry object. This event generates only if 
@@ -10,30 +9,102 @@ description: >
   it’s generated only during real delete operations. In contrast, 
   "4663(S): An attempt was made to access an object" also generates 
   during other actions, such as object renaming
-loggingpolicy: 
-  - LP_0102_windows_audit_file_system
-  - LP_0039_windows_audit_kernel_object
-  - LP_0103_windows_audit_registry
-references: 
-  - https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4660.md
-category: OS Logs
-platform: Windows
-type: Windows Log
-channel: Security
+event_id: 4660
+attack_data:
+  - file: file deletion
+  - windows registry: windows registry key deletion
+platform: windows
 provider: Microsoft-Windows-Security-Auditing
-fields: 
-  - EventID
-  - Computer
-  - Hostname # redundant
-  - SubjectUserSid
-  - SubjectUserName
-  - SubjectDomainName
-  - SubjectLogonId
-  - ObjectServer
-  - HandleId
-  - ProcessId
-  - ProcessName
-  - TransactionId
+channel: Security
+atc_id: DN0061
+loggingpolicy:
+  - LP0102: Success # windows_audit_file_system
+  - LP0039: Success # windows_audit_kernel_object
+  - LP0103: Success # windows_audit_registry
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: event-4660.md'
+    link: 'https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4660.md'
+  - text: 'OSSEM DD: event-4660.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/etw-providers/Microsoft-Windows-Security-Auditing/events/event-4660.yml'
+fields:
+
+  - original_name: SubjectUserSid
+    description: SID of account that requested the "delete object" operation.
+    sample_value: S-1-5-21-3457937927-2839227994-823803824-1104
+    elastic_ecs_name: user.id
+    splunk_cim_name: user_id
+    otr_ossem_name: user_sid
+  
+  - original_name: SubjectUserName
+    description: the name of the account that requested the "delete object" operation.
+    sample_value: dadmin
+    elastic_ecs_name: user.name
+    splunk_cim_name: user
+    otr_ossem_name: user_name
+  
+  - original_name: SubjectDomainName
+    description: subject's domain or computer name.
+    sample_value: CONTOSO
+    elastic_ecs_name: user.domain
+    splunk_cim_name: src_nt_domain
+    otr_ossem_name: user_domain
+  
+  - original_name: SubjectLogonId
+    description: >
+      'hexadecimal value that can help you correlate this event with recent
+      events that might contain the same Logon ID, for example, "4624: An account was
+      successfully logged on."'
+    sample_value: '0x4367b'
+    elastic_ecs_name: winlog.logon.id
+    splunk_cim_name: N/A
+    otr_ossem_name: user_logon_id
+  
+  - original_name: ObjectServer
+    description: has "Security" value for this event.
+    sample_value: Security
+    elastic_ecs_name: winlog.event_data.ObjectServer
+    splunk_cim_name: N/A
+    otr_ossem_name: object_server
+  
+  - original_name: HandleId
+    description: >
+      'hexadecimal value of a handle to Object Name. This field can help
+      you correlate this event with other events that might contain the same Handle
+      ID, for example, "4663(S): An attempt was made to access an object."'
+    sample_value: '0x1678'
+    elastic_ecs_name: winlog.event_data.HandleId
+    splunk_cim_name: N/A
+    otr_ossem_name: object_handle_id
+  
+  - original_name: ProcessId
+    description: >
+      hexadecimal Process ID of the process that deleted the object. Process
+      ID (PID) is a number used by the operating system to uniquely identify an active
+      process.
+    sample_value: '0xef0'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: process_id
+    otr_ossem_name: process_id
+  
+  - original_name: ProcessName
+    description: full path and the name of the executable for the process.
+    sample_value: C:\Windows\explorer.exe
+    elastic_ecs_name: process.executable
+    splunk_cim_name: process_path
+    otr_ossem_name: process_path
+  
+  - original_name: TransactionId
+    description: >
+      'unique GUID of the transaction. This field can help you correlate
+      this event with other events that might contain the same Transaction ID, such
+      as "4656(S, F): A handle to an object was requested."'
+    sample_value: '{00000000-0000-0000-0000-000000000000}'
+    elastic_ecs_name: winlog.event_data.TransactionId
+    splunk_cim_name: N/A
+    otr_ossem_name: transaction_guid
+
 sample: |
   - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
     - <System>

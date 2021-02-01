@@ -1,7 +1,7 @@
 title: Google Santa EXEC
 description: Google Santa process execution log (action=EXEC)
-attack_data_source: process
-attack_data_component: process creation
+attack_data:
+  - process: process creation
 platform: macos
 provider: santa
 atc_id: DN000X

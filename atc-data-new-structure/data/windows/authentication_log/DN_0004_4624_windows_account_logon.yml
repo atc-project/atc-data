@@ -3,8 +3,8 @@ description: >
   This event generates when a logon session is created (on destination machine). 
   It generates on the computer that was accessed, where the session was created.
 event_id: 4624
-attack_data_source: logon session
-attack_data_component: logon session creation
+attack_data:
+  - logon session: logon session creation
 platform: windows
 provider: Microsoft-Windows-Security-Auditing
 channel: Security

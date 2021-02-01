@@ -3,8 +3,8 @@ description: >
   The process terminate event reports when a process terminates. It provides the UtcTime, 
   ProcessGuid and ProcessId of the process
 event_id: 5
-attack_data_source: process
-attack_data_component: process termination
+attack_data:
+  - process: process termination
 platform: windows
 provider: Microsoft-Windows-Sysmon
 channel: 'Microsoft-Windows-Sysmon/Operational'

@@ -1,8 +1,6 @@
 title: Received a Pnp or Power operation for USB port
 description: This event generates when a USB device connecting to a USB port.
 event_id: 2100
-attack_data_source: N/A
-attack_data_component: N/A
 platform: windows
 provider: Microsoft-Windows-DriverFrameworks-UserMode
 channel: Microsoft-Windows-DriverFrameworks-UserMode/Operational

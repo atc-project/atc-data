@@ -1,7 +1,5 @@
 title: Google Santa DISKAPPEAR
 description: Google Santa disk mount log (action=DISKAPPEAR)
-attack_data_source: Not present yet
-attack_data_component: Not present yet
 platform: macos
 provider: santa
 atc_id: DN000X

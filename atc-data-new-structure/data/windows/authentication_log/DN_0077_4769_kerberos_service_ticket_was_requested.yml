@@ -3,14 +3,14 @@ description: >
   This event generates every time Key Distribution Center gets a Kerberos Ticket Granting
   Service (TGS) ticket request. This event generates only on domain controllers.
 event_id: 4769
-attack_data_source: logon session
-attack_data_component: logon session creation
+attack_data:
+  - logon session: logon session creation
 platform: windows
 provider: Microsoft-Windows-Security-Auditing
 channel: Security
 atc_id: DN0077
 loggingpolicy:
-  - LP0106: Success and Failure
+  - LP0106: [ "Success", "Failure" ]
 contributors:
   - '@atc_project'
 references:

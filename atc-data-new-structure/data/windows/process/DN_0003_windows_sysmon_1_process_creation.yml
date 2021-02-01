@@ -6,8 +6,8 @@ description: >
   event correlation easier. The hash is a full hash of the file with the algorithms
   in the HashType field.
 event_id: 1
-attack_data_source: process
-attack_data_component: process creation
+attack_data:
+  - process: process creation
 platform: windows
 provider: Microsoft-Windows-Sysmon
 channel: 'Microsoft-Windows-Sysmon/Operational'

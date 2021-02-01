@@ -5,8 +5,8 @@ description: >
   the ProcessId and ProcessGUID fields. The event also contains the source and 
   destination host names IP addresses, port numbers and IPv6 status
 event_id: 3
-attack_data_source: process
-attack_data_component: process network connection
+attack_data:
+  - process: process network connection
 platform: windows
 provider: Microsoft-Windows-Sysmon
 channel: 'Microsoft-Windows-Sysmon/Operational'

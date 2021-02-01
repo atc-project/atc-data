@@ -1,8 +1,6 @@
 title: Finished PnP or Power operation for USB device
 description: This event generates when a USB device ejecting from a USB port.
 event_id: 2102
-attack_data_source: N/A
-attack_data_component: N/A
 platform: windows
 provider: Microsoft-Windows-DriverFrameworks-UserMode
 channel: Microsoft-Windows-DriverFrameworks-UserMode/Operational

@@ -5,8 +5,8 @@ description: >
   It generates on the computer where logon attempt was made, for example, if logon attempt 
   was made on user’s workstation, then event will be logged on this workstation.
 event_id: 4625
-attack_data_source: logon session
-attack_data_component: logon session creation
+attack_data:
+  - logon session: logon session creation
 platform: windows
 provider: Microsoft-Windows-Security-Auditing
 channel: Security

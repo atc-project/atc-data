@@ -1,8 +1,8 @@
 title: 'A new process has been created with commandline'
 description: Windows process creation log, including command line.
 event_id: 4688
-attack_data_source: process
-attack_data_component: process creation
+attack_data:
+  - process: process creation
 platform: windows
 provider: Microsoft-Windows-Security-Auditing
 channel: Security

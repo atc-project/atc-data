@@ -1,15 +1,16 @@
 title: 'Human readable title, ideally — from the official documentation, without EventID if present' # ATC will automatically add EventID (if present) to the beginning of the title if present
 description: Human readable description, ideally — from the official documentation.
 event_id: 4688                                # [optional] ATC will automatically add it to the beginning of the title if present
-attack_data_source: process                   # Could be a list. Options: https://github.com/mitre-attack/attack-datasources/blob/main/attack_data_sources.yaml 
-attack_data_component: process creation       # Could be a list. Options: https://github.com/mitre-attack/attack-datasources/blob/main/attack_data_sources.yaml
+attack_data:                                  # [optional] list of sources (key) and components (value); 
+  - process: process creation                 # here is the list of options: https://github.com/mitre-attack/attack-datasources/blob/main/attack_data_sources.yaml
 platform: windows                             # linux | unix | macos | network | etc
 provider: Microsoft-Windows-Security-Auditing # Microsoft-Windows-Eventlog | BIND | <exact service/deamon name> | None
 channel: Security                             # [optional] System | Microsoft-Windows-Sysmon/Operational | queries_log | None
 atc_id: DN0001                                # Counting number (for now)
 loggingpolicy:                                # [optional] ATC Logging Policy ID
   - LP0001: Success                           # [optional] ATC Logging Policy ID with audit Success/Failure as a value
-  - LP0002                                    # [optional] Could be just ATC Logging Policy ID
+  - LP0002: [ "Success", "Failure" ]          # [optional] ATC Logging Policy ID with both audit Success and Failure
+  - LP0003                                    # [optional] Could be just ATC Logging Policy ID
 contributors:
   - 'your name/nickname/twitter'
 references:

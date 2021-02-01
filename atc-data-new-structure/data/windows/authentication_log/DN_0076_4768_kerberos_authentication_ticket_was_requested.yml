@@ -5,14 +5,14 @@ description: >
   on domain controllers. If TGT issue fails then you will see 
   Failure event with Result Code field not equal to "0x0"
 event_id: 4768
-attack_data_source: logon session
-attack_data_component: logon session creation
+attack_data:
+  - logon session: logon session creation
 platform: windows
 provider: Microsoft-Windows-Security-Auditing
 channel: Security
 atc_id: DN0076
 loggingpolicy:
-  - LP0038: Success and Failure
+  - LP0038: [ "Success", "Failure" ]
 contributors:
   - '@atc_project'
 references:

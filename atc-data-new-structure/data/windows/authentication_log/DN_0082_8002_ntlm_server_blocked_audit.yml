@@ -4,8 +4,8 @@ description: >
   about NTLM authentication, it doesn't necessary supposed to be blocked. 
   Blocked NTLM auth is the same provider but Event ID 4002
 event_id: 8002
-attack_data_source: logon session
-attack_data_component: logon session creation
+attack_data:
+  - logon session: logon session creation
 platform: windows
 provider: Microsoft-Windows-NTLM
 channel: Microsoft-Windows-NTLM/Operational

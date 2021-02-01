@@ -8,8 +8,8 @@ description: >
   has expired, or the wrong password was provided. This event 
   generates only on domain controllers
 event_id: 4771
-attack_data_source: logon session
-attack_data_component: logon session creation
+attack_data:
+  - logon session: logon session creation
 platform: windows
 provider: Microsoft-Windows-Security-Auditing
 channel: Security

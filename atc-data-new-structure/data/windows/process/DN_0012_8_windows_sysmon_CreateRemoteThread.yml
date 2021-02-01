@@ -2,8 +2,8 @@ title: CreateRemoteThread
 description: >
   The CreateRemoteThread event detects when a process creates a thread in another process
 event_id: 8
-attack_data_source: process
-attack_data_component: process access
+attack_data:
+  - process: process access
 platform: windows
 provider: Microsoft-Windows-Sysmon
 channel: 'Microsoft-Windows-Sysmon/Operational'

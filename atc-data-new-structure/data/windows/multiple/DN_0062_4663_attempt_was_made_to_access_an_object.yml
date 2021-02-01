@@ -1,5 +1,4 @@
-title: DN_0062_4663_attempt_was_made_to_access_an_object
-author: '@atc_project'
+title: An attempt was made to access an object
 description: >
   This event indicates that a specific operation was performed on an object. 
   The object could be a file system, kernel, or registry object, or a file 
@@ -8,35 +7,137 @@ description: >
   The main difference with "4656: A handle to an object was requested." 
   event is that 4663 shows that access right was used instead of just 
   requested and 4663 doesn’t have Failure events
-loggingpolicy: 
-  - LP_0102_windows_audit_file_system
-  - LP_0039_windows_audit_kernel_object
-  - LP_0103_windows_audit_registry
-  - LP_0104_windows_audit_removable_storage
-references: 
-  - https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4663.md
-category: OS Logs
-platform: Windows
-type: Windows Log
-channel: Security
+event_id: 4663
+attack_data:
+  - file: file access
+  - windows registry: windows registry key access
+  - process: process access
+platform: windows
 provider: Microsoft-Windows-Security-Auditing
-fields: 
-  - EventID
-  - Computer
-  - Hostname # redundant
-  - SubjectUserSid
-  - SubjectUserName
-  - SubjectDomainName
-  - SubjectLogonId
-  - ObjectServer
-  - ObjectType
-  - ObjectName
-  - HandleId
-  - AccessList
-  - AccessMask
-  - ProcessId
-  - ProcessName
-  - ResourceAttributes
+channel: Security
+atc_id: DN0062
+loggingpolicy:
+  - LP0102: Success # windows_audit_file_system
+  - LP0039: Success # windows_audit_kernel_object
+  - LP0103: Success # windows_audit_registry
+  - LP0104: Success # windows_audit_removable_storage
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: event-4663.md'
+    link: 'https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4663.md'
+  - text: 'OSSEM DD: event-4663.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/etw-providers/Microsoft-Windows-Security-Auditing/events/event-4663.yml'
+fields:
+
+  - original_name: SubjectUserSid
+    description: SID of account that made an attempt to access an object.
+    sample_value: S-1-5-21-3457937927-2839227994-823803824-1104
+    elastic_ecs_name: user.id
+    splunk_cim_name: user_id
+    otr_ossem_name: user_sid
+
+  - original_name: SubjectUserName
+    description: the name of the account that made an attempt to access an object.
+    sample_value: dadmin
+    elastic_ecs_name: user.name
+    splunk_cim_name: user
+    otr_ossem_name: user_name
+
+  - original_name: SubjectDomainName
+    description: subject's domain or computer name.
+    sample_value: CONTOSO
+    elastic_ecs_name: user.domain
+    splunk_cim_name: src_nt_domain
+    otr_ossem_name: user_domain
+
+  - original_name: SubjectLogonId
+    description: >
+      hexadecimal value that can help you correlate this event with recent
+      events that might contain the same Logon ID
+    sample_value: '0x4367b'
+    elastic_ecs_name: winlog.logon.id
+    splunk_cim_name: N/A
+    otr_ossem_name: user_logon_id
+
+  - original_name: ObjectServer
+    description: has "Security" value for this event.
+    sample_value: Security
+    elastic_ecs_name: winlog.event_data.ObjectServer
+    splunk_cim_name: N/A
+    otr_ossem_name: object_server
+
+  - original_name: ObjectType
+    description: The type of object that was accessed during the operation.
+    sample_value: File
+    sample_value: File
+    elastic_ecs_name: winlog.event_data.ObjectType
+    splunk_cim_name: N/A
+    otr_ossem_name: object_type
+
+  - original_name: ObjectName
+    description: >
+      name and other identifying information for the object for which access
+      was requested. For example, for a file, the path would be included.
+    sample_value: C:\Documents\HBI Data.txt
+    elastic_ecs_name: winlog.event_data.ObjectName
+    splunk_cim_name: N/A
+    otr_ossem_name: object_name
+
+  - original_name: HandleId
+    description: >
+      'hexadecimal value of a handle to Object Name. This field can be used
+      for correlation with other events, for example with Handle ID field in "4656(S,
+      F): A handle to an object was requested."'
+    sample_value: '0x1bc'
+    elastic_ecs_name: winlog.event_data.HandleId
+    splunk_cim_name: N/A
+    otr_ossem_name: object_handle_id
+
+  - original_name: AccessList
+    description: >
+      the list of access rights which were used by Subject\Security ID. These
+      access rights depend on Object Type.
+    sample_value: '%%4417 %%4418'
+    elastic_ecs_name: winlog.event_data.AccessList
+    splunk_cim_name: N/A
+    otr_ossem_name: user_access_list
+
+  - original_name: AccessMask
+    description: >
+      hexadecimal mask for the requested or performed operation. For more
+      information, see the preceding table.
+    sample_value: '0x6'
+    elastic_ecs_name: winlog.event_data.AccessMask
+    splunk_cim_name: N/A
+    otr_ossem_name: object_access_mask
+
+  - original_name: ProcessId
+    description: >
+      hexadecimal Process ID of the process that accessed the object. Process
+      ID (PID) is a number used by the operating system to uniquely identify an active
+      process.
+    sample_value: '0x458'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: process_id
+    otr_ossem_name: process_id
+
+  - original_name: ProcessName
+    description: full path and the name of the executable for the process.
+    sample_value: C:\Windows\System32\notepad.exe
+    elastic_ecs_name: process.executable
+    splunk_cim_name: process_path
+    otr_ossem_name: process_path
+
+  - original_name: ResourceAttributes
+    description: >
+      attributes associated with the object. For some objects, the field
+      does not apply and "-" is displayed.
+    sample_value: S:AI(RA;ID;;;;WD;("Impact_MS",TI,0x10020,3000))
+    elastic_ecs_name: winlog.event_data.ResourceAttributes
+    splunk_cim_name: N/A
+    otr_ossem_name: object_resource_attributes
+
 sample: |
   - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
     - <System>

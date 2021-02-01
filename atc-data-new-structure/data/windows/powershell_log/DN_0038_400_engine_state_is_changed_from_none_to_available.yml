@@ -1,20 +1,132 @@
-title: DN_0038_400_engine_state_is_changed_from_none_to_available
-author: '@atc_project'
+title: Engine Lifecycle
 description: >
-  Information about PowerShell engine state. Engine state is changed from None to Available
-loggingpolicy: 
-  - None
-references:
-  - https://github.com/Cyb3rWard0g/OSSEM/blob/master/data_dictionaries/windows/powershell/events/event-400.md
-category: OS Logs
-platform: Windows
-type: Applications and Services Logs
-channel: Windows PowerShell
+  Logs the start and stop of PowerShell. Each time that PowerShell executes
+  - either upon the execution of a single command, the start of a local session, or
+  the start of a remoting session - this log records an Event ID (EID) 400 message:
+  "Engine state is changed from None to Available." At the completion of the session,
+  the log records an EID 403 event: "Engine state is changed from Available to Stopped".
+  The message details for both EID 400 and EID 403 events include a HostName field.
+  If executed locally, this field will be logged as HostName=ConsoleHost. If PowerShell
+  remoting is in use, the accessed system will record these events with HostName=ServerRemoteHost.
+event_id: 400
+attack_data:
+  - powershell log: powershell context
+platform: windows
 provider: PowerShell
+channel: Windows PowerShell
+atc_id: DN0038
+contributors:
+  - '@atc_project'
+references:
+  - text: 'OSSEM DD: event-400.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/powershell/events/event-400.yml'
 fields:
-  - EventID
-  - Computer
-  - Hostname # redundant
+
+  - original_name: NewEngineState
+    description: ''
+    sample_value: Available
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_new_engine_state
+
+  - original_name: PreviousEngineState
+    description: ''
+    sample_value: None
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_previous_engine_state
+
+  - original_name: SequenceNumber
+    description: ''
+    sample_value: '13'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_sequence_number
+
+  - original_name: HostName
+    description: ''
+    sample_value: 'Windows PowerShell ISE Host'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_host_name
+
+  - original_name: HostVersion
+    description: ''
+    sample_value: 5.1.17134.407
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_host_version
+
+  - original_name: HostId
+    description: ''
+    sample_value: 9478b487-c2ea-4aa8-8eb3-9b7bad25b39f
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_host_id
+
+  - original_name: HostApplication
+    description: ''
+    sample_value: C:\windows\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_host_application
+
+  - original_name: EngineVersion
+    description: ''
+    sample_value: 5.1.17134.407
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_engine_version
+
+  - original_name: RunspaceId
+    description: ''
+    sample_value: 9f89fa00-ca26-402e-9dea-29c6d2447f7b
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_runspace_id
+
+  - original_name: PipelineId
+    description: ''
+    sample_value: ''
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/AN/A
+    otr_ossem_name: powershell_pipeline_id
+
+  - original_name: CommandName
+    description: ''
+    sample_value: ''
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_command_name
+
+  - original_name: CommandType
+    description: ''
+    sample_value: ''
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_command_type
+
+  - original_name: ScriptName
+    description: ''
+    sample_value: ''
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_script_name
+
+  - original_name: CommandPath
+    description: ''
+    sample_value: ''
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_command_path
+
+  - original_name: CommandLine
+    description: ''
+    sample_value: ''
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_command_line
+
 sample: |
   - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
     - <System>

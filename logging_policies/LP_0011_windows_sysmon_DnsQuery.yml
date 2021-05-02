@@ -12,8 +12,8 @@ configuration: |
   Due to the volume of events that DNS queries generate, some orgs may want to remove this section from their configuration to reduce Sysmon log turnover.
 
   DNS logging is a very nuanced challenge in monitoring due to event volume. Legitimate domains can be used to host malware/C2, but lookup itself is not very informative.
-						It's fine to exclude monitoring these bulk low-value lookups, but at same time, you would not have a full log of how malware communicated, potentially missing C2.
-						This section of Sysmon configuration will require your full judgement and knowledge of your org's priorities. There is no correct answer.
+  It's fine to exclude monitoring these bulk low-value lookups, but at same time, you would not have a full log of how malware communicated, potentially missing C2.
+  This section of Sysmon configuration will require your full judgement and knowledge of your org's priorities. There is no correct answer.
 
   Sample configuration:
   ```

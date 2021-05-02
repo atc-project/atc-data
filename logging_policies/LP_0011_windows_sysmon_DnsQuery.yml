@@ -2,13 +2,18 @@ title: LP_0011_windows_sysmon_DnsQuery
 author: '@atc_project'
 default: Not configured
 volume: High
-description: Enables logging of events related to DNS queries and responses
+description: This event is generated when a process executes a DNS query, whether the result is successful or fails, cached or not. The telemetry for this event was added for Windows 8.1 so it is not available on Windows 7 and earlier.
 eventID: 
   - 22
 references:
   - https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-22-dnsevent-dns-query
 configuration: |
-  This configuration should be further tuned according to baseline (filtration required).
+  Sysmon Event ID 22 is disabled by default and can be enabled by specifying a configuration file.  
+  Due to the volume of events that DNS queries generate, some orgs may want to remove this section from their configuration to reduce Sysmon log turnover.
+
+  DNS logging is a very nuanced challenge in monitoring due to event volume. Legitimate domains can be used to host malware/C2, but lookup itself is not very informative.
+						It's fine to exclude monitoring these bulk low-value lookups, but at same time, you would not have a full log of how malware communicated, potentially missing C2.
+						This section of Sysmon configuration will require your full judgement and knowledge of your org's priorities. There is no correct answer.
 
   Sample configuration:
   ```

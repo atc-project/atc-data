@@ -13,5 +13,5 @@ references:
     - https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
 configuration: |
   Sysmon Event ID 3 is disabled by default and can be enabled by specifying a configuration file.  
-  Howevber, it should be noted that this Event ID can produce a high volume of logs and as such filtering these connections may be valuable to organisations.
+  However, it should be noted that this Event ID can produce a high volume of logs and as such filtering these connections may be valuable to organisations.
   Sample configurations can be found here: https://github.com/SwiftOnSecurity/sysmon-config/blob/master/sysmonconfig-export.xml

@@ -1,0 +1,51 @@
+title: DN_0118_defender_DeviceRegistryEvents
+author: Tom@BridewellConsulting
+description: >
+  The defender for endpoint DeviceRegistryEvents table contains inforamation about creation and modification of registry entries.
+loggingpolicy: 
+  - LP_0111_defender_for_endpoint
+references:
+  - https://docs.microsoft.com/en-us/microsoft-365/security/defender/advanced-hunting-deviceregistryevents-table?view=o365-worldwide
+category: OS Logs                             
+platform: Windows                          
+type: defender for endpoint                             
+channel: DeviceRegistryEvents   
+fields:
+  - Timestamp
+  - DeviceId
+  - DeviceName
+  - ActionType
+  - RegistryKey
+  - RegistryValueType
+  - RegistryValueName
+  - RegistryValueData
+  - PreviousRegistryKey
+  - PreviousRegistryValueName
+  - PreviousRegistryValueData
+  - InitiatingProcessAccountDomain
+  - InitiatingProcessAccountName
+  - InitiatingProcessAccountSid
+  - InitiatingProcessAccountUpn
+  - InitiatingProcessAccountObjectId
+  - InitiatingProcessSHA1
+  - InitiatingProcessSHA256
+  - InitiatingProcessMD5
+  - InitiatingProcessFileName
+  - InitiatingProcessFileSize
+  - InitiatingProcessVersionInfoCompanyName
+  - InitiatingProcessVersionInfoProductName
+  - InitiatingProcessVersionInfoProductVersion
+  - InitiatingProcessVersionInfoInternalFileName
+  - InitiatingProcessVersionInfoOriginalFileName
+  - InitiatingProcessVersionInfoFileDescription
+  - InitiatingProcessId
+  - InitiatingProcessCommandLine
+  - InitiatingProcessCreationTime
+  - InitiatingProcessFolderPath
+  - InitiatingProcessParentId
+  - InitiatingProcessParentFileName
+  - InitiatingProcessParentCreationTime
+  - InitiatingProcessIntegrityLevel
+  - InitiatingProcessTokenElevation
+  - ReportId
+  - AppGuardContainerId

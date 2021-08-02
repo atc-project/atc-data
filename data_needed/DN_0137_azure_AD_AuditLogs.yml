@@ -1,0 +1,71 @@
+title: DN_0137_azure_AD_AuditLogs
+author: Tom@BridewellConsulting
+description: >
+    The Azure AD AuditLogs contains logs about directory activities (for example group and user managment)
+loggingpolicy: 
+  - LP_0135_azure_AD_AuditLogs
+references:
+  - https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/concept-audit-logs
+category: Active Directory                            
+platform: Cloud                         
+type: Audit                             
+channel: AuditLogs
+provider: Azure AD   
+fields:
+  - AADOperationType 
+  - AADTenantId 
+  - ActivityDateTime 
+  - ActivityDisplayName 
+  - AdditionalDetails 
+  - Category 
+  - CorrelationId 
+  - DurationMs 
+  - Id 
+  - Identity 
+  - InitiatedBy 
+  - Level 
+  - Location 
+  - LoggedByService 
+  - OperationName 
+  - OperationVersion 
+  - Resource 
+  - ResourceGroup 
+  - ResourceId 
+  - ResourceProvider 
+  - Result 
+  - ResultDescription 
+  - ResultReason 
+  - ResultSignature 
+  - ResultType 
+  - SourceSystem 
+  - TargetResources 
+  - TimeGenerated 
+  - Type 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

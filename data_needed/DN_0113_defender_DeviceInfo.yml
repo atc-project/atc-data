@@ -1,0 +1,40 @@
+
+title: DN_0113_defender_DeviceInfo
+author: Tom@BridewellConsulting
+description: >
+  The Defender for endpoint DeviceInfo table contains information about the endpoint including OS versions, logged on users. 
+loggingpolicy: 
+  - LP_0111_defender_for_endpoint
+references:
+  - https://docs.microsoft.com/en-us/microsoft-365/security/defender/advanced-hunting-deviceinfo-table?view=o365-worldwide
+category: OS Logs                             
+platform: Windows                          
+type: defender for endpoint                             
+channel: DeviceInfo
+fields:
+  - Timestamp
+  - DeviceId
+  - DeviceName
+  - ClientVersion
+  - PublicIP
+  - OSArchitecture
+  - OSPlatform
+  - OSBuild
+  - IsAzureADJoined
+  - AadObjectId
+  - LoggedOnUsers
+  - RegistryDeviceTag
+  - OSVersion
+  - MachineGroup
+  - ReportId
+  - OnboardingStatus
+  - AdditionalFields
+  - DeviceCategory
+  - DeviceType
+  - DeviceSubType
+  - Model
+  - Vendor
+  - OSDistribution
+  - OSVersionInfo
+  - MergedDeviceIds
+  - MergedToDeviceId

@@ -1,0 +1,41 @@
+title: DN_0125_azure_MMA_DnsEvents
+author: Tom@BridewellConsulting
+description: >
+  DNS logging is currently a preview feauture as an Azure Sentinel connector. it utilizes MMA (Microsoft Monitoring Agent) on a windows DNS server to forward DNS logs for queries against the DNS server. 
+loggingpolicy: 
+  - LP_0125_azure_MMA_DNS
+references:
+  - https://docs.microsoft.com/en-us/azure/sentinel/connect-dns
+category: Network                            
+platform: Windows                          
+type: MMA Agent                            
+channel: DnsEvents    
+fields:
+  - ClientIP 
+  - Computer 
+  - Confidence 
+  - Description 
+  - EventId 
+  - IndicatorThreatType 
+  - IPAddresses 
+  - MaliciousIP 
+  - Message 
+  - Name 
+  - QueryType 
+  - RemoteIPCountry 
+  - RemoteIPLatitude 
+  - RemoteIPLongitude 
+  - Result 
+  - ResultCode 
+  - Severity 
+  - SourceSystem 
+  - SubType 
+  - TaskCategory 
+  - TimeGenerated
+  - Type 
+  - _ResourceId 
+  - _SubscriptionId 
+
+sample: |
+ TenantId,Computer,SourceSystem,"TimeGenerated [UTC]",EventId,SubType,ClientIP,Name,QueryType,ResultCode,IPAddresses,MaliciousIP,IndicatorThreatType,Description,Confidence,Severity,ReportReferenceLink,RemoteIPLongitude,RemoteIPLatitude,RemoteIPCountry,Message,TaskCategory,Result,Type,"_ResourceId"
+ "xxxxxx-xxxx-xxxx-xxxxx-xxxxxxx","ComputerNAME",OpsManager,"7/12/2021, 2:25:24.013 PM",257,LookupQuery,"10.1.1.41","somedomain.com",A,0,"10.1.1.1",,,,,,,,,,,,,DnsEvents,

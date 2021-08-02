@@ -1,0 +1,13 @@
+title: LP_0130_azure_OfficeActivity_Exchange
+author: Tom@BridewellConsulting
+default: Partially (Other) # Not configured | Partially (Success) | Partially (Failure) | Partially (Other) | Configured
+volume: High             # Low | Medium | High | Extremely High
+description: >
+  Some mailbox auditing is enabled by default but a number of actions are not logged by default for the mailbox owner. it may be required to enable enhanced monitoring on specific mailboxes when mailbox owner actions need to be auditied.  
+references:
+    - https://docs.microsoft.com/en-us/microsoft-365/compliance/enable-mailbox-auditing?view=o365-worldwide
+configuration: |
+  Refer to the references above for configuring mailbox auditing
+
+  enable the Office 365 connector in the Azure Sentinel connector screen and ensure the Exchange tick box is ticked. 
+  

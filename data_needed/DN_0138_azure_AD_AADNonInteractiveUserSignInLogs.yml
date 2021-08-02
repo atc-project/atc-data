@@ -1,0 +1,152 @@
+title: DN_0138_azure_AD_AADNonInteractiveUserSignInLogs
+author: Tom@BridewellConsulting
+description: >
+    The Azure AD AADNonInteractiveUserSignInLogs contains logs about non-interactive user logins. this includes logins across services using access tokens when the user is not required to reenter credentials. 
+loggingpolicy: 
+  - LP_0136_azure_AD_AADNonInteractiveUserSignInLogs
+references:
+  - https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/concept-all-sign-ins
+  - https://docs.microsoft.com/en-us/azure/azure-monitor/reference/tables/aadnoninteractiveusersigninlogs
+category: Active Directory                            
+platform: Cloud                         
+type: Audit                             
+channel: AADNonInteractiveUserSignInLogs
+provider: Azure AD   
+fields:
+  - AlternateSignInName 
+  - AppDisplayName 
+  - AppId 
+  - AuthenticationDetails 
+  - AuthenticationMethodsUsed 
+  - AuthenticationProcessingDetails 
+  - AuthenticationRequirement 
+  - AuthenticationRequirementPolicies 
+  - Category 
+  - ClientAppUsed 
+  - ConditionalAccessPolicies 
+  - ConditionalAccessStatus 
+  - CorrelationId 
+  - CreatedDateTime (datetime)
+  - DeviceDetail 
+  - DurationMs 
+  - Id 
+  - Identity 
+  - IPAddress 
+  - IsInteractive 
+  - IsRisky 
+  - Level 
+  - Location 
+  - LocationDetails 
+  - MfaDetail 
+  - NetworkLocationDetails 
+  - OperationName 
+  - OperationVersion 
+  - OriginalRequestId 
+  - ProcessingTimeInMs 
+  - ResourceDisplayName 
+  - ResourceGroup 
+  - ResourceIdentity 
+  - ResourceTenantId 
+  - ResultDescription 
+  - ResultSignature 
+  - ResultType 
+  - RiskDetail 
+  - RiskEventTypes 
+  - RiskEventTypes_V2 
+  - RiskLevelAggregated 
+  - RiskLevelDuringSignIn 
+  - RiskState 
+  - SignInEventTypes 
+  - SourceSystem 
+  - Status 
+  - TenantId 
+  - TimeGenerated
+  - TokenIssuerName 
+  - TokenIssuerType 
+  - Type 
+  - UserAgent 
+  - UserDisplayName 
+  - UserId 
+  - UserPrincipalName 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

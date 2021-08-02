@@ -1,0 +1,21 @@
+title: LP_0138_azure_AD_AADManagedIdentitySignInLogs
+author: tom@Bridewell
+default: Not configured 
+volume: Medium             
+description: >
+    The Azure AD AADManagedIdentitySignInLogs contains logs about managed identity signins. 
+    managed identitys are azure resources that have screts managed by azure. 
+references:
+    - https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+    - https://docs.microsoft.com/en-us/azure/sentinel/connect-azure-active-directory
+configuration: |
+
+ In Azure Sentinel, select Data connectors from the navigation menu.
+
+ From the data connectors gallery, select Azure Active Directory and then select Open connector page.
+
+ Mark the check boxes next to the log types you want to stream into Azure Sentinel (AADManagedIdentitySignInLogs), and click Connect
+
+ Test data is coming in ``` AADManagedIdentitySignInLogs | take 10 ```
+
+

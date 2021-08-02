@@ -1,0 +1,31 @@
+title: DN_0110_defender_DeviceFileCertificateInfo
+author: Tom@BridewellConsulting
+description: >
+  This datasource contains details information about file signing certificates and thier validity. 
+loggingpolicy: 
+  - LP_0111_defender_for_endpoint
+references:
+  - https://docs.microsoft.com/en-us/microsoft-365/security/defender/advanced-hunting-devicefilecertificateinfo-table?view=o365-worldwide
+category: OS Logs                               # HTTP Logs | DNS Logs | IDS/IPS/NGFW Alerts | Antivirus Alerts | Network Flows | etc
+platform: Windows                               # Linux | Unix | macOS | Network
+type: defender for endpoint                             
+channel: DeviceFileCertificateInfo    
+fields:
+  - Timestamp
+  - DeviceId
+  - DeviceName
+  - SHA1
+  - IsSigned
+  - SignatureType
+  - Signer
+  - SignerHash
+  - Issuer
+  - IssuerHash
+  - CertificateSerialNumber
+  - CrlDistributionPointUrls
+  - CertificateCreationTime
+  - CertificateExpirationTime
+  - CertificateCountersignatureTime
+  - IsTrusted
+  - IsRootSignerMicrosoft
+  - ReportId

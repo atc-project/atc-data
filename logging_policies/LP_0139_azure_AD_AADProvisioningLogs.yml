@@ -1,0 +1,20 @@
+title: LP_0139_azure_AD_AADProvisioningLogs
+author: tom@Bridewell
+default: Not configured 
+volume: Low             
+description: >
+    The Azure AD AADProvisioningLogs contains logs Activities performed by the provisioning service, such as the creation of a group in ServiceNow or a user imported from Workday.
+references:
+    - https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+    - https://docs.microsoft.com/en-us/azure/sentinel/connect-azure-active-directory
+configuration: |
+
+ In Azure Sentinel, select Data connectors from the navigation menu.
+
+ From the data connectors gallery, select Azure Active Directory and then select Open connector page.
+
+ Mark the check boxes next to the log types you want to stream into Azure Sentinel (AADProvisioningLogs), and click Connect
+
+ Test data is coming in ``` AADProvisioningLogs | take 10 ```
+
+

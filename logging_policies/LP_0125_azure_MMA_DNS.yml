@@ -1,0 +1,28 @@
+title: LP_0125_azure_MMA_DNS
+author: tom@Bridewell
+default: Not configured 
+volume: High             
+description: >
+ Azure DNS connector utilizies the (microsoft monitroing agent) to forward DNS logs and DNS zone information from a Windows DNS server to Azure Sentinel / OMS. this feauture is currently in public preview. 
+references:
+    - https://docs.microsoft.com/en-us/azure/sentinel/connect-dns
+configuration: |
+
+ In the Azure Sentinel portal, select Data connectors and choose the DNS (Preview) tile.
+
+ If your DNS machines are in Azure&#58;
+
+ Click Install agent on Azure Windows virtual machine.
+ In the Virtual machines list, select the DNS machine you want to stream into Azure Sentinel. Make sure this is a Windows VM.
+ In the window that opens for that VM, click Connect.
+ Click Enable in the DNS connector window.
+ If your DNS machine is not an Azure VM&#58; 
+
+ Click Install agent on non-Azure machines.
+ In the Direct agent window, select either Download Windows agent (64 bit) or Download Windows agent (32 bit).
+ Install the agent on your DNS machine. Copy the Workspace ID, Primary key, and Secondary key and use them when prompted during the installation.
+
+ sample: |
+  TenantId,Computer,"TimeGenerated [UTC]",SourceSystem,SubType,ResourceRecordName,ResourceRecordType,ZoneName,DomainName,ForestName,ServerIPs,DynamicUpdate,DnsSecSigned,NameServers,Type,"_ResourceId"
+  "xxxxx-xxxxx-4xxx-xxxx-xxxxxx","computer.domain","7/11/2021, 5:08:17.930 PM",OpsManager,ResourceRecord,"@.somedomain",NS,"somedomain.com",,,,,,,DnsInventory,
+

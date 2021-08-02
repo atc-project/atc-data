@@ -1,0 +1,31 @@
+
+title: DN_0116_defender_DeviceNetworkInfo
+author: Tom@BridewellConsulting
+description: >
+  The defender for endpoint DeviceNetworkInfo table contains information about the network configuration of the device, including information such as network adapters, SSID's, IP addresses, mac addresses 
+loggingpolicy: 
+  - LP_0111_defender_for_endpoint
+references:
+  - https://docs.microsoft.com/en-us/microsoft-365/security/defender/advanced-hunting-devicenetworkinfo-table?view=o365-worldwide
+category: OS Logs                             
+platform: Windows                          
+type: defender for endpoint                             
+channel: DeviceNetworkInfo  
+fields:
+  - Timestamp
+  - DeviceId
+  - DeviceName
+  - NetworkAdapterName
+  - MacAddress
+  - NetworkAdapterType
+  - NetworkAdapterStatus
+  - TunnelType
+  - ConnectedNetworks
+  - DnsAddresses
+  - IPv4Dhcp
+  - IPv6Dhcp
+  - DefaultGateways
+  - IPAddresses
+  - ReportId
+
+ 

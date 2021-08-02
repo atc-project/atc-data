@@ -1,0 +1,73 @@
+title: DN_0117_defender_DeviceProcessEvents
+author: Tom@BridewellConsulting
+description: >
+  The defender for endpoint DeviceProcessEvents table contains information about process creations. 
+loggingpolicy: 
+  - LP_0111_defender_for_endpoint
+references:
+  - https://docs.microsoft.com/en-us/microsoft-365/security/defender/advanced-hunting-deviceprocessevents-table?view=o365-worldwide
+category: OS Logs                             
+platform: Windows                          
+type: defender for endpoint                             
+channel: DeviceProcessEvents
+fields:
+  - Timestamp
+  - DeviceId
+  - DeviceName
+  - ActionType
+  - FileName
+  - FolderPath
+  - SHA1
+  - SHA256
+  - MD5
+  - FileSize
+  - ProcessVersionInfoCompanyName
+  - ProcessVersionInfoProductName
+  - ProcessVersionInfoProductVersion
+  - ProcessVersionInfoInternalFileName
+  - ProcessVersionInfoOriginalFileName
+  - ProcessVersionInfoFileDescription
+  - ProcessId
+  - ProcessCommandLine
+  - ProcessIntegrityLevel
+  - ProcessTokenElevation
+  - ProcessCreationTime
+  - AccountDomain
+  - AccountName
+  - AccountSid
+  - AccountUpn
+  - AccountObjectId
+  - LogonId
+  - InitiatingProcessAccountDomain
+  - InitiatingProcessAccountName
+  - InitiatingProcessAccountSid
+  - InitiatingProcessAccountUpn
+  - InitiatingProcessAccountObjectId
+  - InitiatingProcessLogonId
+  - InitiatingProcessIntegrityLevel
+  - InitiatingProcessTokenElevation
+  - InitiatingProcessSHA1
+  - InitiatingProcessSHA256
+  - InitiatingProcessMD5
+  - InitiatingProcessFileName
+  - InitiatingProcessFileSize
+  - InitiatingProcessVersionInfoCompanyName
+  - InitiatingProcessVersionInfoProductName
+  - InitiatingProcessVersionInfoProductVersion
+  - InitiatingProcessVersionInfoInternalFileName
+  - InitiatingProcessVersionInfoOriginalFileName
+  - InitiatingProcessVersionInfoFileDescription
+  - InitiatingProcessId
+  - InitiatingProcessCommandLine
+  - InitiatingProcessCreationTime
+  - InitiatingProcessFolderPath
+  - InitiatingProcessParentId
+  - InitiatingProcessParentFileName
+  - InitiatingProcessParentCreationTime
+  - InitiatingProcessSignerType
+  - InitiatingProcessSignatureStatus
+  - ReportId
+  - AppGuardContainerId
+  - AdditionalFields
+
+ 

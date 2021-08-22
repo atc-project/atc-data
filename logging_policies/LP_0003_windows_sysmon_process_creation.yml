@@ -14,8 +14,8 @@ eventID:
 references:
     - https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
 configuration: |
-  Sysmon event id 1 enabled by default, but include only sha1 hashing function.
-  Sysmon config to enable md5, sha1, sha256 and imphash functions:
+  Sysmon Event ID 1 is enabled by default, however only the SHA1 hashing algorithm is included in the HashType.
+  Sysmon config to enable MD5, SHA1, SHA256 and imphash algorithms:
   ```
   <Sysmon schemaversion="4.00">
     <HashAlgorithms>md5,sha1,sha256,imphash</HashAlgorithms>

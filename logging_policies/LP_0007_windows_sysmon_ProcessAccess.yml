@@ -15,9 +15,8 @@ eventID:
 references:
     - https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
 configuration: |
-  Sysmon event id 10 is disabled by default. 
-  It can be enabled by specyfying configuration
-  However due to high level of produced logs it should be filtred with configuration file
+  Sysmon Event ID 10 is disabled by default and can be enabled by specifying a configuration file. 
+  However, it should be noted that this Event ID can produce a high volume of logs and as such filtering these logs may be valuable to organisations.
   Sample configuration:
   ```
     <ProcessAccess onmatch="include">

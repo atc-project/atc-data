@@ -1,5 +1,5 @@
 title: DN_0136_azure_AD_SigninLogs
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
     The Azure AD Signin logs contain information about user sign in attempts when the user has provided an authentication factor (ie not using a token)
 loggingpolicy: 
@@ -77,6 +77,4 @@ fields:
   - UserId 
   - UserPrincipalName 
   - UserType 
-
-
 

@@ -1,5 +1,5 @@
 title: DN_0110_defender_DeviceFileCertificateInfo
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
   This datasource contains details information about file signing certificates and thier validity. 
 loggingpolicy: 

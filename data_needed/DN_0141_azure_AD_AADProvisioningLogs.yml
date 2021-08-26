@@ -1,5 +1,5 @@
 title: DN_0141_azure_AD_AADProvisioningLogs
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
     The Azure AD AADProvisioningLogs contains logs about Activities performed by the provisioning service, such as the creation of a group in ServiceNow or a user imported from Workday.
 loggingpolicy: 

@@ -1,5 +1,5 @@
 title: DN_0117_defender_DeviceProcessEvents
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
   The defender for endpoint DeviceProcessEvents table contains information about process creations. 
 loggingpolicy: 
@@ -69,5 +69,3 @@ fields:
   - ReportId
   - AppGuardContainerId
   - AdditionalFields
-
- 

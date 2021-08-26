@@ -1,5 +1,5 @@
 title: DN_0135_azure_FrontDoor_Access
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
     The Azure FrontDoor access logs include details of each request and the response code given to the client. 
 loggingpolicy: 
@@ -48,5 +48,3 @@ fields:
   - clientIp_s
   - Type
   - _ResourceId
-
-

@@ -1,5 +1,5 @@
 title: LP_0125_azure_MMA_DNS
-author: tom@Bridewell
+author: 'tom@Bridewell'
 default: Not configured 
 volume: High             
 description: >
@@ -7,7 +7,6 @@ description: >
 references:
     - https://docs.microsoft.com/en-us/azure/sentinel/connect-dns
 configuration: |
-
  In the Azure Sentinel portal, select Data connectors and choose the DNS (Preview) tile.
 
  If your DNS machines are in Azure&#58;
@@ -25,4 +24,3 @@ configuration: |
  sample: |
   TenantId,Computer,"TimeGenerated [UTC]",SourceSystem,SubType,ResourceRecordName,ResourceRecordType,ZoneName,DomainName,ForestName,ServerIPs,DynamicUpdate,DnsSecSigned,NameServers,Type,"_ResourceId"
   "xxxxx-xxxxx-4xxx-xxxx-xxxxxx","computer.domain","7/11/2021, 5:08:17.930 PM",OpsManager,ResourceRecord,"@.somedomain",NS,"somedomain.com",,,,,,,DnsInventory,
-

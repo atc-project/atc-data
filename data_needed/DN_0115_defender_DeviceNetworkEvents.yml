@@ -1,5 +1,5 @@
 title: DN_0115_defender_DeviceNetworkEvents
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
   The defender for endpoint DeviceNetworkEvents table contains information about network connections to and from the device. 
 loggingpolicy: 

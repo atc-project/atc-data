@@ -1,5 +1,5 @@
 title: DN_0109_defender_DeviceEvents
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
   Microsoft Defender for endpoint DeviceEvents table is a miscellaneous table used to contain information about events that do not have thier own table, for example: Defender Antivirus, exploit controls (ie ASR)
 loggingpolicy: 
@@ -10,7 +10,6 @@ category: OS Logs                               # HTTP Logs | DNS Logs | IDS/IPS
 platform: Windows                   
 type: defender for endpoint                             
 channel: DeviceEvents                        
-
 fields:
   - Timestamp
   - DeviceId
@@ -68,4 +67,3 @@ fields:
   - ReportId
   - AppGuardContainerId
   - AdditionalFields
-  

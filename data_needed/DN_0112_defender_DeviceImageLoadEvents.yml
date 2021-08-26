@@ -1,6 +1,5 @@
-
 title: DN_0112_defender_DeviceImageLoadEvents
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
   This datasource contains details information about file creation and modification events as observed by defender for endpoint.  
 loggingpolicy: 
@@ -49,4 +48,3 @@ fields:
   - InitiatingProcessParentCreationTime
   - ReportId
   - AppGuardContainerId
-

@@ -1,6 +1,6 @@
 
 title: DN_0113_defender_DeviceInfo
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
   The Defender for endpoint DeviceInfo table contains information about the endpoint including OS versions, logged on users. 
 loggingpolicy: 

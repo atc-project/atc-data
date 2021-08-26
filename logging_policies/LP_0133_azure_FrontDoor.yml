@@ -1,5 +1,5 @@
 title: LP_0133_azure_FrontDoor
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 default: Not configured # Not configured | Partially (Success) | Partially (Failure) | Partially (Other) | Configured
 volume: High             # Low | Medium | High | Extremely High
 description: >
@@ -7,7 +7,6 @@ description: >
 references:
     - https://docs.microsoft.com/en-us/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#audited-activities
 configuration: |
-
  # To configure diagnostic logs for your Front Door
 
  Select your Azure Front Door.
@@ -15,4 +14,3 @@ configuration: |
  Choose Diagnostic settings.
 
  Select Turn on diagnostics. Archive diagnostic logs along with metrics to a storage account, stream them to an event hub, or send them to Azure Monitor logs.
-  

@@ -3,14 +3,15 @@ author: '@atc_project'
 default: Not configured
 volume: Low
 description: >
-  Enables logging of events related to usage or creation of pipes.
+  This event generates when a named pipe is created or when a named pipe connection is made between a client and a server. Malware often uses named pipes for interprocess communication.
 eventID: 
   - 17
   - 18
 references:
     - https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
 configuration: |
-  This configuration should be further tunned according to baseline
+  Sysmon Event ID 17 and Sysmon Event ID 18 are disabled by default but can be enabled by specifying a configuration file. 
+  Organisations may find it valuable to tune the below configuration.
 
   Sample configuration:
   ```

@@ -1,0 +1,41 @@
+title: DN_0141_azure_AD_AADProvisioningLogs
+author: 'Tom@BridewellConsulting'
+description: >
+    The Azure AD AADProvisioningLogs contains logs about Activities performed by the provisioning service, such as the creation of a group in ServiceNow or a user imported from Workday.
+loggingpolicy: 
+  - LP_0139_azure_AD_AADProvisioningLogs
+references:
+  - https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/concept-provisioning-logs
+  - https://docs.microsoft.com/en-us/azure/azure-monitor/reference/tables/aadprovisioninglogs
+category: Active Directory                            
+platform: Cloud                         
+type: Audit                             
+channel: AADProvisioningLogs
+provider: Azure AD   
+fields:
+  - AADTenantId
+  - Action
+  - Category
+  - ChangeId
+  - CorrelationId
+  - CycleId
+  - DurationMs
+  - Id
+  - InitiatedBy
+  - JobId
+  - ModifiedProperties
+  - OperationName
+  - OperationVersion
+  - ProvisioningSteps
+  - ResultDescription
+  - ResultSignature
+  - ResultType
+  - ServicePrincipal
+  - SourceIdentity
+  - SourceSystem
+  - StatusInfo
+  - TargetIdentity
+  - TargetSystem
+  - TenantId
+  - TimeGenerated
+  - Type

@@ -9,7 +9,7 @@ eventID:
 references:
     - https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
 configuration: |
-  Sysmon event id 11 is enabled by default however default configuration might not be sufficient.
+  Sysmon Event ID 11 is enabled by default however default configuration might not be sufficient.
   Sample configuration providing much better visibility might be found here: https://github.com/SwiftOnSecurity/sysmon-config/blob/master/sysmonconfig-export.xml
   
   ```

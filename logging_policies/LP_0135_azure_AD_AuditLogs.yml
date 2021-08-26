@@ -1,0 +1,17 @@
+title: LP_0135_azure_AD_AuditLogs
+author: 'tom@Bridewell'
+default: Not configured 
+volume: Low             
+description: >
+   The Azure AD AuditLogs contains logs about directory activities (for example group and user managment)
+references:
+    - https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+    - https://docs.microsoft.com/en-us/azure/sentinel/connect-azure-active-directory
+configuration: |
+ In Azure Sentinel, select Data connectors from the navigation menu.
+
+ From the data connectors gallery, select Azure Active Directory and then select Open connector page.
+
+ Mark the check boxes next to the log types you want to stream into Azure Sentinel (AuditLogs), and click Connect
+
+ Test data is coming in ``` AuditLogs | take 10 ```

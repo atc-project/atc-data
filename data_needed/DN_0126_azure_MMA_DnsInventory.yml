@@ -1,0 +1,29 @@
+title: DN_0125_azure_MMA_DnsInventory
+author: 'Tom@BridewellConsulting'
+description: >
+  DNS logging is currently a preview feauture as an Azure Sentinel connector. it utilizes MMA (Microsoft Monitoring Agent) on a windows DNS server to forward information about DNS zones the server has configured. this datasource is useful for mapping internal IP's to hostnames. 
+loggingpolicy: 
+  - LP_0125_azure_MMA_DNS
+references:
+  - https://docs.microsoft.com/en-us/azure/sentinel/connect-dns
+category: Network                            
+platform: Windows                          
+type: MMA Agent                            
+channel: DnsInventory   
+fields:
+  - Computer 
+  - DnsSecSigned 
+  - DomainName 
+  - DynamicUpdate 
+  - ForestName 
+  - NameServers 
+  - ResourceRecordName 
+  - ResourceRecordType 
+  - ServerIPs 
+  - SourceSystem 
+  - SubType 
+  - TimeGenerated
+  - Type 
+  - ZoneName 
+  - _ResourceId 
+  - _SubscriptionId 

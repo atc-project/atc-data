@@ -1,0 +1,20 @@
+title: LP_0137_azure_AD_AADServicePrincipalSignInLogs
+author: 'tom@Bridewell'
+default: Not configured 
+volume: Medium             
+description: >
+    The Azure AD AADServicePrincipalSignInLogs contains logs about Service Principal logins. 
+    service principal sign-ins do not involve a user. Instead, they are sign-ins by any non-user account, such as apps or service principals (except managed identity sign-in) 
+references:
+    - https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+    - https://docs.microsoft.com/en-us/azure/sentinel/connect-azure-active-directory
+configuration: |
+ In Azure Sentinel, select Data connectors from the navigation menu.
+
+ From the data connectors gallery, select Azure Active Directory and then select Open connector page.
+
+ Mark the check boxes next to the log types you want to stream into Azure Sentinel (AADServicePrincipalSignInLogs), and click Connect
+
+ Test data is coming in ``` AADServicePrincipalSignInLogs | take 10 ```
+
+

@@ -1,0 +1,19 @@
+title: LP_0134_azure_AD_SigninLogs
+author: 'tom@Bridewell'
+default: Not configured 
+volume: Medium             
+description: >
+   Azure AD SigninLogs contains information about interactive sign in attempts from users, it includes details about the login request, conditional access policies applied and the status. 
+references:
+    - https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+    - https://docs.microsoft.com/en-us/azure/sentinel/connect-azure-active-directory
+configuration: |
+ * An Azure Active Directory P1 or P2 license is required to ingest sign-in logs into Azure Sentinel.
+  
+ In Azure Sentinel, select Data connectors from the navigation menu.
+
+ From the data connectors gallery, select Azure Active Directory and then select Open connector page.
+
+ Mark the check boxes next to the log types you want to stream into Azure Sentinel (SigninLogs), and click Connect
+
+ Test data is coming in ``` SigninLogs | take 10 ```

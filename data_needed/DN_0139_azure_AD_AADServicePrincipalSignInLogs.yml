@@ -1,0 +1,40 @@
+title: DN_0139_azure_AD_AADServicePrincipalSignInLogs
+author: 'Tom@BridewellConsulting'
+description: >
+    The Azure AD AADServicePrincipalSignInLogs contains logs about Service Principal logins. 
+    service principal sign-ins do not involve a user. Instead, they are sign-ins by any non-user account, such as apps or service principals (except managed identity sign-in) 
+loggingpolicy: 
+  - LP_0137_azure_AD_AADServicePrincipalSignInLogs
+references:
+  - https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/concept-all-sign-ins
+  - https://docs.microsoft.com/en-us/azure/azure-monitor/reference/tables/aadserviceprincipalsigninlogs
+category: Active Directory                            
+platform: Cloud                         
+type: Audit                             
+channel: AADServicePrincipalSignInLogs
+provider: Azure AD   
+fields:
+  - AppId
+  - Category
+  - CorrelationId
+  - DurationMs
+  - Id
+  - Identity
+  - IPAddress
+  - Level
+  - Location
+  - LocationDetails
+  - OperationName
+  - OperationVersion
+  - ResourceDisplayName
+  - ResourceGroup
+  - ResourceIdentity
+  - ResultDescription
+  - ResultSignature
+  - ResultType
+  - ServicePrincipalId
+  - ServicePrincipalName
+  - SourceSystem
+  - TenantId
+  - TimeGenerated
+  - Type

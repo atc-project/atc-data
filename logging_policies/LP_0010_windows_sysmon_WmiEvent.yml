@@ -15,7 +15,8 @@ eventID:
 references:
     - https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
 configuration: |
-  This configuration should be further tunned according to baseline
+  Sysmon Event ID 19, 20 and 21 are disabled by default but can be enabled by specifying a configuration file.
+  Organisations may find it valuable to tune the below configuration.
 
   Sample configuration:
   ```

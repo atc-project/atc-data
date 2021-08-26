@@ -1,5 +1,5 @@
 title: DN_0131_azure_API_OfficeActivity_SharePoint
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
     The Azure sentinel Office 365 connector (OfficeActivity)  provides visibility into user actions across various M365 products. the SharePoint and Ondrive audit logging includes details around users accessing, creating and sharing files. 
 loggingpolicy: 
@@ -123,6 +123,3 @@ fields:
   - UserType 
   - _ResourceId 
   - _SubscriptionId 
-
-
- 

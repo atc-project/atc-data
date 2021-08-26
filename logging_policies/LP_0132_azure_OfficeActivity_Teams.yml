@@ -1,5 +1,5 @@
 title: LP_0132_azure_OfficeActivity_Teams
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 default: Partially (Other) # Not configured | Partially (Success) | Partially (Failure) | Partially (Other) | Configured
 volume: High             # Low | Medium | High | Extremely High
 description: >
@@ -7,6 +7,5 @@ description: >
 references:
     - https://docs.microsoft.com/en-us/microsoftteams/audit-log-events#teams-activities
 configuration: |
-
   enable the Office 365 connector in the Azure Sentinel connector screen and ensure the Teams tick box is ticked. 
   

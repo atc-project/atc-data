@@ -1,5 +1,5 @@
 title: DN_0137_azure_AD_AuditLogs
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
     The Azure AD AuditLogs contains logs about directory activities (for example group and user managment)
 loggingpolicy: 
@@ -41,31 +41,3 @@ fields:
   - TargetResources 
   - TimeGenerated 
   - Type 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

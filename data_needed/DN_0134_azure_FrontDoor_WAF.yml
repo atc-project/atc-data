@@ -1,5 +1,5 @@
 title: DN_0134_azure_FrontDoor_WAF
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
     The Azure FrontDoor WAF logs include details of the request that triggered the rule and the content that was matched on. 
 loggingpolicy: 
@@ -38,4 +38,3 @@ fields:
   - details_data_s
   - Type
   - _ResourceId
-

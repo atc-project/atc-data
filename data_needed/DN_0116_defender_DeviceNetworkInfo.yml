@@ -1,6 +1,5 @@
-
 title: DN_0116_defender_DeviceNetworkInfo
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
   The defender for endpoint DeviceNetworkInfo table contains information about the network configuration of the device, including information such as network adapters, SSID's, IP addresses, mac addresses 
 loggingpolicy: 
@@ -27,5 +26,3 @@ fields:
   - DefaultGateways
   - IPAddresses
   - ReportId
-
- 

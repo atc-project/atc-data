@@ -1,5 +1,5 @@
 title: DN_0140_azure_AD_AADManagedIdentitySignInLogs
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
     The Azure AD AADManagedIdentitySignInLogs contains logs about managed identity signins. 
     managed identitys are azure resources that have screts managed by azure. 

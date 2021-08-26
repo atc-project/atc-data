@@ -1,5 +1,5 @@
 title: DN_0114_defender_DeviceLogonEvents
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
   The defender for endpoint DevicelogonEvents table contains information about authentication attempts on the device. 
 loggingpolicy: 
@@ -55,5 +55,3 @@ fields:
   - ReportId
   - AppGuardContainerId
   - AdditionalFields
-
- 

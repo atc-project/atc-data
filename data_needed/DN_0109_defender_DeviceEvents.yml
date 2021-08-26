@@ -1,0 +1,69 @@
+title: DN_0109_defender_DeviceEvents
+author: 'Tom@BridewellConsulting'
+description: >
+  Microsoft Defender for endpoint DeviceEvents table is a miscellaneous table used to contain information about events that do not have thier own table, for example: Defender Antivirus, exploit controls (ie ASR)
+loggingpolicy: 
+  - LP_0111_defender_for_endpoint
+references:
+  - https://docs.microsoft.com/en-us/microsoft-365/security/defender/advanced-hunting-deviceevents-table?view=o365-worldwide
+category: OS Logs                               # HTTP Logs | DNS Logs | IDS/IPS/NGFW Alerts | Antivirus Alerts | Network Flows | etc
+platform: Windows                   
+type: defender for endpoint                             
+channel: DeviceEvents                        
+fields:
+  - Timestamp
+  - DeviceId
+  - DeviceName
+  - ActionType
+  - FileName
+  - FolderPath
+  - SHA1
+  - SHA256
+  - MD5
+  - FileSize
+  - AccountDomain
+  - AccountName
+  - AccountSid
+  - RemoteURL
+  - RemoteDeviceName
+  - ProcessId
+  - ProcessCommandLine
+  - ProcessCreationTime
+  - ProcessTokenElevation
+  - LogonId
+  - RegistryKey
+  - RegistryValueName
+  - RegistryValueData
+  - RemoteIP
+  - RemotePort
+  - LocalIP
+  - LocalPort
+  - FileOriginIP
+  - FileOriginUrl
+  - InitiatingProcessSHA1
+  - InitiatingProcessSha256
+  - InitiatingProcessMD5
+  - InitiatingProcessFileName
+  - InitiatingProcessFileSize
+  - InitiatingProcessFolderPath
+  - InitiatingProcessId
+  - InitiatingProcessCommandLine
+  - InitiatingProcessCreationTime
+  - InitiatingProcessAccountDomain
+  - InitiatingProcessAccountName
+  - InitiatingProcessAccountSid
+  - InitiatingProcessAccountUpn
+  - InitiatingProcessAccountObjectId
+  - InitiatingProcessVersionInfoCompanyName
+  - InitiatingProcessVersionInfoProductName
+  - InitiatingProcessVersionInfoProductVersion
+  - InitiatingProcessVersionInfoInternalFileName
+  - InitiatingProcessVersionInfoOriginalFileName
+  - InitiatingProcessVersionInfoFileDescription
+  - InitiatingProcessParentId
+  - InitiatingProcessParentFileName
+  - InitiatingProcessParentCreationTime
+  - InitiatingProcessLogonId
+  - ReportId
+  - AppGuardContainerId
+  - AdditionalFields

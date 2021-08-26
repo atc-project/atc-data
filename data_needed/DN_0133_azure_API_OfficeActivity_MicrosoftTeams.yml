@@ -1,0 +1,126 @@
+title: DN_0133_azure_API_OfficeActivity_MicrosoftTeams
+author: 'Tom@BridewellConsulting'
+description: >
+    The Azure sentinel Office 365 connector (OfficeActivity)  provides visibility into user actions across various M365 products. The Teams audit logging includes details around users managing teams and performing potentially risky actions (such as sending Urls) 
+loggingpolicy: 
+  - LP_0132_azure_OfficeActivity_Teams
+references:
+  - https://docs.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-schema?view=o365-worldwide
+  - https://docs.microsoft.com/en-us/microsoftteams/audit-log-events#teams-activities
+category: Cloud                            
+platform: Office 365                          
+type: Audit                            
+channel: MicrosoftTeams    
+fields:
+  - AADGroupId 
+  - AADTarget 
+  - Actor 
+  - ActorContextId 
+  - ActorIpAddress 
+  - AddOnGuid 
+  - AddonName 
+  - AddOnType 
+  - AffectedItems 
+  - AppDistributionMode 
+  - AppId 
+  - Application 
+  - AzureActiveDirectory_EventType 
+  - AzureADAppId 
+  - ChannelGuid 
+  - ChannelName 
+  - ChannelType 
+  - ChatName 
+  - ChatThreadId 
+  - Client 
+  - ClientAppId 
+  - ClientInfo 
+  - ClientIP 
+  - ClientMachineName 
+  - ClientProcessName 
+  - ClientVersion 
+  - Client_IPAddress 
+  - CommunicationType 
+  - CrossMailboxOperations  
+  - DataCenterSecurityEventType DestFolder 
+  - DestinationFileExtension 
+  - DestinationFileName 
+  - DestinationRelativeUrl 
+  - DestMailboxId 
+  - DestMailboxOwnerMasterAccountSid 
+  - DestMailboxOwnerSid 
+  - DestMailboxOwnerUPN 
+  - EffectiveOrganization 
+  - ElevationApprovedTime ElevationApprover 
+  - ElevationDuration ElevationRequestId 
+  - ElevationRole 
+  - ElevationTime EventSource 
+  - Event_Data 
+  - ExtendedProperties 
+  - ExternalAccess 
+  - ExtraProperties Folder 
+  - Folders 
+  - GenericInfo 
+  - InternalLogonType InterSystemsId 
+  - IntraSystemId 
+  - Item 
+  - ItemName 
+  - ItemType 
+  - LoginStatus LogonUserDisplayName 
+  - LogonUserSid 
+  - Logon_Type 
+  - MachineDomainInfo 
+  - MachineId 
+  - MailboxGuid 
+  - MailboxOwnerMasterAccountSid 
+  - MailboxOwnerSid 
+  - MailboxOwnerUPN 
+  - Members MessageId 
+  - ModifiedObjectResolvedName 
+  - ModifiedProperties 
+  - Name 
+  - NewValue 
+  - OfficeId 
+  - OfficeObjectId 
+  - OfficeTenantId 
+  - OfficeWorkload 
+  - OldValue 
+  - Operation 
+  - OperationProperties OperationScope 
+  - OrganizationId 
+  - OrganizationName 
+  - OriginatingServer 
+  - Parameters 
+  - RecordType 
+  - ResultReasonType 
+  - ResultStatus 
+  - SendAsUserMailboxGuid 
+  - SendAsUserSmtp 
+  - SendonBehalfOfUserMailboxGuid 
+  - SendOnBehalfOfUserSmtp 
+  - SharingType 
+  - Site_ 
+  - Site_Url 
+  - SourceFileExtension 
+  - SourceFileName 
+  - SourceRecordId 
+  - SourceRelativeUrl 
+  - SourceSystem 
+  - Source_Name 
+  - Start_Time SupportTicketId 
+  - TabType 
+  - TargetContextId 
+  - TargetUserId 
+  - TargetUserOrGroupName 
+  - TargetUserOrGroupType 
+  - TeamGuid 
+  - TeamName 
+  - TenantId 
+  - TimeGenerated Type 
+  - UserAgent 
+  - UserDomain 
+  - UserId 
+  - UserKey 
+  - UserSharedWith 
+  - UserType 
+  - _ResourceId 
+  - _SubscriptionId 

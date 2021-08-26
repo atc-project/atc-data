@@ -1,0 +1,10 @@
+title: LP_0111_defender_for_endpoint
+author: 'tom@Bridewellconsulting'
+default: Not configured 
+volume: High             
+description: >
+  Defender for endpoint is Microsofts EDR product. Rich device telemetry is available through the "Advanced hunting" functionality for onboarded devices. bespoke detections can be configured using KQL as custom alert rules or advanced hunting data streamed to a SIEM platform. 
+references:
+    - https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/minimum-requirements?view=o365-worldwide
+configuration: |
+  Deploy the defender for endpoint agent

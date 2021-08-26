@@ -1,0 +1,17 @@
+title: LP_0136_azure_AD_AADNonInteractiveUserSignInLogs
+author: 'tom@Bridewell'
+default: Not configured 
+volume: Medium             
+description: >
+   The Azure AD AADNonInteractiveUserSignInLogs contains logs about non-interactive user logins. this includes logins across services using access tokens when the user is not required to reenter credentials. 
+references:
+    - https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+    - https://docs.microsoft.com/en-us/azure/sentinel/connect-azure-active-directory
+configuration: |
+ In Azure Sentinel, select Data connectors from the navigation menu.
+
+ From the data connectors gallery, select Azure Active Directory and then select Open connector page.
+
+ Mark the check boxes next to the log types you want to stream into Azure Sentinel (AADNonInteractiveUserSignInLogs), and click Connect
+
+ Test data is coming in ``` AADNonInteractiveUserSignInLogs | take 10 ```

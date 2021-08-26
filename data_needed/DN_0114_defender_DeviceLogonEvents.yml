@@ -1,0 +1,57 @@
+title: DN_0114_defender_DeviceLogonEvents
+author: 'Tom@BridewellConsulting'
+description: >
+  The defender for endpoint DevicelogonEvents table contains information about authentication attempts on the device. 
+loggingpolicy: 
+  - LP_0111_defender_for_endpoint
+references:
+  - https://docs.microsoft.com/en-us/microsoft-365/security/defender/advanced-hunting-devicelogonevents-table?view=o365-worldwide
+category: OS Logs                             
+platform: Windows                          
+type: defender for endpoint                             
+channel: DeviceLogonEvents
+fields:
+  - Timestamp
+  - DeviceId
+  - DeviceName
+  - ActionType
+  - LogonType
+  - AccountDomain
+  - AccountName
+  - AccountSid
+  - Protocol
+  - FailureReason
+  - IsLocalAdmin
+  - LogonId
+  - RemoteDeviceName
+  - RemoteIP
+  - RemoteIPType
+  - RemotePort
+  - InitiatingProcessAccountDomain
+  - InitiatingProcessAccountName
+  - InitiatingProcessAccountSid
+  - InitiatingProcessAccountUpn
+  - InitiatingProcessAccountObjectId
+  - InitiatingProcessIntegrityLevel
+  - InitiatingProcessTokenElevation
+  - InitiatingProcessSHA1
+  - InitiatingProcessSHA256
+  - InitiatingProcessMD5
+  - InitiatingProcessFileName
+  - InitiatingProcessFileSize
+  - InitiatingProcessVersionInfoCompanyName
+  - InitiatingProcessVersionInfoProductName
+  - InitiatingProcessVersionInfoProductVersion
+  - InitiatingProcessVersionInfoInternalFileName
+  - InitiatingProcessVersionInfoOriginalFileName
+  - InitiatingProcessVersionInfoFileDescription
+  - InitiatingProcessId
+  - InitiatingProcessCommandLine
+  - InitiatingProcessCreationTime
+  - InitiatingProcessFolderPath
+  - InitiatingProcessParentId
+  - InitiatingProcessParentFileName
+  - InitiatingProcessParentCreationTime
+  - ReportId
+  - AppGuardContainerId
+  - AdditionalFields

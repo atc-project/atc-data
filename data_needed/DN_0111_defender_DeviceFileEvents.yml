@@ -1,0 +1,67 @@
+title: DN_0111_defender_DeviceFileEvents
+author: 'Tom@BridewellConsulting'
+description: >
+  This datasource contains details information about file creation and modification events as observed by defender for endpoint.  
+loggingpolicy: 
+  - LP_0111_defender_for_endpoint
+references:
+  - https://docs.microsoft.com/en-us/microsoft-365/security/defender/advanced-hunting-devicefileevents-table?view=o365-worldwide
+category: OS Logs                               
+platform: Windows                              
+type: defender for endpoint                             
+channel: DeviceFileEvents    
+fields:
+  - Timestamp
+  - DeviceId
+  - DeviceName
+  - ActionType
+  - FileName
+  - FolderPatha
+  - SHA1
+  - SHA256
+  - MD5
+  - FileOriginUrl
+  - FileOriginReferrerUrl
+  - FileOriginIP
+  - PreviousFolderPath
+  - PreviousFileName
+  - FileSize
+  - InitiatingProcessAccountDomain
+  - InitiatingProcessAccountName
+  - InitiatingProcessAccountSid
+  - InitiatingProcessAccountUpn
+  - InitiatingProcessAccountObjectId
+  - InitiatingProcessMD5
+  - InitiatingProcessSHA1
+  - InitiatingProcessSHA256
+  - InitiatingProcessFolderPath
+  - InitiatingProcessFileName
+  - InitiatingProcessFileSize
+  - InitiatingProcessVersionInfoCompanyName
+  - InitiatingProcessVersionInfoProductName
+  - InitiatingProcessVersionInfoProductVersion
+  - InitiatingProcessVersionInfoInternalFileName
+  - InitiatingProcessVersionInfoOriginalFileName
+  - InitiatingProcessVersionInfoFileDescription
+  - InitiatingProcessId
+  - InitiatingProcessCommandLine
+  - InitiatingProcessCreationTime
+  - InitiatingProcessIntegrityLevel
+  - InitiatingProcessTokenElevation
+  - InitiatingProcessParentId
+  - InitiatingProcessParentFileName
+  - InitiatingProcessParentCreationTime
+  - RequestProtocol
+  - RequestSourceIP
+  - RequestSourcePort
+  - RequestAccountName
+  - RequestAccountDomain
+  - RequestAccountSid
+  - ShareName
+  - InitiatingProcessFileSize
+  - SensitivityLabel
+  - SensitivitySubLabel
+  - IsAzureInfoProtectionApplied
+  - ReportId
+  - AppGuardContainerId
+  - AdditionalFields

@@ -1,0 +1,53 @@
+title: DN_0115_defender_DeviceNetworkEvents
+author: 'Tom@BridewellConsulting'
+description: >
+  The defender for endpoint DeviceNetworkEvents table contains information about network connections to and from the device. 
+loggingpolicy: 
+  - LP_0111_defender_for_endpoint
+references:
+  - https://docs.microsoft.com/en-us/microsoft-365/security/defender/advanced-hunting-devicenetworkevents-table?view=o365-worldwide
+category: OS Logs                             
+platform: Windows                          
+type: defender for endpoint                             
+channel: DeviceNetworkEvents  
+fields:
+  - Timestamp
+  - DeviceId
+  - DeviceName
+  - ActionType
+  - RemoteIP
+  - RemotePort
+  - RemoteUrl
+  - LocalIP
+  - LocalPort
+  - Protocol
+  - LocalIPType
+  - RemoteIPType
+  - InitiatingProcessSHA1
+  - InitiatingProcessSHA256
+  - InitiatingProcessMD5
+  - InitiatingProcessFileName
+  - InitiatingProcessFileSize
+  - InitiatingProcessVersionInfoCompanyName
+  - InitiatingProcessVersionInfoProductName
+  - InitiatingProcessVersionInfoProductVersion
+  - InitiatingProcessVersionInfoInternalFileName
+  - InitiatingProcessVersionInfoOriginalFileName
+  - InitiatingProcessVersionInfoFileDescription
+  - InitiatingProcessId
+  - InitiatingProcessCommandLine
+  - InitiatingProcessCreationTime
+  - InitiatingProcessFolderPath
+  - InitiatingProcessParentFileName
+  - InitiatingProcessParentId
+  - InitiatingProcessParentCreationTime
+  - InitiatingProcessAccountDomain
+  - InitiatingProcessAccountName
+  - InitiatingProcessAccountSid
+  - InitiatingProcessAccountUpn
+  - InitiatingProcessAccountObjectId
+  - InitiatingProcessIntegrityLevel
+  - InitiatingProcessTokenElevation
+  - ReportId
+  - AppGuardContainerId
+  - AdditionalFields

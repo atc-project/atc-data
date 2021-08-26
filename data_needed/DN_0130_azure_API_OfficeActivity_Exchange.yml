@@ -1,5 +1,5 @@
 title: DN_0130_azure_API_OfficeActivity_Exchange
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
     The Azure sentinel Office 365 connector (OfficeActivity)  provides visibility into user actions across various M365 products. The Exchange logs include details around emails being created, mailbox rules, DLP rules etc. 
 loggingpolicy: 
@@ -123,6 +123,3 @@ fields:
   - UserType 
   - _ResourceId 
   - _SubscriptionId 
-
-
- 

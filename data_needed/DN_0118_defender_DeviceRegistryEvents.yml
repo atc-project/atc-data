@@ -1,5 +1,5 @@
 title: 'DN_0118_defender_DeviceRegistryEvents'
-author: Tom@BridewellConsulting
+author: 'Tom@BridewellConsulting'
 description: >
   The defender for endpoint DeviceRegistryEvents table contains inforamation about creation and modification of registry entries.
 loggingpolicy: 

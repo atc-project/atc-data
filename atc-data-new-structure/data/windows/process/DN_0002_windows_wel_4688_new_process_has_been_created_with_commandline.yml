@@ -1,0 +1,162 @@
+title: 'A new process has been created with commandline'
+description: Windows process creation log, including command line.
+event_id: 4688
+attack_data:
+  - process: process creation
+platform: windows
+provider: Microsoft-Windows-Security-Auditing
+channel: Security
+atc_id: DN0002
+loggingpolicy:
+  - LP0001: Success
+  - LP0002
+contributors:
+  - '@atc_project'
+references:
+  - text: 'MicrosoftDocs: 4688(S): A new process has been created'
+    link: 'https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4688.md'
+  - text: 'OSSEM DD: event-4688_v2.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/etw-providers/Microsoft-Windows-Security-Auditing/events/event-4688_v2.yml'
+fields:
+
+  - original_name: SubjectUserSid
+    description: SID of account that requested the "create process" operation.
+    sample_value: 'S-1-5-18'
+    elastic_ecs_name: user.id
+    splunk_cim_name: user_id
+    otr_ossem_name: user_sid
+
+  - original_name: SubjectUserName
+    description: 'the name of the account that requested the "create process" operation.'
+    sample_value: 'WIN-GG82ULGC9GO$'
+    elastic_ecs_name: user.name
+    splunk_cim_name: user
+    otr_ossem_name: user_name
+
+  - original_name: SubjectDomainName
+    description: subject's domain or computer name.
+    sample_value: CONTOSO
+    elastic_ecs_name: user.domain
+    splunk_cim_name: src_nt_domain
+    otr_ossem_name: user_domain
+
+  - original_name: SubjectLogonId
+    description: 'hexadecimal value that can help you correlate this event with recent events that might contain the same Logon ID, for example, "4624: An account was successfully logged on."'
+    sample_value: '0x3e7'
+    elastic_ecs_name: winlog.logon.id
+    splunk_cim_name: N/A
+    otr_ossem_name: user_logon_id
+
+  - original_name: NewProcessId
+    description: hexadecimal Process ID of the new process.
+    sample_value: '0x2bc'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: process_id
+    otr_ossem_name: process_id
+
+  - original_name: NewProcessName
+    description: full path and the name of the executable for the new process.
+    sample_value: 'C:\Windows\System32\rundll32.exe'
+    elastic_ecs_name: process.executable
+    splunk_cim_name: process_path
+    otr_ossem_name: process_path
+
+  - original_name: TokenElevationType
+    description: Token elevation type. It can be Default(1), Full(2) or Limited(3).
+    sample_value: '0x2bc'
+    elastic_ecs_name: winlog.event_data.TokenElevationType
+    splunk_cim_name: N/A
+    otr_ossem_name: process_token_elevation_type
+
+  - original_name: ProcessId
+    description: hexadecimal Process ID of the process which ran the new process.
+    sample_value: '0xe74'
+    elastic_ecs_name: process.parent.pid
+    splunk_cim_name: parent_process_id
+    otr_ossem_name: process_parent_id
+
+  - original_name: CommandLine
+    description: contains the name of executable and arguments which were passed to it
+    sample_value: 'PsExec64.exe -i -s -d cmd'
+    elastic_ecs_name: process.command_line
+    splunk_cim_name: N/A
+    otr_ossem_name: process_command_line
+
+  - original_name: TargetUserSid
+    description: SID of target account.
+    sample_value: 'S-1-5-21-3457937927-2839227994-823803824-1104'
+    elastic_ecs_name: winlog.event_data.TargetUserSid
+    splunk_cim_name: N/A
+    otr_ossem_name: target_user_sid
+
+  - original_name: TargetUserName
+    description: the name of the target account.
+    sample_value: 'dadmin'
+    elastic_ecs_name: related.user
+    splunk_cim_name: N/A
+    otr_ossem_name: target_user_name
+
+  - original_name: TargetDomainName
+    description: target account’s domain or computer name.
+    sample_value: 'CONTOSO'
+    elastic_ecs_name: winlog.event_data.TargetDomainName
+    splunk_cim_name: dest_nt_domain
+    otr_ossem_name: target_user_domain
+
+  - original_name: TargetLogonId
+    description: 'hexadecimal value that can help you correlate this event with recent events that might contain the same Logon ID, for example, "4624: An account was successfully logged on."'
+    sample_value: '0x4a5af0'
+    elastic_ecs_name: winlog.event_data.TargetLogonId
+    splunk_cim_name: N/A
+    otr_ossem_name: target_user_logon_id
+
+  - original_name: ParentProcessName
+    description: full path and the name of the executable for the process.
+    sample_value: C:\Windows\explorer.exe
+    elastic_ecs_name: process.parent.executable
+    splunk_cim_name: parent_process_path
+    otr_ossem_name: process_parent_path
+
+  - original_name: MandatoryLabel
+    description: SID of integrity label which was assigned to the new process.
+    sample_value: 'S-1-16-8192'
+    elastic_ecs_name: winlog.event_data.MandatoryLabel
+    splunk_cim_name: N/A
+    otr_ossem_name: process_mandatory_sid
+
+sample: |
+  - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    - <System>
+      <Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" />
+      <EventID>4688</EventID>
+      <Version>2</Version>
+      <Level>0</Level>
+      <Task>13312</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8020000000000000</Keywords>
+      <TimeCreated SystemTime="2019-02-06T20:34:57.910980700Z" />
+      <EventRecordID>3542561</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="4" ThreadID="92" />
+      <Channel>Security</Channel>
+      <Computer>atc-win-10.atc.local</Computer>
+      <Security />
+    </System>
+    - <EventData>
+      <Data Name="SubjectUserSid">S-1-5-21-540864798-2899685673-3651185163-500</Data>
+      <Data Name="SubjectUserName">user1</Data>
+      <Data Name="SubjectDomainName">atc-win-10</Data>
+      <Data Name="SubjectLogonId">0xcdd96</Data>
+      <Data Name="NewProcessId">0x12d0</Data>
+      <Data Name="NewProcessName">C:\Users\user1\Desktop\PSTools\PsExec64.exe</Data>
+      <Data Name="TokenElevationType">%%1936</Data>
+      <Data Name="ProcessId">0x21d4</Data>
+      <Data Name="CommandLine">PsExec64.exe -i -s -d cmd</Data>
+      <Data Name="TargetUserSid">S-1-0-0</Data>
+      <Data Name="TargetUserName">-</Data>
+      <Data Name="TargetDomainName">-</Data>
+      <Data Name="TargetLogonId">0x0</Data>
+      <Data Name="ParentProcessName">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="MandatoryLabel">S-1-16-12288</Data>
+    </EventData>
+  </Event>

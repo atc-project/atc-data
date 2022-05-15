@@ -1,0 +1,147 @@
+title: ProcessAccess
+description: >
+  The process accessed event reports when a process opens another process, an 
+  operation that’s often followed by information queries or reading and writing 
+  the address space of the target process
+event_id: 10
+attack_data:
+  - process: process access
+platform: windows
+provider: Microsoft-Windows-Sysmon
+channel: 'Microsoft-Windows-Sysmon/Operational'
+atc_id: DN0014
+loggingpolicy:
+  - LP0007
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: Sysinternals: Sysmon'
+    link: 'https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-10-processaccess'
+  - text: 'OSSEM DD: event-10.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/sysmon/events/event-10.yml'
+fields:
+
+  - original_name: RuleName
+    description: Custom tag mapped to event. i.e ATT&CK technique ID
+    sample_value: T1114
+    elastic_ecs_name: rule.name
+    splunk_cim_name: tag
+    otr_ossem_name: tag
+
+  - original_name: UtcTime
+    description: Time in UTC when event was created
+    sample_value: '2019-01-30 14:28:35.212'
+    elastic_ecs_name: timestamp
+    splunk_cim_name: timestamp
+    otr_ossem_name: event_date_creation
+
+  - original_name: SourceProcessGUID
+    description: >
+      Process Guid of the source process that opened another process. It
+      is derived from a truncated part of the machine GUID, the process start-time and
+      the process token ID.
+    sample_value: '{A98268C1-9C2E-5ACD-0000-0010396CAB00}'
+    elastic_ecs_name: process.entity_id
+    splunk_cim_name: process_guid
+    otr_ossem_name: process_guid
+
+  - original_name: SourceProcessId
+    description: >
+      Process ID used by the os to identify the source process that opened
+      another process. Derived partially from the EPROCESS kernel structure
+    sample_value: '4756'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: process_id
+    otr_ossem_name: process_id
+
+  - original_name: SourceThreadId
+    description: >
+      ID of the specific thread inside of the source process that opened
+      another process
+    sample_value: '2804'
+    elastic_ecs_name: process.thread.id
+    splunk_cim_name: N/A
+    otr_ossem_name: thread_id
+
+  - original_name: SourceImage
+    description: >
+      File path of the source process that created a thread in another process
+    sample_value: C:\Users\user1\Desktop\mimi\x64\mimikatz.exe
+    elastic_ecs_name: process.executable
+    splunk_cim_name: process_path
+    otr_ossem_name: process_path
+
+  - original_name: TargetProcessGuid
+    description: Process Guid of the target process
+    sample_value: '{A98268C1-9C2E-5ACD-0000-0010396CAB00}'
+    elastic_ecs_name: winlog.event_data.TargetProcessGuid
+    splunk_cim_name: N/A
+    otr_ossem_name: target_process_guid
+  
+  - original_name: TargetProcessId
+    description: >
+      Process ID used by the os to identify the source process that opened
+      another process. Derived partially from the EPROCESS kernel structure
+    sample_value: '4756'
+    elastic_ecs_name: winlog.event_data.TargetProcessId
+    splunk_cim_name: N/A
+    otr_ossem_name: target_process_id
+
+  - original_name: TargetImage
+    description: File path of the target process
+    sample_value: 'C:\Windows\System32\cmd.exe'
+    elastic_ecs_name: winlog.event_data.TargetImage
+    splunk_cim_name: N/A
+    otr_ossem_name: target_process_path
+
+  - original_name: GrantedAccess
+    description: >
+      The access flags (bitmask) associated with the process rights requested
+      for the target process
+    sample_value: '0x1000'
+    elastic_ecs_name: winlog.event_data.GrantedAccess
+    splunk_cim_name: N/A
+    otr_ossem_name: process_granted_access
+
+  - original_name: CallTrace
+    description: >
+      Stack trace of where open process is called. Included is the DLL and
+      the relative virtual address of the functions in the call stack right before the
+      open process call
+    sample_value: 'C:\windows\SYSTEM32\ntdll.dll+9a3c4|C:\windows\System32\KERNELBASE.dll+2fd5d'
+    elastic_ecs_name: winlog.event_data.CallTrace
+    splunk_cim_name: N/A
+    otr_ossem_name: process_call_trace
+
+sample: |
+  - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    - <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385F-C22A-43E0-BF4C-06F5698FFBD9}" /> 
+      <EventID>10</EventID> 
+      <Version>3</Version> 
+      <Level>4</Level> 
+      <Task>10</Task> 
+      <Opcode>0</Opcode> 
+      <Keywords>0x8000000000000000</Keywords> 
+      <TimeCreated SystemTime="2019-01-30T14:28:35.216091900Z" /> 
+      <EventRecordID>42444</EventRecordID> 
+      <Correlation /> 
+      <Execution ProcessID="3892" ThreadID="5724" /> 
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel> 
+      <Computer>atc-win-10.atc.local</Computer> 
+      <Security UserID="S-1-5-18" /> 
+    </System>
+    - <EventData>
+      <Data Name="RuleName" /> 
+      <Data Name="UtcTime">2019-01-30 14:28:35.212</Data> 
+      <Data Name="SourceProcessGUID">{9683FBB1-B470-5C51-0000-0010521EBB00}</Data> 
+      <Data Name="SourceProcessId">6916</Data> 
+      <Data Name="SourceThreadId">8080</Data> 
+      <Data Name="SourceImage">C:\Users\user1\Desktop\mimi\x64\mimikatz.exe</Data> 
+      <Data Name="TargetProcessGUID">{9683FBB1-9A52-5C51-0000-0010C3610000}</Data> 
+      <Data Name="TargetProcessId">672</Data> 
+      <Data Name="TargetImage">C:\windows\system32\lsass.exe</Data> 
+      <Data Name="GrantedAccess">0x1010</Data> 
+      <Data Name="CallTrace">C:\windows\SYSTEM32\ntdll.dll+9a3c4|C:\windows\System32\KERNELBASE.dll+2fd5d|C:\Users\user1\Desktop\mimi\x64\mimikatz.exe+7a906|C:\Users\user1\Desktop\mimi\x64\mimikatz.exe+7ac75|C:\Users\user1\Desktop\mimi\x64\mimikatz.exe+7a82d|C:\Users\user1\Desktop\mimi\x64\mimikatz.exe+4d28c|C:\Users\user1\Desktop\mimi\x64\mimikatz.exe+4d0c4|C:\Users\user1\Desktop\mimi\x64\mimikatz.exe+4cea1|C:\Users\user1\Desktop\mimi\x64\mimikatz.exe+80675|C:\windows\System32\KERNEL32.DLL+13034|C:\windows\SYSTEM32\ntdll.dll+71471</Data> 
+    </EventData>
+  </Event>

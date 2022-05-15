@@ -1,0 +1,178 @@
+title: A Kerberos authentication ticket (TGT) was requested
+description: >
+  This event generates every time Key Distribution Center issues a 
+  Kerberos Ticket Granting Ticket (TGT). This event generates only 
+  on domain controllers. If TGT issue fails then you will see 
+  Failure event with Result Code field not equal to "0x0"
+event_id: 4768
+attack_data:
+  - logon session: logon session creation
+platform: windows
+provider: Microsoft-Windows-Security-Auditing
+channel: Security
+atc_id: DN0076
+loggingpolicy:
+  - LP0038: [ "Success", "Failure" ]
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: event-4768.md'
+    link: 'https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/windows/security/threat-protection/auditing/event-4768.md'
+  - text: 'OSSEM DD: event-4768.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/etw-providers/Microsoft-Windows-Security-Auditing/events/event-4768.yml'
+fields:
+
+  - original_name: TargetUserName
+    description: >
+      the name of account, for which (TGT) ticket was requested. Computer
+      account name ends with $ character.
+    sample_value: dadmin
+    elastic_ecs_name: related.user
+    splunk_cim_name: N/A
+    otr_ossem_name: user_name
+  
+  - original_name: TargetDomainName
+    description: >
+      the name of the Kerberos Realm that Account Name belongs to. This can
+      appear in a variety of formats
+    sample_value: CONTOSO.LOCAL
+    elastic_ecs_name: winlog.event_data.TargetDomainName
+    splunk_cim_name: dest_nt_domain
+    otr_ossem_name: user_domain
+  
+  - original_name: TargetSid
+    description: >
+      'SID of account for which (TGT) ticket was requested. Event Viewer
+      automatically tries to resolve SIDs and show the account name. If the SID cannot
+      be resolved, you will see the source data in the event. For example: CONTOSO\dadmin
+      or CONTOSO\WIN81$.'
+    sample_value: S-1-5-21-3457937927-2839227994-823803824-1104
+    elastic_ecs_name: winlog.computerObject.id
+    splunk_cim_name: N/A
+    otr_ossem_name: user_sid
+  
+  - original_name: ServiceName
+    description: >
+      'the name of the service in the Kerberos Realm to which TGT request
+      was sent. Typically has value "krbtgt" for TGT requests, which means Ticket Granting
+      Ticket issuing service. For Failure events Service Name typically has the following
+      format: krbtgt/REALM_NAME. For example: krbtgt/CONTOSO.'
+    sample_value: krbtgt
+    elastic_ecs_name: service.name
+    splunk_cim_name: N/A
+    otr_ossem_name: service_name
+  
+  - original_name: ServiceSid
+    description: >
+      SID of the service account in the Kerberos Realm to which TGT request
+      was sent. Event Viewer automatically tries to resolve SIDs and show the account
+      name. If the SID cannot be resolved, you will see the source data in the event.
+    sample_value: S-1-5-21-3457937927-2839227994-823803824-502
+    elastic_ecs_name: winlog.event_data.ServiceSid
+    splunk_cim_name: N/A
+    otr_ossem_name: service_sid
+  
+  - original_name: TicketOptions
+    description: this is a set of different ticket flags in hexadecimal format.
+    sample_value: '0x40810010'
+    elastic_ecs_name: winlog.event_data.TicketOptions
+    splunk_cim_name: N/A
+    otr_ossem_name: ticket_options
+  
+  - original_name: Status
+    description: hexadecimal result code of TGT issue operation.
+    sample_value: '0x0'
+    elastic_ecs_name: winlog.event_data.Status
+    splunk_cim_name: N/A
+    otr_ossem_name: ticket_status
+  
+  - original_name: TicketEncryptionType
+    description: the cryptographic suite that was used for issued TGT
+    sample_value: '0x12'
+    elastic_ecs_name: winlog.event_data.TicketEncryptionType
+    splunk_cim_name: N/A
+    otr_ossem_name: ticket_encryption_type
+  
+  - original_name: PreAuthType
+    description: the code number of pre-Authentication type which was used in TGT request.
+    sample_value: '15'
+    elastic_ecs_name: winlog.event_data.PreAuthType
+    splunk_cim_name: N/A
+    otr_ossem_name: ticket_pre_auth_type
+  
+  - original_name: IpAddress
+    description: IP address of the computer from which the TGT request was received
+    sample_value: ::ffff:10.0.0.12
+    elastic_ecs_name: source.ip
+    splunk_cim_name: src_ip
+    otr_ossem_name: src_ip_addr
+  
+  - original_name: IpPort
+    description: source port number of client network connection (TGT request connection).
+    sample_value: '49273'
+    elastic_ecs_name: source.port
+    splunk_cim_name: src_port
+    otr_ossem_name: src_port
+  
+  - original_name: CertIssuerName
+    description: >
+      the name of the Certification Authority that issued the smart card
+      certificate. Populated in Issued by field in certificate.
+    sample_value: contoso-DC01-CA-1
+    elastic_ecs_name: winlog.event_data.CertIssuerName
+    splunk_cim_name: N/A
+    otr_ossem_name: certificate_issuer
+  
+  - original_name: CertSerialNumber
+    description: >
+      smart card certificate's serial number. Can be found in Serial number
+      field in the certificate.
+    sample_value: 1D0000000D292FBE3C6CDDAFA200020000000D
+    elastic_ecs_name: winlog.event_data.CertSerialNumber
+    splunk_cim_name: N/A
+    otr_ossem_name: certificate_serial_number
+  
+  - original_name: CertThumbprint
+    description: >
+      smart card certificate's thumbprint. Can be found in Thumbprint field
+      in the certificate.
+    sample_value: 564DFAEE99C71D62ABC553E695BD8DBC46669413
+    elastic_ecs_name: winlog.event_data.CertThumbprint
+    splunk_cim_name: N/A
+    otr_ossem_name: certificate_hash_sha1
+
+sample: |
+  - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    - <System>
+      <Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /> 
+      <EventID>4768</EventID> 
+      <Version>0</Version> 
+      <Level>0</Level> 
+      <Task>14339</Task> 
+      <Opcode>0</Opcode> 
+      <Keywords>0x8020000000000000</Keywords> 
+      <TimeCreated SystemTime="2015-08-07T18:13:46.074535600Z" /> 
+      <EventRecordID>166747</EventRecordID> 
+      <Correlation /> 
+      <Execution ProcessID="520" ThreadID="1496" /> 
+      <Channel>Security</Channel> 
+      <Computer>DC01.contoso.local</Computer> 
+      <Security /> 
+    </System>
+    - <EventData>
+      <Data Name="TargetUserName">dadmin</Data> 
+      <Data Name="TargetDomainName">CONTOSO.LOCAL</Data> 
+      <Data Name="TargetSid">S-1-5-21-3457937927-2839227994-823803824-1104</Data> 
+      <Data Name="ServiceName">krbtgt</Data> 
+      <Data Name="ServiceSid">S-1-5-21-3457937927-2839227994-823803824-502</Data> 
+      <Data Name="TicketOptions">0x40810010</Data> 
+      <Data Name="Status">0x0</Data> 
+      <Data Name="TicketEncryptionType">0x12</Data> 
+      <Data Name="PreAuthType">15</Data> 
+      <Data Name="IpAddress">::ffff:10.0.0.12</Data> 
+      <Data Name="IpPort">49273</Data> 
+      <Data Name="CertIssuerName">contoso-DC01-CA-1</Data> 
+      <Data Name="CertSerialNumber">1D0000000D292FBE3C6CDDAFA200020000000D</Data> 
+      <Data Name="CertThumbprint">564DFAEE99C71D62ABC553E695BD8DBC46669413</Data> 
+    </EventData>
+  </Event>

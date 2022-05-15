@@ -1,0 +1,236 @@
+title: 'Process creation'
+description: >
+  The process creation event provides extended information about a newly
+  created process. The full command line provides context on the process execution.
+  The ProcessGUID field is a unique value for this process across a domain to make
+  event correlation easier. The hash is a full hash of the file with the algorithms
+  in the HashType field.
+event_id: 1
+attack_data:
+  - process: process creation
+platform: windows
+provider: Microsoft-Windows-Sysmon
+channel: 'Microsoft-Windows-Sysmon/Operational'
+atc_id: DN0003
+loggingpolicy:
+  - LP0003
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: Sysinternals: Sysmon'
+    link: 'https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-1-process-creation'
+  - text: 'OSSEM DD: event-1.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/sysmon/events/event-1.yml'
+fields:
+
+  - original_name: RuleName
+    description: custom tag mapped to event. i.e ATT&CK technique ID
+    sample_value: T1114
+    elastic_ecs_name: rule.name
+    splunk_cim_name: tag
+    otr_ossem_name: tag
+
+  - original_name: UtcTime
+    description: Time in UTC when event was created
+    sample_value: '2019-07-09 03:44:58.036'
+    elastic_ecs_name: process.start
+    splunk_cim_name: timestamp
+    otr_ossem_name: event_date_creation
+  
+  - original_name: ProcessGuid
+    description: Process Guid of the process that got spawned/created (child)
+    sample_value: '{A98268C1-9C2E-5ACD-0000-0010396CAB00}'
+    elastic_ecs_name: process.entity_id
+    splunk_cim_name: process_guid
+    otr_ossem_name: process_guid
+  
+  - original_name: ProcessId
+    description: Process ID used by the os to identify the created process (child)
+    sample_value: '4756'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: process_id
+    otr_ossem_name: process_id
+  
+  - original_name: Image
+    description: >
+      File path of the process being spawned/created. Considered also the
+      child or source process
+    sample_value: C:\Windows\System32\conhost.exe
+    elastic_ecs_name: process.executable
+    splunk_cim_name: process_path
+    otr_ossem_name: process_path
+  
+  - original_name: FileVersion
+    description: Version of the image associated with the main process (child)
+    sample_value: 10.0.16299.15 (WinBuild.160101.0800)
+    elastic_ecs_name: file.pe.file_version
+    splunk_cim_name: N/A
+    otr_ossem_name: file_version
+  
+  - original_name: Description
+    description: Description of the image associated with the main process (child)
+    sample_value: Console Window Host
+    elastic_ecs_name: file.pe.description
+    splunk_cim_name: N/A
+    otr_ossem_name: file_description
+  
+  - original_name: Product
+    description: >
+      Product name the image associated with the main process (child) belongs to
+    sample_value: 'Microsoft\xAE Windows\xAE Operating System'
+    elastic_ecs_name: file.pe.product
+    splunk_cim_name: N/A
+    otr_ossem_name: file_product
+  
+  - original_name: Company
+    description: >
+      Company name the image associated with the main process (child) belongs to
+    sample_value: Microsoft Corporation
+    elastic_ecs_name: file.pe.company
+    splunk_cim_name: vendor_product
+    otr_ossem_name: file_company
+  
+  - original_name: OriginalFileName
+    description: original file name
+    sample_value: wuauclt.exe
+    elastic_ecs_name: file.pe.original_file_name
+    splunk_cim_name: N/A
+    otr_ossem_name: file_name_original
+  
+  - original_name: CommandLine
+    description: >
+      Arguments which were passed to the executable associated with the main process
+    sample_value: '??\C:\WINDOWS\system32\conhost.exe 0xffffffff -ForceV1'
+    elastic_ecs_name: process.command_line
+    splunk_cim_name: N/A
+    otr_ossem_name: process_command_line
+  
+  - original_name: CurrentDirectory
+    description: The path without the name of the image associated with the process
+    sample_value: 'C:\WINDOWS'
+    elastic_ecs_name: process.working_directory
+    splunk_cim_name: process_current_directory
+    otr_ossem_name: file_current_directory
+  
+  - original_name: User
+    description: >
+      Name of the account who created the process (child) . It usually contains
+      domain name and user name (Parsed to show only username without the domain)
+    sample_value: 'DESKTOP-WARDOG\wardog'
+    elastic_ecs_name: winlog.event_data.User
+    splunk_cim_name: user
+    otr_ossem_name: user_name
+  
+  - original_name: LogonGuid
+    description: >
+      Logon GUID of the user who created the new process. Value that can
+      help you correlate this event with others that contain the same Logon GUID (Sysmon
+      Events)
+    sample_value: '{A98268C1-95F2-5ACD-0000-002019620F00}'
+    elastic_ecs_name: winlog.event_data.LogonGuid
+    splunk_cim_name: N/A
+    otr_ossem_name: user_logon_guid
+
+  - original_name: LogonId
+    description: >
+      Login ID of the user who created the new process. Value that can help
+      you correlate this event with others that contain the same Logon ID
+    sample_value: '0xf6219'
+    elastic_ecs_name: winlog.event_data.LogonId
+    splunk_cim_name: N/A
+    otr_ossem_name: user_logon_id
+  
+  - original_name: TerminalSessionId
+    description: ID of the session the user belongs to
+    sample_value: '1'
+    elastic_ecs_name: winlog.event_data.TerminalSessionId
+    splunk_cim_name: N/A
+    otr_ossem_name: user_session_id
+  
+  - original_name: IntegrityLevel
+    description: Integrity label assigned to a process
+    sample_value: Medium
+    elastic_ecs_name: winlog.event_data.IntegrityLevel
+    splunk_cim_name: process_integrity_level
+    otr_ossem_name: process_integrity_level
+  
+  - original_name: Hashes
+    description: Hashes captured by sysmon driver
+    sample_value: >
+      SHA1=B0BF5AC2E81BBF597FAD5F349FEEB32CAC449FA2, MD5=6A255BEBF3DBCD13585538ED47DBAFD7,
+      SHA256=4668BB2223FFB983A5F1273B9E3D9FA2C5CE4A0F1FB18CA5C1B285762020073C, IMPHASH=2505BD03D7BD285E50CE89CEC02B333B
+    elastic_ecs_name: winlog.event_data.Hashes
+    splunk_cim_name: process_hash
+    otr_ossem_name: N/A
+  
+  - original_name: ParentProcessGuid
+    description: ProcessGUID of the process that spawned/created the main process (child)
+    sample_value: '{A98268C1-9C2E-5ACD-0000-00100266AB00}'
+    elastic_ecs_name: process.parent.entity_id
+    splunk_cim_name: parent_process_guid
+    otr_ossem_name: process_parent_guid
+
+  - original_name: ParentProcessId
+    description: Process ID of the process that spawned/created the main process (child)
+    sample_value: '240'
+    elastic_ecs_name: process.parent.pid
+    splunk_cim_name: parent_process_id
+    otr_ossem_name: process_parent_id
+
+  - original_name: ParentImage
+    description: File path that spawned/created the main process
+    sample_value: C:\Windows\System32\cmd.exe
+    elastic_ecs_name: process.parent.executable
+    splunk_cim_name: parent_process_path
+    otr_ossem_name: process_parent_path
+
+  - original_name: ParentCommandLine
+    description: Arguments which were passed to the executable associated with the parent process
+    sample_value: 'C:\WINDOWS\system32\cmd.exe'
+    elastic_ecs_name: process.parent.command_line
+    splunk_cim_name: N/A
+    otr_ossem_name: process_parent_command_line
+
+sample: |
+  - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    - <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385F-C22A-43E0-BF4C-06F5698FFBD9}" />
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2019-07-09T03:44:58.290314900Z" />
+      <EventRecordID>4219</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="1976" ThreadID="3196" />
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>atc-win-10</Computer>
+      <Security UserID="S-1-5-18" />
+      </System>
+    - <EventData>
+      <Data Name="RuleName" />
+      <Data Name="UtcTime">2019-07-09 03:44:58.036</Data>
+      <Data Name="ProcessGuid">{717CFEC0-0DBA-5D24-0000-001087BC0800}</Data>
+      <Data Name="ProcessId">5500</Data>
+      <Data Name="Image">C:\Windows\System32\conhost.exe</Data>
+      <Data Name="FileVersion">10.0.14393.0 (rs1_release.160715-1616)</Data>
+      <Data Name="Description">Console Window Host</Data>
+      <Data Name="Product">Microsoft® Windows® Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">CONHOST.EXE</Data>
+      <Data Name="CommandLine">\??\C:\Windows\system32\conhost.exe 0xffffffff -ForceV1</Data>
+      <Data Name="CurrentDirectory">C:\Windows</Data>
+      <Data Name="User">atc-win-10\yugoslavskiy</Data>
+      <Data Name="LogonGuid">{717CFEC0-0DA0-5D24-0000-0020D0F50300}</Data>
+      <Data Name="LogonId">0x3f5d0</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=D752C96401E2540A443C599154FC6FA9,SHA256=046F7A1B4DE67562547ED9A180A72F481FC41E803DE49A96D7D7C731964D53A0</Data>
+      <Data Name="ParentProcessGuid">{717CFEC0-0DB9-5D24-0000-0010C9BB0800}</Data>
+      <Data Name="ParentProcessId">4412</Data>
+      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe" /q /c rmdir /s /q "C:\Users\yugoslavskiy\AppData\Local\Microsoft\OneDrive\19.086.0502.0006"</Data>
+    </EventData>
+  </Event>

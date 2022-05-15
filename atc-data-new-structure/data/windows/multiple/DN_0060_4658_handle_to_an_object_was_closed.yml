@@ -1,0 +1,125 @@
+title: The handle to an object was closed
+description: >
+  This event generates when the handle to an object is closed. 
+  The object could be a file system, kernel, or registry object, 
+  or a file system object on removable storage or a device.
+event_id: 4658
+attack_data:
+  - file: file access
+  - windows registry: windows registry key access
+platform: windows
+provider: Microsoft-Windows-Security-Auditing
+channel: Security
+atc_id: DN0060
+loggingpolicy:
+  - LP0102: Success # windows_audit_file_system
+  - LP0042: Success # windows_audit_handle_manipulation
+  - LP0039: Success # windows_audit_kernel_object
+  - LP0103: Success # windows_audit_registry
+  - LP0104: Success # windows_audit_removable_storage
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: event-4658.md'
+    link: 'https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4658.md'
+  - text: 'OSSEM DD: event-4658.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/etw-providers/Microsoft-Windows-Security-Auditing/events/event-4658.yml'
+fields:
+
+  - original_name: SubjectUserSid
+    description: >
+      SID of account that requested the "close object's handle" operation.
+      Event Viewer automatically tries to resolve SIDs and show the account name.
+    sample_value: S-1-5-21-3457937927-2839227994-823803824-1104
+    elastic_ecs_name: user.id
+    splunk_cim_name: user_id
+    otr_ossem_name: user_sid
+
+  - original_name: SubjectUserName
+    description: >
+      the name of the account that requested the "close object's handle"
+      operation.
+    sample_value: dadmin
+    elastic_ecs_name: user.name
+    splunk_cim_name: user
+    otr_ossem_name: user_name
+
+  - original_name: SubjectDomainName
+    description: subject's domain or computer name.
+    sample_value: CONTOSO
+    elastic_ecs_name: user.domain
+    splunk_cim_name: src_nt_domain
+    otr_ossem_name: user_domain
+
+  - original_name: SubjectLogonId
+    description: >
+      hexadecimal value that can help you correlate this event with recent
+      events that might contain the same Logon ID
+    sample_value: '0x4367b'
+    elastic_ecs_name: winlog.logon.id
+    splunk_cim_name: N/A
+    otr_ossem_name: user_logon_id
+
+  - original_name: ObjectServer
+    description: has "Security" value for this event.
+    sample_value: Security
+    elastic_ecs_name: winlog.event_data.ObjectServer
+    splunk_cim_name: N/A
+    otr_ossem_name: object_server
+
+  - original_name: HandleId
+    description: >
+      'hexadecimal value of a handle to Object Name. This field can help
+      you correlate this event with other events that might contain the same Handle
+      ID, for example, "4663(S): An attempt was made to access an object."'
+    sample_value: '0x18a8'
+    elastic_ecs_name: winlog.event_data.HandleId
+    splunk_cim_name: N/A
+    otr_ossem_name: object_handle_id
+
+  - original_name: ProcessId
+    description: >
+      hexadecimal Process ID of the process that requested that the handle
+      be closed. Process ID (PID) is a number used by the operating system to uniquely
+      identify an active process.
+    sample_value: '0xef0'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: process_id
+    otr_ossem_name: process_id
+
+  - original_name: ProcessName
+    description: full path and the name of the executable for the process.
+    sample_value: C:\Windows\explorer.exe
+    elastic_ecs_name: process.executable
+    splunk_cim_name: process_path
+    otr_ossem_name: process_path
+
+sample: |
+  - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    - <System>
+      <Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /> 
+      <EventID>4658</EventID> 
+      <Version>0</Version> 
+      <Level>0</Level> 
+      <Task>12800</Task> 
+      <Opcode>0</Opcode> 
+      <Keywords>0x8020000000000000</Keywords> 
+      <TimeCreated SystemTime="2015-09-22T00:15:42.910428100Z" /> 
+      <EventRecordID>276724</EventRecordID> 
+      <Correlation /> 
+      <Execution ProcessID="4" ThreadID="5056" /> 
+      <Channel>Security</Channel> 
+      <Computer>DC01.contoso.local</Computer> 
+      <Security /> 
+    </System>
+    - <EventData>
+      <Data Name="SubjectUserSid">S-1-5-21-3457937927-2839227994-823803824-1104</Data> 
+      <Data Name="SubjectUserName">dadmin</Data> 
+      <Data Name="SubjectDomainName">CONTOSO</Data> 
+      <Data Name="SubjectLogonId">0x4367b</Data> 
+      <Data Name="ObjectServer">Security</Data> 
+      <Data Name="HandleId">0x18a8</Data> 
+      <Data Name="ProcessId">0xef0</Data> 
+      <Data Name="ProcessName">C:\\Windows\\explorer.exe</Data> 
+    </EventData>
+  </Event>

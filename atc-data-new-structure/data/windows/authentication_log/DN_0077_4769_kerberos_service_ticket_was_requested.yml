@@ -1,0 +1,144 @@
+title: A Kerberos service ticket was requested
+description: >
+  This event generates every time Key Distribution Center gets a Kerberos Ticket Granting
+  Service (TGS) ticket request. This event generates only on domain controllers.
+event_id: 4769
+attack_data:
+  - logon session: logon session creation
+platform: windows
+provider: Microsoft-Windows-Security-Auditing
+channel: Security
+atc_id: DN0077
+loggingpolicy:
+  - LP0106: [ "Success", "Failure" ]
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: event-4769.md'
+    link: 'https://github.com/MicrosoftDocs/windows-itpro-docs/blob/master/windows/security/threat-protection/auditing/event-4769.md'
+  - text: 'OSSEM DD: event-4769.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/etw-providers/Microsoft-Windows-Security-Auditing/events/event-4769.yml'
+fields:
+
+    original_name: TargetUserName
+    description: >
+      'the User Principal Name (UPN) of the account that requested the ticket.
+      Computer account name ends with $ character in UPN. This field typically has the
+      following value format: user_account_name@FULL_DOMAIN_NAME.'
+    sample_value: dadmin@CONTOSO.LOCAL
+    elastic_ecs_name: related.user
+    splunk_cim_name: N/A
+    otr_ossem_name: user_name
+
+    original_name: TargetDomainName
+    description: the name of the Kerberos Realm that Account Name belongs to
+    sample_value: CONTOSO.LOCAL
+    elastic_ecs_name: winlog.event_data.TargetDomainName
+    splunk_cim_name: dest_nt_domain
+    otr_ossem_name: user_domain
+
+    original_name: ServiceName
+    description: the name of the account or computer for which the TGS ticket was requested
+    sample_value: WIN2008R2$
+    elastic_ecs_name: service.name
+    splunk_cim_name: N/A
+    otr_ossem_name: service_name
+
+    original_name: ServiceSid
+    description: >
+      SID of the account or computer object for which the TGS ticket was
+      requested. Event Viewer automatically tries to resolve SIDs and show the account
+      name. If the SID cannot be resolved, you will see the source data in the event.
+    sample_value: S-1-5-21-3457937927-2839227994-823803824-2102
+    elastic_ecs_name: winlog.event_data.ServiceSid
+    splunk_cim_name: N/A
+    otr_ossem_name: service_sid
+
+    original_name: TicketOptions
+    description: this is a set of different Ticket Flags in hexadecimal format.
+    sample_value: '0x40810000'
+    elastic_ecs_name: winlog.event_data.TicketOptions
+    splunk_cim_name: N/A
+    otr_ossem_name: ticket_options
+
+    original_name: TicketEncryptionType
+    description: the cryptographic suite that was used for issued TGS.
+    sample_value: '0x12'
+    elastic_ecs_name: winlog.event_data.TicketEncryptionType
+    splunk_cim_name: N/A
+    otr_ossem_name: ticket_encryption
+
+    original_name: IpAddress
+    description: IP address of the computer from which the TGS request was received.
+    sample_value: ::ffff:10.0.0.12
+    elastic_ecs_name: source.ip
+    splunk_cim_name: src_ip
+    otr_ossem_name: src_ip_addr
+
+    original_name: IpPort
+    description: source port number of client network connection (TGS request connection).
+    sample_value: '49272'
+    elastic_ecs_name: source.port
+    splunk_cim_name: src_port
+    otr_ossem_name: src_port
+
+    original_name: Status
+    description: hexadecimal result code of TGS issue operation.
+    sample_value: '0x0'
+    elastic_ecs_name: winlog.event_data.Status
+    splunk_cim_name: N/A
+    otr_ossem_name: ticket_status
+
+    original_name: LogonGuid
+    description: >
+      'a GUID that can help you correlate this event (on a domain controller)
+      with other events (on the target computer for which the TGS was issued) that can
+      contain the same Logon GUID. These events are "4624: An account was successfully
+      logged on", "4648(S): A logon was attempted using explicit credentials" and "4964(S):
+      Special groups have been assigned to a new logon."'
+    sample_value: '{F85C455E-C66E-205C-6B39-F6C60A7FE453}'
+    elastic_ecs_name: winlog.event_data.LogonGuid
+    splunk_cim_name: N/A
+    otr_ossem_name: user_logon_guid
+
+    original_name: TransmittedServices
+    description: >
+      this field contains list of SPNs which were requested if Kerberos delegation
+      was used.
+    sample_value: '-'
+    elastic_ecs_name: winlog.event_data.TransmittedServices
+    splunk_cim_name: N/A
+    otr_ossem_name: logon_transmitted_services
+
+sample: |
+  - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    - <System>
+      <Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" />
+      <EventID>4769</EventID>
+      <Version>0</Version>
+      <Level>0</Level>
+      <Task>14337</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8020000000000000</Keywords>
+      <TimeCreated SystemTime="2015-08-07T18:13:46.043256100Z" />
+      <EventRecordID>166746</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="520" ThreadID="1496" />
+      <Channel>Security</Channel>
+      <Computer>DC01.contoso.local</Computer>
+    <Security />
+    </System>
+    - <EventData>
+      <Data Name="TargetUserName">dadmin@CONTOSO.LOCAL</Data>
+      <Data Name="TargetDomainName">CONTOSO.LOCAL</Data>
+      <Data Name="ServiceName">WIN2008R2$</Data>
+      <Data Name="ServiceSid">S-1-5-21-3457937927-2839227994-823803824-2102</Data>
+      <Data Name="TicketOptions">0x40810000</Data>
+      <Data Name="TicketEncryptionType">0x12</Data>
+      <Data Name="IpAddress">::ffff:10.0.0.12</Data>
+      <Data Name="IpPort">49272</Data>
+      <Data Name="Status">0x0</Data>
+      <Data Name="LogonGuid">{F85C455E-C66E-205C-6B39-F6C60A7FE453}</Data>
+      <Data Name="TransmittedServices">-</Data>
+    </EventData>
+  </Event>

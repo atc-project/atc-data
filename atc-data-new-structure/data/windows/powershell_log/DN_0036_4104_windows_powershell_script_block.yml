@@ -1,0 +1,91 @@
+title: Script Block Logging
+description: >
+  Script block logging records blocks of code as they are executed by the
+  PowerShell engine, thereby capturing the full contents of code executed by an attacker,
+  including scripts and commands. Due to the nature of script block logging, it also
+  records de-obfuscated code as it is executed. For example, in addition to recording
+  the original obfuscated code, script block logging records the decoded commands
+  passed with PowerShell's -EncodedCommand argument, as well as those obfuscated with
+  XOR, Base64, ROT13, encryption, etc., in addition to the original obfuscated code.
+  Script block logging will not record output from the executed code.
+event_id: 4104
+attack_data:
+  - powershell log: powershell execution
+platform: windows
+provider: Microsoft-Windows-PowerShell
+channel: Microsoft-Windows-PowerShell/Operational
+atc_id: DN0036
+loggingpolicy:
+  - LP0109
+contributors:
+  - '@atc_project'
+references:
+  - text: 'OSSEM DD: event-4104.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/powershell/events/event-4104.yml'
+  - text: 'FireEye: Greater Visibility Through PowerShell Logging'
+    link: 'https://www.fireeye.com/blog/threat-research/2016/02/greater_visibilityt.html'
+  - text: 'Microsoft: PowerShell <3 the Blue Team'
+    link: 'https://blogs.msdn.microsoft.com/powershell/2015/06/09/powershell-the-blue-team/'
+fields:
+
+  - original_name: MessageNumber
+    description: ''
+    sample_value: '1'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_message_number
+
+  - original_name: MessageTotal
+    description: ''
+    sample_value: '1'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_parameter_binding
+
+  - original_name: ScriptBlockText
+    description: '$FilterArgs = @{name=AtomicRedTeam-WMIPersistence-Example...'
+    sample_value: ''
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_scriptblock_text
+
+  - original_name: ScriptBlockId
+    description: ''
+    sample_value: 414c1110-3b57-40bf-9502-e45053cce9dd
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_scriptblock_id
+
+  - original_name: Path
+    description: ''
+    sample_value: 'C:\Tools\Invoke-ATTACKAPI-master\Invoke-ATTACKAPI.ps1'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_Path
+
+sample: |
+  - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    - <System>
+        <Provider Name="Microsoft-Windows-PowerShell" Guid="{A0C1853B-5C40-4B15-8766-3CF1C58F985A}" /> 
+        <EventID>4104</EventID> 
+        <Version>1</Version> 
+        <Level>5</Level> 
+        <Task>2</Task> 
+        <Opcode>15</Opcode> 
+        <Keywords>0x0</Keywords> 
+        <TimeCreated SystemTime="2019-02-05T15:05:16.554318000Z" /> 
+        <EventRecordID>75823</EventRecordID> 
+        <Correlation ActivityID="{3655DBA0-BD54-0000-AE51-563654BDD401}" /> 
+        <Execution ProcessID="2588" ThreadID="4328" /> 
+        <Channel>Microsoft-Windows-PowerShell/Operational</Channel> 
+        <Computer>atc-win-10.atc.local</Computer> 
+        <Security UserID="S-1-5-21-540864798-2899685673-3651185163-500" /> 
+      </System>
+    - <EventData>
+        <Data Name="MessageNumber">1</Data> 
+        <Data Name="MessageTotal">1</Data> 
+        <Data Name="ScriptBlockText">$FilterArgs = @{name='AtomicRedTeam-WMIPersistence-Example'; EventNameSpace='root\CimV2'; QueryLanguage="WQL"; Query="SELECT * FROM __InstanceModificationEvent WITHIN 60 WHERE TargetInstance ISA 'Win32_PerfFormattedData_PerfOS_System' AND TargetInstance.SystemUpTime >= 240 AND TargetInstance.SystemUpTime < 325"}; $Filter=New-CimInstance -Namespace root/subscription -ClassName __EventFilter -Property $FilterArgs $ConsumerArgs = @{name='AtomicRedTeam-WMIPersistence-Example'; CommandLineTemplate="$($Env:SystemRoot)\System32\notepad.exe";} $Consumer=New-CimInstance -Namespace root/subscription -ClassName CommandLineEventConsumer -Property $ConsumerArgs $FilterToConsumerArgs = @{ Filter = [Ref] $Filter; Consumer = [Ref] $Consumer; } $FilterToConsumerBinding = New-CimInstance -Namespace root/subscription -ClassName __FilterToConsumerBinding -Property $FilterToConsumerArgs</Data> 
+        <Data Name="ScriptBlockId">414c1110-3b57-40bf-9502-e45053cce9dd</Data> 
+        <Data Name="Path" /> 
+      </EventData>
+    </Event>

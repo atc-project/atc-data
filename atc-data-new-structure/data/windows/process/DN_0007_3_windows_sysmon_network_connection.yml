@@ -1,0 +1,193 @@
+title: Network connection
+description: >
+  The network connection event logs TCP/UDP connections on the machine. 
+  It is disabled by default. Each connection is linked to a process through 
+  the ProcessId and ProcessGUID fields. The event also contains the source and 
+  destination host names IP addresses, port numbers and IPv6 status
+event_id: 3
+attack_data:
+  - process: process network connection
+platform: windows
+provider: Microsoft-Windows-Sysmon
+channel: 'Microsoft-Windows-Sysmon/Operational'
+atc_id: DN0007
+loggingpolicy:
+  - LP0005
+contributors:
+  - '@atc_project'
+references:
+  - text: 'Microsoft Docs: Sysinternals: Sysmon'
+    link: 'https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon#event-id-3-network-connection'
+  - text: 'OSSEM DD: event-3.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/sysmon/events/event-3.yml'
+fields:
+
+  - original_name: RuleName
+    description: Custom tag mapped to event. i.e ATT&CK technique ID
+    sample_value: T1114
+    elastic_ecs_name: rule.name
+    splunk_cim_name: tag
+    otr_ossem_name: tag
+
+  - original_name: UtcTime
+    description: Time in UTC when event was created
+    sample_value: '2019-02-05 15:16:17.411'
+    elastic_ecs_name: timestamp
+    splunk_cim_name: timestamp
+    otr_ossem_name: event_date_creation
+
+  - original_name: ProcessGuid
+    description: Process Guid of the process that made the network connection
+    sample_value: '{A98268C1-957F-5ACD-0000-0010EB030000}'
+    elastic_ecs_name: process.entity_id
+    splunk_cim_name: process_guid
+    otr_ossem_name: process_guid
+
+  - original_name: ProcessId
+    description: >
+      Process ID used by the os to identify the process that made the network
+      connection
+    sample_value: '4'
+    elastic_ecs_name: process.pid
+    splunk_cim_name: process_id
+    otr_ossem_name: process_id
+
+  - original_name: Image
+    description: File path of the process that made the network connection
+    sample_value: System
+    elastic_ecs_name: process.executable
+    splunk_cim_name: process_path
+    otr_ossem_name: process_path
+
+  - original_name: User
+    description: >
+      Name of the account who made the network connection. It usually containes
+      domain name and user name
+    sample_value: NT AUTHORITY\SYSTEM
+    elastic_ecs_name: user.name
+    splunk_cim_name: user
+    otr_ossem_name: user_name
+
+  - original_name: Protocol
+    description: Protocol being used for the network connection
+    sample_value: udp
+    elastic_ecs_name: network.transport
+    splunk_cim_name: protocol
+    otr_ossem_name: network_protocol
+
+  - original_name: Initiated
+    description: Indicated process initiated tcp connection
+    sample_value: 'true'
+    elastic_ecs_name: network.direction
+    splunk_cim_name: N/A
+    otr_ossem_name: network_connection_initiated
+
+  - original_name: SourceIsIpv6
+    description: is the source ip an IPv6
+    sample_value: 'false'
+    elastic_ecs_name: network.type
+    splunk_cim_name: N/A
+    otr_ossem_name: src_is_ipv6
+
+  - original_name: SourceIp
+    description: Source ip address that made the network connection
+    sample_value: 192.168.64.255
+    elastic_ecs_name: source.ip
+    splunk_cim_name: src_ip
+    otr_ossem_name: src_ip_addr
+
+  - original_name: SourceHostname
+    description: Name of the host that made the network connection
+    sample_value: computer_name or none for broadcast
+    elastic_ecs_name: source.domain
+    splunk_cim_name: src_nt_host
+    otr_ossem_name: src_host_name
+
+  - original_name: SourcePort
+    description: Source port number
+    sample_value: '138'
+    elastic_ecs_name: source.port
+    splunk_cim_name: src_port
+    otr_ossem_name: src_port
+
+  - original_name: SourcePortName
+    description: Name of the source port being used (i.e. netbios-dgm)
+    sample_value: netbios-dgm
+    elastic_ecs_name: winlog.event_data.SourcePortName
+    splunk_cim_name: N/A
+    otr_ossem_name: src_port_name
+
+  - original_name: DestinationIsIpv6
+    description: is the destination IP an IPv6
+    sample_value: C:\Windows\System32\cmd.exe
+    elastic_ecs_name: network.type
+    splunk_cim_name: N/A
+    otr_ossem_name: dst_is_ipv6
+
+  - original_name: DestinationIp
+    description: Destination IP address
+    sample_value: 192.168.64.135
+    elastic_ecs_name: destination.ip
+    splunk_cim_name: dest_ip
+    otr_ossem_name: dst_ip_addr
+
+  - original_name: DestinationHostname
+    description: Name of the host that received the network connection
+    sample_value: DC-WD-001
+    elastic_ecs_name: destination.domain
+    splunk_cim_name: dest_nt_host
+    otr_ossem_name: dst_host_name
+
+  - original_name: DestinationPort
+    description: Destination port
+    sample_value: '138'
+    elastic_ecs_name: destination.port
+    splunk_cim_name: dest_port
+    otr_ossem_name: dst_port
+
+  - original_name: DestinationPortName
+    description: Name of the destination port
+    sample_value: netbios-dgm
+    elastic_ecs_name: network.protocol
+    splunk_cim_name: N/A
+    otr_ossem_name: dst_port_name
+
+sample: |
+  - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    - <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385F-C22A-43E0-BF4C-06F5698FFBD9}" /> 
+      <EventID>3</EventID> 
+      <Version>5</Version> 
+      <Level>4</Level> 
+      <Task>3</Task> 
+      <Opcode>0</Opcode> 
+      <Keywords>0x8000000000000000</Keywords> 
+      <TimeCreated SystemTime="2019-02-05T15:16:29.384924000Z" /> 
+      <EventRecordID>16000</EventRecordID> 
+      <Correlation /> 
+      <Execution ProcessID="1828" ThreadID="2764" /> 
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel> 
+      <Computer>ATC-WIN-7.atc.local</Computer> 
+      <Security UserID="S-1-5-18" /> 
+    </System>
+    - <EventData>
+      <Data Name="RuleName" /> 
+      <Data Name="UtcTime">2019-02-05 15:16:17.411</Data> 
+      <Data Name="ProcessGuid">{A96EFBF1-A8C9-5C59-0000-0010D274D300}</Data> 
+      <Data Name="ProcessId">3900</Data> 
+      <Data Name="Image">C:\Users\user1\Desktop\SysinternalsSuite\PsExec.exe</Data> 
+      <Data Name="User">ATC-WIN-7\user1</Data> 
+      <Data Name="Protocol">tcp</Data> 
+      <Data Name="Initiated">true</Data> 
+      <Data Name="SourceIsIpv6">false</Data> 
+      <Data Name="SourceIp">10.0.0.111</Data> 
+      <Data Name="SourceHostname">ATC-WIN-7.atc.local</Data> 
+      <Data Name="SourcePort">49603</Data> 
+      <Data Name="SourcePortName" /> 
+      <Data Name="DestinationIsIpv6">false</Data> 
+      <Data Name="DestinationIp">10.0.0.103</Data> 
+      <Data Name="DestinationHostname">ATC-WIN-10</Data> 
+      <Data Name="DestinationPort">135</Data> 
+      <Data Name="DestinationPortName">epmap</Data> 
+    </EventData>
+  </Event>

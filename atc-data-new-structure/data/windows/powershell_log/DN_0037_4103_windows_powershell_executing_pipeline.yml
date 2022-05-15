@@ -1,0 +1,173 @@
+title: Executing Pipeline
+description: >
+  This event records pipeline execution, including variable initialization and command command invocations.
+event_id: 4103
+attack_data:
+  - powershell log: powershell execution
+platform: windows
+provider: Microsoft-Windows-PowerShell
+channel: Microsoft-Windows-PowerShell/Operational
+atc_id: DN0037
+loggingpolicy:
+  - LP0108
+contributors:
+  - '@atc_project'
+references:
+  - text: 'OSSEM DD: event-4103.yml'
+    link: 'https://github.com/OTRF/OSSEM/blob/master/source/data_dictionaries/windows/powershell/events/event-4103.yml'
+  - text: 'DEFCON: Investigating PowerShell Attacks - Mandiant'
+    link: 'https://www.defcon.org/images/defcon-22/dc-22-presentations/Kazanciyan-Hastings/DEFCON-22-Ryan-Kazanciyan-Matt-Hastings-Investigating-Powershell-Attacks.pdf'
+  - text: 'FireEye: Greater Visibility Through PowerShell Logging'
+    link: 'https://www.fireeye.com/blog/threat-research/2016/02/greater_visibilityt.html'
+fields:
+
+  - original_name: CommandInvocation
+    description: ''
+    sample_value: New-CimInstance
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_command_invocation
+   
+  - original_name: ParameterBinding
+    description: ''
+    sample_value: New-CimInstance
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_parameter_binding
+   
+  - original_name: Severity
+    description: ''
+    sample_value: Informational
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_severity
+   
+  - original_name: HostName
+    description: ''
+    sample_value: ConsoleHost
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_host_name
+   
+  - original_name: HostVersion
+    description: ''
+    sample_value: 5.1.17134.407
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_host_version
+   
+  - original_name: HostId
+    description: ''
+    sample_value: 3ff2018b-ab29-4049-a62d-851e5ca931ed
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_host_id
+   
+  - original_name: HostApplication
+    description: ''
+    sample_value: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_host_application
+   
+  - original_name: EngineVersion
+    description: ''
+    sample_value: 5.1.17134.407
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_engine_version
+   
+  - original_name: RunspaceId
+    description: ''
+    sample_value: 52c750e1-1c34-4244-a6eb-feadfd70a959
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_runspace_id
+   
+  - original_name: PipelineId
+    description: ''
+    sample_value: '90'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_pipeline_id
+   
+  - original_name: CommandName
+    description: ''
+    sample_value: New-CimInstance
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_command_name
+   
+  - original_name: CommandType
+    description: ''
+    sample_value: Cmdlet
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_command_type
+   
+  - original_name: ScriptName
+    description: ''
+    sample_value: ''
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_script_name
+   
+  - original_name: CommandPath
+    description: ''
+    sample_value: ''
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_command_path
+   
+  - original_name: SequenceNumber
+    description: ''
+    sample_value: '329'
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_sequence_number
+
+  - original_name: User
+    description: ''
+    sample_value: atc-win-10\user1
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: user_name
+   
+  - original_name: ConnectedUser
+    description: ''
+    sample_value: ''
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_connected_user
+   
+  - original_name: ShellID
+    description: ''
+    sample_value: Microsoft.PowerShell
+    elastic_ecs_name: N/A
+    splunk_cim_name: N/A
+    otr_ossem_name: powershell_shell_id
+
+sample: |
+  - <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    - <System>
+          <Provider Name="Microsoft-Windows-PowerShell" Guid="{A0C1853B-5C40-4B15-8766-3CF1C58F985A}" /> 
+          <EventID>4103</EventID> 
+          <Version>1</Version> 
+          <Level>4</Level> 
+          <Task>106</Task> 
+          <Opcode>20</Opcode> 
+          <Keywords>0x0</Keywords> 
+          <TimeCreated SystemTime="2019-02-05T15:05:16.564146000Z" /> 
+          <EventRecordID>75824</EventRecordID> 
+          <Correlation ActivityID="{3655DBA0-BD54-0000-AF51-563654BDD401}" /> 
+          <Execution ProcessID="2588" ThreadID="4328" /> 
+          <Channel>Microsoft-Windows-PowerShell/Operational</Channel> 
+          <Computer>atc-win-10.atc.local</Computer> 
+          <Security UserID="S-1-5-21-540864798-2899685673-3651185163-500" /> 
+        </System>
+      - <EventData>
+          <Data Name="ContextInfo">Severity = Informational Host Name = ConsoleHost Host Version = 5.1.17134.407 Host ID = 3ff2018b-ab29-4049-a62d-851e5ca931ed Host Application = C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe Engine Version = 5.1.17134.407 Runspace ID = 52c750e1-1c34-4244-a6eb-feadfd70a959 Pipeline ID = 90 Command Name = New-CimInstance Command Type = Cmdlet Script Name = Command Path = Sequence Number = 329 User = atc-win-10\user1 Connected User = Shell ID = Microsoft.PowerShell</Data> 
+          <Data Name="UserData" /> 
+          <Data Name="Payload">CommandInvocation(New-CimInstance): "New-CimInstance" ParameterBinding(New-CimInstance): name="Namespace"; value="root/subscription" ParameterBinding(New-CimInstance): name="ClassName"; value="__EventFilter" ParameterBinding(New-CimInstance): name="Property"; value="System.Collections.Hashtable"</Data> 
+        </EventData>
+    </Event>

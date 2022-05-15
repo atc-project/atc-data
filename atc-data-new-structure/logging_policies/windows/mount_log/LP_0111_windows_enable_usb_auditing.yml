@@ -1,0 +1,62 @@
+title: LP_0111_windows_enable_usb_auditing
+author: '@atc_project'
+default: Not configured
+volume: Low
+description: >
+  This policy enables events generation on USB activity.
+eventID:
+  - 1003 # Connection
+  - 1004 # Connection
+  - 2000 # Connection
+  - 2001 # Connection
+  - 2003 # Connection
+  - 2004 # Connection
+  - 2005 # Connection
+  - 2006 # Connection
+  - 2010 # Connection
+  - 2100 # Connection
+  - 2101 # Connection
+  - 2105 # Connection
+  - 2016 # Connection
+  - 1006 # Ejection
+  - 1008 # Ejection
+  - 2100 # Ejection
+  - 2101 # Ejection
+  - 2102 # Ejection
+  - 2105 # Ejection
+  - 2106 # Ejection
+  - 2900 # Ejection
+  - 2901 # Ejection
+references:
+  - https://nxlog.co/documentation/nxlog-user-guide/windows-usb-auditing.html
+configuration: |
+  To enable on a local machine, go open Event Viewer (eventvwr), then open:
+
+  ```
+  Applications and Services Logs >
+  Microsoft > 
+  Windows > 
+  DriverFrameworks-UserMode\Operational
+  ```
+
+  then right-click on Operational and select Enable Log.
+
+  Script to implement logging policy:
+
+  ```
+  for /F %i in (c:\computers.txt) do wevtutil sl Microsoft-Windows-DriverFrameworks-UserMode/Operational /e:true /r:%i
+  ```
+
+  Where `c:\computers.txt` is list of computers to configure.
+
+  Powershell script that also could be used to enable the policy on the local machine (or distributed via GPO to all workstations):
+
+  ```
+  $LogName = "Microsoft-Windows-DriverFrameworks-UserMode/Operational"
+  $CurrentConfig = Get-WinEvent -ListLog $LogName
+  If ($CurrentConfig.IsEnabled -eq $False) {
+    $Log = New-Object System.Diagnostics.Eventing.Reader.EventLogConfiguration $LogName
+    $Log.IsEnabled = $True
+    $Log.SaveChanges()
+  }
+  ```
